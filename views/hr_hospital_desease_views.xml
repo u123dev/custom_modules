@@ -1,0 +1,51 @@
+<odoo>
+    <record id="hr_hospital_desease_tree" model="ir.ui.view">
+        <field name="name">hr.hospital.desease.tree</field>
+        <field name="model">hr.hospital.desease</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hospital_desease_form" model="ir.ui.view">
+        <field name="name">hr.hospital.desease.form</field>
+        <field name="model">hr.hospital.desease</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_desease_action_window" model="ir.actions.act_window">
+        <field name="name">Desease type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hospital.desease</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create first type of desease
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hr_hospital_desease_menu"
+          name="Desease type"
+          parent="hr_hospital_menu_root"
+          action="hr_hospital_desease_action_window"
+          sequence="10"/>
+
+</odoo>

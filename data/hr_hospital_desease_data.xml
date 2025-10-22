@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="desease_type_1" model="hr.hospital.desease">
+        <field name="name">Acute respiratory illness (ARI)</field>
+        <field name="code">J00</field>
+        <field name="description">Viral upper respiratory tract infection.</field>
+    </record>
+    <record id="desease_type_2" model="hr.hospital.desease">
+        <field name="name">Simulation</field>
+        <field name="code">S010</field>
+        <field name="description">Imitation of disease.</field>
+    </record>
+    <record id="desease_type_3" model="hr.hospital.desease">
+        <field name="name">Covid</field>
+        <field name="code">C347</field>
+        <field name="description">Covid, which is from China.</field>
+    </record>
+
+</odoo>

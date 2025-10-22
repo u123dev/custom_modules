@@ -1,0 +1,67 @@
+<odoo>
+    <record id="hr_hospital_visit_tree" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.tree</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="visit_datetime"/>
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                    <field name="desease_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_form" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.form</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                            <field name="doctor_id"/>
+                        </group>
+                        <group>
+                            <field name="visit_datetime"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Desease &amp; diagnosis">
+                            <separator string="Deseases types:"/>
+                            <field name="desease_ids" widget="many2many_tags"/>
+                            <separator string="Diagnosis:"/>
+                            <field name="diagnosis"/>
+                        </page>
+                        <page string="Anamnesis &amp; Descriptiion">
+                            <separator string="Detailed anamnesis:"/>
+                            <field name="anamnesis"/>
+                            <separator string="Description of visit:"/>
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_visit_action_window" model="ir.actions.act_window">
+        <field name="name">Visit</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hospital.visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Register first patient's vist.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hr_hospital_visit_menu"
+              name="Visit"
+              parent="hr_hospital_menu_root"
+              action="hr_hospital_visit_action_window"
+              sequence="40"/>
+
+</odoo>
