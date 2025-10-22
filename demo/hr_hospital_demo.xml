@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="doctor_demo_1" model="hr.hospital.doctor">
+        <field name="name">Dr. Alice Johnson</field>
+        <field name="speciality">General Practitioner</field>
+        <field name="qualification">MD, PhD</field>
+        <field name="phone">+1 555 123 4567</field>
+        <field name="is_fulltime" eval="True"/>
+    </record>
+
+    <record id="doctor_demo_2" model="hr.hospital.doctor">
+        <field name="name">Dr. Robert Smith</field>
+        <field name="speciality">Cardiologist</field>
+        <field name="qualification">Fellow of Cardiology</field>
+        <field name="phone">+1 555 987 6543</field>
+        <field name="is_fulltime" eval="True"/>
+    </record>
+
+    <record id="doctor_demo_3" model="hr.hospital.doctor">
+        <field name="name">Dr. Emily Davis</field>
+        <field name="speciality">Pediatrician</field>
+        <field name="qualification">Board Certified</field>
+        <field name="phone">+1 555 333 4455</field>
+        <field name="is_fulltime" eval="False"/>
+    </record>
+
+    <record id="patient_demo_1" model="hr.hospital.patient">
+        <field name="name">Michael Brown</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1990-03-25</field>
+        <field name="phone">555-001-2233</field>
+        <field name="doctor_id" ref="doctor_demo_1"/>
+    </record>
+
+    <record id="patient_demo_2" model="hr.hospital.patient">
+        <field name="name">Sophia Williams</field>
+        <field name="gender">female</field>
+        <field name="birth_date">2015-11-10</field>
+        <field name="phone">555-002-4455</field>
+        <field name="doctor_id" ref="doctor_demo_3"/>
+    </record>
+
+    <record id="patient_demo_3" model="hr.hospital.patient">
+        <field name="name">Thomas Clark</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1965-08-01</field>
+        <field name="phone">555-003-6677</field>
+        <field name="doctor_id" ref="doctor_demo_2"/>
+    </record>
+
+</odoo>
