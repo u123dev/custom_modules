@@ -1,4 +1,5 @@
 <odoo>
+    <!-- TREE VIEW -->
     <record id="hr_hospital_desease_tree" model="ir.ui.view">
         <field name="name">hr.hospital.desease.tree</field>
         <field name="model">hr.hospital.desease</field>
@@ -6,24 +7,63 @@
             <tree>
                 <field name="name"/>
                 <field name="code"/>
+                <field name="severity_level" widget="badge" decoration-success="severity_level == 'low'" decoration-warning="severity_level == 'medium'" decoration-danger="severity_level in ('high', 'critical')"/>
+                <field name="is_contagious"/>
+                <field name="parent_id"/>
             </tree>
         </field>
     </record>
 
+    <!-- FORM VIEW -->
     <record id="hr_hospital_desease_form" model="ir.ui.view">
         <field name="name">hr.hospital.desease.form</field>
         <field name="model">hr.hospital.desease</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+
                     <group>
-                        <field name="name"/>
-                        <field name="code"/>
+                        <group>
+                            <field name="code"/>
+                            <field name="severity_level"/>
+                        </group>
+                        <group>
+                            <field name="is_contagious"/>
+                        </group>
                     </group>
+
                     <notebook>
-                        <page string="Description">
-                            <field name="description"/>
+
+                        <!-- TAB: Symptoms and Notes -->
+                        <page name="symptoms" string="Symptoms and Details">
+                            <field name="symptoms"/>
                         </page>
+
+                        <!-- TAB: Hierarchy and Spread -->
+                        <page name="hierarchy_spread" string="Classification &amp; Spread">
+                            <group>
+                                <group string="Hierarchy">
+                                    <field name="parent_id"/>
+                                </group>
+                                <group string="Regions">
+                                    <field name="spreading_region_ids" widget="many2many_tags"/>
+                                </group>
+                            </group>
+                            <!-- Child diseases are listed as a sub-tree of the current disease -->
+                            <separator string="Sub-Types / Child Diseases"/>
+                            <field name="child_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="code"/>
+                                    <field name="severity_level" widget="badge"/>
+                                </tree>
+                            </field>
+                        </page>
+
                     </notebook>
                 </sheet>
             </form>

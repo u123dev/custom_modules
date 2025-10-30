@@ -1,4 +1,5 @@
 <odoo>
+    <!-- TREE VIEW -->
     <record id="hr_hospital_patient_tree" model="ir.ui.view">
         <field name="name">hr.hospital.patient.tree</field>
         <field name="model">hr.hospital.patient</field>
@@ -6,32 +7,93 @@
             <tree>
                 <field name="name"/>
                 <field name="gender"/>
-                <field name="birth_date"/>
                 <field name="age"/>
+                <field name="personal_doctor_id"/>
+                <field name="blood_group"/>
                 <field name="phone"/>
-                <field name="doctor_id"/>
+                <field name="email"/>
             </tree>
         </field>
     </record>
 
+    <!-- FORM VIEW -->
     <record id="hr_hospital_patient_form" model="ir.ui.view">
         <field name="name">hr.hospital.patient.form</field>
         <field name="model">hr.hospital.patient</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <group>
-                        <group>
-                            <field name="name"/>
-                            <field name="gender"/>
-                            <field name="birth_date"/>
-                            <field name="age"/>
-                        </group>
-                        <group>
-                            <field name="phone"/>
-                            <field name="doctor_id"/>
-                        </group>
-                    </group>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <notebook>
+
+                        <!-- TAB: General Info & Contacts -->
+                        <page name="general_info" string="General Info">
+                            <group>
+                                <group string="Personal Data">
+                                    <field name="last_name"/>
+                                    <field name="first_name"/>
+                                    <field name="middle_name"/>
+                                    <field name="gender"/>
+                                    <field name="birth_date"/>
+                                    <field name="age"/>
+                                    <field name="passport_data"/>
+                                    <field name="country_id"/>
+                                </group>
+                                <group string="Contact Details">
+                                    <field name="phone"/>
+                                    <field name="email"/>
+                                    <field name="language_id"/>
+                                    <field name="contact_person_id"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- TAB: Medical Info -->
+                        <page name="medical_info" string="Medical Info">
+                            <group>
+                                <group string="Key Medical Data">
+                                    <field name="blood_group"/>
+                                </group>
+                                <group string="Allergies">
+                                    <field name="allergies"/>
+                                </group>
+                            </group>
+                        </page>
+
+                        <!-- TAB: Insurance -->
+                        <page name="insurance_info" string="Insurance">
+                            <group>
+                                <group>
+                                    <field name="insurance_company_id"/>
+                                    <field name="insurance_policy_number"/>
+                                </group>
+                                <group/>
+                            </group>
+                        </page>
+
+                        <!-- TAB: Doctor History -->
+                        <page name="doctor_history" string="Doctors &amp; History">
+                            <group>
+                                <field name="personal_doctor_id"/>
+                            </group>
+                            <separator string="Personal Doctor History"/>
+                            <field name="doctor_history_ids">
+                                <tree editable="bottom">
+                                    <field name="doctor_id"/>
+                                    <field name="assignment_date"/>
+                                    <field name="change_date"/>
+                                    <field name="is_active"/>
+                                    <field name="change_reason"/>
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
                 </sheet>
             </form>
         </field>
