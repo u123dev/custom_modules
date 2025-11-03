@@ -1,6 +1,10 @@
+import logging
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 from odoo import _
+
+
+_logger = logging.getLogger(__name__)
 
 
 class HrHospitalDoctor(models.Model):
@@ -58,50 +62,36 @@ class HrHospitalDoctor(models.Model):
 
     @api.depends('license_issue_date')
     def _compute_work_experience(self):
-        """Calculates work experience in years from the license issue date."""
-        today = fields.Date.today()
+        """Calculate work experience based on license_issue_date."""
         for doctor in self:
-            if doctor.license_issue_date:
-                issue_date = doctor.license_issue_date
-                experience = (today.year - issue_date.year -
-                              (
-                                  (today.month, today.day) <
-                                  (issue_date.month, issue_date.day)
-                              )
-                              )
-                doctor.work_experience = experience if experience >= 0 else 0
-            else:
-                doctor.work_experience = 0
+            doctor.work_experience = self._calculate_years(
+                doctor.license_issue_date
+            )
 
     @api.constrains('license_number')
     def _check_license_number_unique(self):
         """Ensures the license number is unique."""
-        for doctor in self:
-            if doctor.license_number:
-                existing = self.env['hr.hospital.doctor'].search([
-                    ('license_number', '=', doctor.license_number),
-                    ('id', '!=', doctor.id)
-                ])
-                if existing:
-                    raise ValidationError(
-                        _("The License Number must be unique.")
-                    )
+        for doctor in self.filtered(lambda doc: doc.license_number):
+            existing = self.env['hr.hospital.doctor'].search([
+                ('license_number', '=', doctor.license_number),
+                ('id', '!=', doctor.id)
+            ])
+            if existing:
+                raise ValidationError(_("The License Number must be unique."))
 
     @api.constrains('mentor_id')
-    def _check_mentor_is_not_intern(self):
-        """Prohibits selecting an intern as a mentor."""
-        for doctor in self:
-            if doctor.mentor_id and doctor.mentor_id.is_intern:
-                raise ValidationError(_("An intern cannot be a mentor."))
+    def _check_mentor(self):
+        """Prohibits invalid mentor assignments."""
 
-    @api.constrains('mentor_id')
-    def _check_self_mentoring(self):
-        """Prohibits a doctor from being their own mentor."""
-        for doctor in self:
-            if doctor.mentor_id and doctor.mentor_id.id == doctor.id:
-                raise ValidationError(
-                    _("A doctor cannot be a mentor to themself.")
-                )
+        # check mentor is not mentor
+        if self.filtered(lambda d: d.mentor_id and d.mentor_id.is_intern):
+            raise ValidationError(_("An intern cannot be a mentor."))
+
+        # check doctor is not own mentor
+        if self.filtered(lambda d: d.mentor_id and d.mentor_id.id == d.id):
+            raise ValidationError(
+                _("A doctor cannot be a mentor to themself.")
+            )
 
     @api.constrains('active')
     def _check_archiving_with_active_visits(self):
@@ -111,8 +101,11 @@ class HrHospitalDoctor(models.Model):
             if not doctor.active:
                 active_visits = self.env['hr.hospital.visit'].search([
                     ('doctor_id', '=', doctor.id),
-                    ('visit_status', 'in', ['planned', 'urgent'])
-                    # Visits that are not completed/cancelled/missed
+                    '|',
+                    ('visit_status', 'in', ['planned', ]),
+                    ('visit_status', '=', False)
+                    # Visits that planned (not completed/cancelled/missed)
+                    # OR no selection (False)
                 ], limit=1)
 
                 if active_visits:

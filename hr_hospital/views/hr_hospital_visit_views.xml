@@ -10,6 +10,7 @@
                 <field name="doctor_id"/>
                 <field name="visit_status" widget="badge" decoration-success="visit_status == 'completed'" decoration-warning="visit_status == 'planned'" decoration-danger="visit_status in ('cancelled', 'missed')"/>
                 <field name="visit_cost" widget="monetary"/>
+                <field name="diagnosis_count"/>
             </tree>
         </field>
     </record>
@@ -30,9 +31,11 @@
                         </group>
                         <group string="Timing and Cost">
                             <field name="planned_datetime"/>
-                            <field name="actual_datetime" readonly="visit_status not in ('completed', 'missed')"/>
+<!--                            <field name="actual_datetime"/>-->
+                            <field name="actual_datetime" readonly="visit_status in ('completed', 'missed')"/>
                             <field name="visit_cost" widget="monetary"/>
                             <field name="currency_id" invisible="1"/>
+                            <field name="diagnosis_count"/>
                         </group>
                     </group>
 

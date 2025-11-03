@@ -87,7 +87,7 @@
                                     <field name="doctor_id"/>
                                     <field name="assignment_date"/>
                                     <field name="change_date"/>
-                                    <field name="is_active"/>
+                                    <field name="active"/>
                                     <field name="change_reason"/>
                                 </tree>
                             </field>

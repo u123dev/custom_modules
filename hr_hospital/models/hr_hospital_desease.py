@@ -19,7 +19,7 @@ class HrHospitalDesease(models.Model):
     )
 
     code = fields.Char(string='ICD-10 Code', size=10)
-    severity_level = fields.Selection([
+    severity_level = fields.Selection(selection=[
         ('low', 'Low'),
         ('medium', 'Medium'),
         ('high', 'High'),

@@ -8,14 +8,14 @@ class HrHospitalAbstractPerson(models.AbstractModel):
     _name = 'hr.hospital.abstract.person'
     _description = 'Abstract Model for Person Data'
 
-    _inherit = ['image.mixin']
+    _inherit = ['image.mixin', 'hr.hospital.date.mixin']
 
     last_name = fields.Char(required=True)
     first_name = fields.Char(required=True)
     middle_name = fields.Char()
     phone = fields.Char()
     email = fields.Char()
-    gender = fields.Selection([
+    gender = fields.Selection(selection=[
         ('male', 'Male'),
         ('female', 'Female'),
         ('other', 'Other'),
@@ -26,13 +26,12 @@ class HrHospitalAbstractPerson(models.AbstractModel):
         comodel_name='res.country',
         string="Country of Citizenship"
     )
-    language_id = fields.Many2one('res.lang')
+    language_id = fields.Many2one(comodel_name='res.lang')
 
     name = fields.Char(
         string="Full Name",
         compute='_compute_full_name',
-        store=True,
-        recursive=True
+        store=True
     )
     age = fields.Integer(compute='_compute_age')
 
@@ -45,34 +44,35 @@ class HrHospitalAbstractPerson(models.AbstractModel):
 
     @api.depends('birth_date')
     def _compute_age(self):
-        """Computes the age based on the date of birth."""
-        today = fields.Date.today()
+        """Compute age in full years based on the birth date."""
         for person in self:
-            if person.birth_date:
-                birth = person.birth_date
-                person.age = today.year - birth.year - (
-                    (today.month, today.day) < (birth.month, birth.day)
-                )
-            else:
-                person.age = 0
+            person.age = self._calculate_years(person.birth_date)
 
     @api.constrains('phone')
     def _check_phone_format(self):
         """Validation that the phone field contains valid characters."""
         PHONE_REGEX = re.compile(r'^[0-9\s\-\+\(\)]+$')
-        for record in self:
-            if record.phone and not PHONE_REGEX.match(record.phone):
-                raise ValidationError(_(
-                    "Invalid phone format. "
-                    "Only digits, spaces, and signs +, -, () are allowed."
-                ))
+        if self.filtered(
+                lambda rec: rec.phone and not PHONE_REGEX.match(rec.phone)
+        ):
+            raise ValidationError(_(
+                "Invalid phone format. "
+                "Only digits, spaces, and signs +, -, () are allowed."
+            ))
 
     @api.constrains('email')
     def _check_email_format(self):
-        """Simple validation for the email format."""
+        """Unicode-aware validation for email format (RFC-compatible)."""
         EMAIL_REGEX = re.compile(
-            r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+            r"(^[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~\u00A0-\uFFFF]+"
+            r"(\.[-!#$%&'*+/0-9=?A-Z^_`a-z{|}~\u00A0-\uFFFF]+)*"
+            r"|^\"([!#-\[\]-~ \t\u00A0-\uFFFF]|(\\[\t -~\u00A0-\uFFFF]))+\""
+            r")@([A-Za-z0-9\u00A0-\uFFFF](?:[A-Za-z0-9\u00A0-\uFFFF-]{0,61}"
+            r"[A-Za-z0-9\u00A0-\uFFFF])?\.)+"
+            r"[A-Za-z\u00A1-\uFFFF]{2,}$",
+            re.UNICODE
         )
+
         for record in self:
             if record.email and not EMAIL_REGEX.match(record.email):
                 raise ValidationError(_("Invalid email address format."))

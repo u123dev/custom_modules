@@ -1,3 +1,4 @@
+from . import hr_hospital_date_mixin
 from . import hr_hospital_abstract_person
 from . import hr_hospital_contact_person
 from . import hr_hospital_doctor_speciality
@@ -8,3 +9,5 @@ from . import hr_hospital_desease
 from . import hr_hospital_doctor
 from . import hr_hospital_patient
 from . import hr_hospital_visit
+
+# from . import hr_hospital_mass_reassign_doctor_wizard

@@ -26,7 +26,7 @@ class PatientDoctorHistory(models.Model):
     )
     change_date = fields.Date()
     change_reason = fields.Text()
-    is_active = fields.Boolean(
+    active = fields.Boolean(
         default=True,
         help='Indicates the current doctor assignment.'
     )

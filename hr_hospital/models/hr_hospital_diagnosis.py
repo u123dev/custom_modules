@@ -1,4 +1,10 @@
-from odoo import models, fields
+import logging
+from odoo import models, fields, api
+from odoo.odoo.exceptions import UserError
+from odoo import _
+
+
+_logger = logging.getLogger(__name__)
 
 
 class HrHospitalDiagnosis(models.Model):
@@ -17,7 +23,7 @@ class HrHospitalDiagnosis(models.Model):
     )
     diagnosis_description = fields.Text()
     prescribed_treatment = fields.Html()
-    severity_level = fields.Selection([
+    severity_level = fields.Selection(selection=[
         ('light', 'Light'),
         ('medium', 'Medium'),
         ('hard', 'Hard'),
@@ -29,3 +35,23 @@ class HrHospitalDiagnosis(models.Model):
         readonly=True
     )
     approval_date = fields.Datetime(readonly=True)
+
+    def write(self, vals):
+        """Check 'is_approved' diagnosis field and
+        set the Approving Doctor (or Mentor if exists) and Approval Date."""
+
+        if vals.get('is_approved'):
+            visit_doctor = self.visit_id.doctor_id
+            if not visit_doctor:
+                raise UserError(_(
+                    "Cannot approve the diagnosis: "
+                    "The Doctor for the visit is not set."
+                ))
+
+            approving_doctor = visit_doctor.mentor_id or visit_doctor
+            vals['approving_doctor_id'] = approving_doctor.id
+            vals['approval_date'] = fields.Datetime.now()
+
+            _logger.warning(f"***** Diagnosis {self.id}: Fields added for Doctor: {approving_doctor.id}, {approving_doctor.name}")
+
+        return super(HrHospitalDiagnosis, self).write(vals)
