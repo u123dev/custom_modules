@@ -68,14 +68,8 @@ class DoctorSchedule(models.Model):
     ]
 
     def _combine_datetime_parts(self, source_dt, target_dt):
-        """
-        Combines the DATE from source_dt and the TIME from target_dt
-        to create a new datetime object.
-
-        :param source_dt: datetime object from which the DATE part is taken.
-        :param target_dt: datetime object from which the TIME part is taken.
-        :return: New datetime object or False if data is missing.
-        """
+        """Combines the DATE from source_dt and the TIME from target_dt
+        to create a new datetime object or False if data is missing."""
         if source_dt and target_dt:
             return datetime.combine(source_dt.date(), target_dt.time())
         return False
@@ -122,10 +116,8 @@ class DoctorSchedule(models.Model):
 
     @api.depends('start_datetime', 'end_datetime')
     def _compute_time_parts(self):
-        """
-            Converts UTC values of start_datetime and end_datetime into local
-            date, start_time (float), end_time (float) based on the user's TZ.
-        """
+        """Converts UTC values of start_datetime and end_datetime into local
+           date, start_time (float), end_time (float) on the user's TZ."""
         tz_name = self.env.context.get('tz') or 'UTC'
         local_tz = pytz.timezone(tz_name)
 

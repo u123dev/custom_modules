@@ -1,8 +1,7 @@
 import logging
 from datetime import timedelta
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, UserError
-from odoo import _
 
 
 _logger = logging.getLogger(__name__)
@@ -37,7 +36,10 @@ class HrHospitalVisit(models.Model):
 
     planned_datetime = fields.Datetime(required=True)
     actual_datetime = fields.Datetime(
-        readonly="visit_status in ['completed', 'missed']",
+        # TO CLEAR: next parameter doesn't work correctly:
+        #   warnings.warn(f'Property {self}.readonly should be
+        #                   a boolean ({self.readonly}).')
+        # readonly="visit_status in ['completed', 'missed']",
         help="Actual visit date/time; read-only when visit is finalized."
     )
     diagnosis_ids = fields.One2many(
@@ -108,6 +110,15 @@ class HrHospitalVisit(models.Model):
                     }
                 }
 
+    @api.constrains('doctor_id')
+    def _check_doctor_license(self):
+        """Check that doctor has a license number to be assigned to a visit."""
+        for visit in self:
+            if visit.doctor_id and not visit.doctor_id.license_number:
+                raise ValidationError(_(
+                    f"Doctor must have a license number "
+                    + visit.doctor_id.name))
+
     @api.constrains('patient_id', 'doctor_id', 'planned_datetime')
     def _check_unique_visit_per_day(self):
         """Prohibits booking the same patient to the same doctor
@@ -132,7 +143,7 @@ class HrHospitalVisit(models.Model):
             if existing_visits:
                 raise ValidationError(
                     _("Patient is already booked to doctor on this date: ")
-                    + visit_date
+                    + str(visit_date)
                 )
 
     @api.constrains('planned_datetime', 'actual_datetime')
@@ -164,33 +175,6 @@ class HrHospitalVisit(models.Model):
                 _("Modification for finalized visits is denied "
                   "for critical fields: ") + field_names
             )
-
-    # def write(self, vals):
-    #     """Prohibits changing critical fields for finalized visit."""
-    #
-    #     critical_fields = ['doctor_id', 'planned_datetime', 'actual_datetime']
-    #     fields_changed = set(critical_fields) & set(vals.keys())
-    #
-    #     if fields_changed:
-    #         completed_visits = self.filtered(
-    #             lambda v: v.visit_status in ['completed', 'missed']
-    #         )
-    #
-    #         if completed_visits:
-    #             field_metadata = self.fields_get()
-    #             field_descriptions = [
-    #                 field_metadata[f]['string']
-    #                 for f in fields_changed
-    #                 if f in field_metadata and field_metadata[f].get('string')
-    #             ]
-    #             fields_str = ', '.join(field_descriptions)
-    #
-    #             raise ValidationError(
-    #                 _("Modification is prohibited for finalized visits "
-    #                   "for critical fields: ") + f"[{fields_str}]"
-    #             )
-    #
-    #     return super(HrHospitalVisit, self).write(vals)
 
     def unlink(self):
         """Prohibits deleting visits that already have associated diagnoses."""

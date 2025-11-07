@@ -11,7 +11,40 @@
                 <field name="is_approved" widget="boolean_toggle"/>
                 <field name="approving_doctor_id"/>
                 <field name="approval_date"/>
+
+                <!-- FIELDS FOR GROUPING - HIDDEN FROM DEFAULT VIEW -->
+                <field name="doctor_related_id" optional="hidden"/>
+                <field name="patient_country_related_id" optional="hidden"/>
+                <field name="visit_date_related" optional="hidden"/>
             </tree>
+        </field>
+    </record>
+
+    <!-- Search View - to define the grouping filters -->
+    <record id="hr_hospital_diagnosis_view_search" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.search</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <search string="Diagnosis Search">
+                <!-- Default search fields -->
+                <field name="disease_id"/>
+                <field name="visit_id"/>
+
+                <!-- Search fields related to the new related fields -->
+                <field name="doctor_related_id"/>
+                <field name="patient_country_related_id"/>
+
+                <!-- Group By Filters -->
+                <group expand="0" string="Group By">
+                    <!-- Grouping by Disease (original field) -->
+                    <filter name="group_by_disease" string="Disease" context="{'group_by': 'disease_id'}"/>
+
+                    <!-- Grouping by RELATED FIELDS (Doctor, Country, Month) -->
+                    <filter name="group_by_doctor" string="Doctor" context="{'group_by': 'doctor_related_id'}"/>
+                    <filter name="group_by_country" string="Country" context="{'group_by': 'patient_country_related_id'}"/>
+                    <filter name="group_by_month" string="Month" context="{'group_by': 'visit_date_related:month'}"/>
+                </group>
+            </search>
         </field>
     </record>
 

@@ -42,3 +42,29 @@ class PatientDoctorHistory(models.Model):
 
             record.name = (f"Assignment: {patient_name} to {doctor_name} "
                            f"({date_str})")
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        """Deactivate previous active records for each patient
+        before creating new ones."""
+
+        for vals in vals_list:
+            patient_id = vals.get('patient_id')
+
+            if patient_id:
+                # Find all active history records for patient
+                previous_records = self.search([
+                    ('patient_id', '=', patient_id),
+                    ('active', '=', True)
+                ])
+
+                # Deactivate them
+                if previous_records:
+                    previous_records.write({'active': False})
+
+        return super(PatientDoctorHistory, self).create(vals_list)
+
+    def write(self, vals):
+        """Update change_date to current date when record is modified."""
+        vals['change_date'] = fields.Date.today()
+        return super(PatientDoctorHistory, self).write(vals)

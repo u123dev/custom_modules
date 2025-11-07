@@ -1,7 +1,6 @@
 import logging
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from odoo import _
 
 
 _logger = logging.getLogger(__name__)
@@ -12,10 +11,6 @@ class HrHospitalDoctor(models.Model):
     _description = 'Doctor'
 
     _inherit = ['hr.hospital.abstract.person']
-
-    # speciality = fields.Char()
-    # qualification = fields.Char()
-    # is_fulltime = fields.Boolean(default=True)
 
     user_id = fields.Many2one(
         comodel_name='res.users',
@@ -83,7 +78,7 @@ class HrHospitalDoctor(models.Model):
     def _check_mentor(self):
         """Prohibits invalid mentor assignments."""
 
-        # check mentor is not mentor
+        # check mentor is not intern
         if self.filtered(lambda d: d.mentor_id and d.mentor_id.is_intern):
             raise ValidationError(_("An intern cannot be a mentor."))
 
@@ -114,3 +109,14 @@ class HrHospitalDoctor(models.Model):
                         " or planned visits. "
                         "Please cancel or complete all pending visits first."
                     ))
+
+    def name_get(self):
+        """Displays the doctor's name in the format: 'Name (Speciality)'."""
+        result = []
+        for doctor in self:
+            if doctor.speciality_id:
+                display_name = f"{doctor.name} ({doctor.speciality_id.name})"
+            else:
+                display_name = doctor.name
+            result.append((doctor.id, display_name))
+        return result

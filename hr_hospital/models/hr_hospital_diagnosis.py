@@ -1,7 +1,6 @@
 import logging
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.odoo.exceptions import UserError
-from odoo import _
 
 
 _logger = logging.getLogger(__name__)
@@ -36,6 +35,25 @@ class HrHospitalDiagnosis(models.Model):
     )
     approval_date = fields.Datetime(readonly=True)
 
+    # Fielda for grouping
+    doctor_related_id = fields.Many2one(
+        comodelname='hr.hospital.doctor',
+        related='visit_id.doctor_id',
+        store=True,
+        readonly=True
+    )
+    patient_country_related_id = fields.Many2one(
+        comodelname='res.country',
+        related='visit_id.patient_id.country_id',
+        store=True,
+        readonly=True
+    )
+    visit_date_related = fields.Datetime(
+        related='visit_id.planned_datetime',
+        store=True,
+        readonly=True
+    )
+
     def write(self, vals):
         """Check 'is_approved' diagnosis field and
         set the Approving Doctor (or Mentor if exists) and Approval Date."""
@@ -52,6 +70,10 @@ class HrHospitalDiagnosis(models.Model):
             vals['approving_doctor_id'] = approving_doctor.id
             vals['approval_date'] = fields.Datetime.now()
 
-            _logger.warning(f"***** Diagnosis {self.id}: Fields added for Doctor: {approving_doctor.id}, {approving_doctor.name}")
+            _logger.warning(
+                f"***** Diagnosis {self.id}: "
+                f"Fields added for Doctor: "
+                f"{approving_doctor.id}, {approving_doctor.name}"
+            )
 
         return super(HrHospitalDiagnosis, self).write(vals)

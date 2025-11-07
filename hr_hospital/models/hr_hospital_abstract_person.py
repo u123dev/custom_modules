@@ -1,7 +1,6 @@
 import re
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from odoo import _
 
 
 class HrHospitalAbstractPerson(models.AbstractModel):

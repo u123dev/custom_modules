@@ -1,11 +1,9 @@
 import logging
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError
-from odoo import _
 
 
 _logger = logging.getLogger(__name__)
-
 
 
 class HrHospitalPatient(models.Model):
@@ -62,13 +60,13 @@ class HrHospitalPatient(models.Model):
             base_lang_code = language_code_map.get(country_code, country_code)
             lang_record = False
             if base_lang_code:
-                # Search for specific regional code (f.e.: uk_UA)
+                # Search for specific regional code (f.ex.: uk_UA)
                 lang_record = self.env['res.lang'].search([
                     ('code', 'ilike', f'{base_lang_code}_%')
                 ], limit=1)
 
                 if not lang_record:
-                    # If not, Search for exact base language code (f.e.: 'uk')
+                    # If not, Search for exact base language code (f.ex.: 'uk')
                     lang_record = self.env['res.lang'].search([
                         ('code', '=', base_lang_code)
                     ], limit=1)
@@ -105,16 +103,29 @@ class HrHospitalPatient(models.Model):
         if 'personal_doctor_id' not in vals:
             return super(HrHospitalPatient, self).write(vals)
 
+        # Get date and reason from context (passed by wizard) or use defaults
+        assignment_date = self.env.context.get('history_change_date',
+                                               fields.Date.today())
+        change_reason = self.env.context.get('history_change_reason', False)
+
         data = []
 
-        for patient in self.filtered(lambda x: x.personal_doctor_id != vals['personal_doctor_id']):
-            data.append({
+        for patient in self.filtered(
+                lambda x: x.personal_doctor_id != vals['personal_doctor_id']):
+            history_record = ({
                 'patient_id': patient.id,
                 'doctor_id': vals['personal_doctor_id'],
-                'assignment_date': fields.Date.today(),
+                'assignment_date': assignment_date,
                 'active': True,
             })
 
+            # Add change_reason only if it exists in the history model
+            if change_reason:
+                history_record['change_reason'] = change_reason
+
+            data.append(history_record)
+
         result = super(HrHospitalPatient, self).write(vals)
-        self.env['hr.hospital.patient.doctor.history'].sudo().create(data)
+        if data:
+            self.env['hr.hospital.patient.doctor.history'].sudo().create(data)
         return result

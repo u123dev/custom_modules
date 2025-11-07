@@ -1,0 +1,53 @@
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_hr_hospital_doctor_schedule_tree" model="ir.ui.view">
+            <field name="name">hr.hospital.doctor.schedule.tree</field>
+            <field name="model">hr.hospital.doctor.schedule</field>
+            <field name="arch" type="xml">
+                <tree string="Doctor Schedule">
+                    <field name="doctor_id"/>
+                    <field name="date"/>
+                    <field name="weekday"/>
+                    <field name="start_time" widget="float_time"/>
+                    <field name="end_time" widget="float_time"/>
+                    <field name="schedule_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_hr_hospital_doctor_schedule_form" model="ir.ui.view">
+            <field name="name">hr.hospital.doctor.schedule.form</field>
+            <field name="model">hr.hospital.doctor.schedule</field>
+            <field name="arch" type="xml">
+                <form string="Doctor Schedule">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="doctor_id"/>
+                                <field name="schedule_type"/>
+                                <field name="notes"/>
+                            </group>
+                            <group>
+                                <field name="start_datetime"/>
+                                <field name="end_datetime"/>
+                                <!-- Computed fields for convenience -->
+                                <field name="date" readonly="1"/>
+                                <field name="weekday" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_hr_hospital_doctor_schedule" model="ir.actions.act_window">
+            <field name="name">Doctor Schedules</field>
+            <field name="res_model">hr.hospital.doctor.schedule</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

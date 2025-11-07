@@ -9,3 +9,8 @@ access_hr_hospital_contact_person,hr.hospital.contact.person,model_hr_hospital_c
 access_hr_hospital_doctor_schedule,hr.hospital.doctor.schedule,model_hr_hospital_doctor_schedule,base.group_user,1,1,1,1
 access_hr_hospital_patient_doctor_history,hr.hospital.patient.doctor.history,model_hr_hospital_patient_doctor_history,base.group_user,1,1,1,1
 access_hr_hospital_abstract_person,hr.hospital.abstract.person,model_hr_hospital_abstract_person,base.group_user,1,1,1,1
+access_hr_hospital_mass_reassign_doctor_wizard,Mass Reassign Doctor Wizard User Access,model_hr_hospital_mass_reassign_doctor_wizard,base.group_user,1,1,1,1
+access_hr_hospital_disease_report_wizard,Disease Report Wizard Access,model_hr_hospital_disease_report_wizard,base.group_user,1,1,1,1
+access_hr_hospital_reschedule_visit_wizard,Reschedule Visit Wizard Access,model_hr_hospital_reschedule_visit_wizard,base.group_user,1,1,1,1
+access_hr_hospital_doctor_schedule_wizard,Doctor Schedule Wizard Access,model_hr_hospital_doctor_schedule_wizard,base.group_user,1,1,1,1
+access_hr_hospital_patient_card_export_wizard,Patient Card Export Wizard Access,model_hr_hospital_patient_card_export_wizard,base.group_user,1,1,1,1
