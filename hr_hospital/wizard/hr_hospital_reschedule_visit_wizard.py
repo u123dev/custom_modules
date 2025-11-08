@@ -1,7 +1,8 @@
 import logging
+from datetime import datetime, time, timedelta
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
-from datetime import datetime, time, timedelta
+
 
 _logger = logging.getLogger(__name__)
 
@@ -33,10 +34,7 @@ class HrHospitalRescheduleVisitWizard(models.TransientModel):
         required=True,
         help='Time of the new visit in 24-hour format (f.e., 9.5 for 09:30).'
     )
-    reschedule_reason = fields.Text(
-        string='Reschedule Reason',
-        required=True
-    )
+    reschedule_reason = fields.Text(required=True)
 
     @api.model
     def default_get(self, fields_list):
@@ -50,8 +48,8 @@ class HrHospitalRescheduleVisitWizard(models.TransientModel):
             res['new_doctor_id'] = visit.doctor_id.id
             if visit.planned_datetime:
                 res['new_date'] = visit.planned_datetime.date()
-                res['new_time'] = visit.planned_datetime.hour + (
-                            visit.planned_datetime.minute / 60.0)
+                res['new_time'] = (visit.planned_datetime.hour
+                                   + (visit.planned_datetime.minute / 60.0))
 
         return res
 
@@ -95,9 +93,9 @@ class HrHospitalRescheduleVisitWizard(models.TransientModel):
         # Update current visit status (Cancel old slot)
         current_visit.write({
             'visit_status': 'cancelled',
-            'recommendations': (current_visit.recommendations or '') +
-                               f'<p><strong>Visit Cancelled (Rescheduled):'
-                               f'</strong> {self.reschedule_reason}</p>'
+            'recommendations': ((current_visit.recommendations or '') +
+                                f'<p><strong>Visit Cancelled (Rescheduled):'
+                                f'</strong> {self.reschedule_reason}</p>')
         })
 
         # Create new visit record

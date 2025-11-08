@@ -4,7 +4,7 @@
         <field name="name">hr.hospital.diagnosis.tree</field>
         <field name="model">hr.hospital.diagnosis</field>
         <field name="arch" type="xml">
-            <tree string="Diagnoses">
+            <tree>
                 <field name="visit_id"/>
                 <field name="disease_id"/>
                 <field name="severity_level"/>

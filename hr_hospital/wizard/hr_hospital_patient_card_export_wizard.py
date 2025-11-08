@@ -1,11 +1,11 @@
 import logging
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError
 from datetime import timedelta
 import json
 import csv
 from io import StringIO
-import base64  # <--- НОВЫЙ ИМПОРТ
+import base64
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError
 
 
 _logger = logging.getLogger(__name__)
@@ -33,10 +33,10 @@ class HrHospitalPatientCardExportWizard(models.TransientModel):
     export_format = fields.Selection([
         ('json', 'JSON'),
         ('csv', 'CSV'),
-    ], string='Export Format', required=True, default='json')
+    ], required=True, default='json')
 
-    export_file = fields.Binary(string="Exported File", readonly=True)
-    file_name = fields.Char(string="File Name", readonly=True)
+    export_file = fields.Binary(readonly=True)
+    file_name = fields.Char(readonly=True)
 
     @api.model
     def _get_default_language_id(self):
@@ -78,8 +78,9 @@ class HrHospitalPatientCardExportWizard(models.TransientModel):
         export_data = []
 
         # Get selection values
-        severity_selection = dict(self.env['hr.hospital.diagnosis']._fields[
-                                      'severity_level'].selection)
+        severity_selection = dict(
+            self.env['hr.hospital.diagnosis']._fields[
+                'severity_level'].selection)
 
         for diag in diagnoses:
             record = {
@@ -107,11 +108,11 @@ class HrHospitalPatientCardExportWizard(models.TransientModel):
 
                 # Visit-general recommendations
                 record['Visit_General_Recommendations'] = (
-                        diag.visit_id.recommendations or ''
+                    diag.visit_id.recommendations or ''
                 )
 
-                if record['Diagnosis_Treatment'] or record[
-                    'Visit_General_Recommendations']:
+                if (record['Diagnosis_Treatment'] or
+                        record['Visit_General_Recommendations']):
                     has_content = True
 
             # Only add the record if it contains data we intended to include
@@ -172,4 +173,3 @@ class HrHospitalPatientCardExportWizard(models.TransientModel):
         # add BOM (Byte Order Mark) for UTF-8  (for Excel compatibility)
         csv_string = u'\ufeff' + output.getvalue()
         return csv_string
-    

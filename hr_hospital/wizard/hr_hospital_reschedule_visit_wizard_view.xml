@@ -1,47 +1,45 @@
 <odoo>
-    <data>
-        <!-- Form View -->
-        <record id="reschedule_visit_wizard_form" model="ir.ui.view">
-            <field name="name">reschedule.visit.wizard.form</field>
-            <field name="model">hr.hospital.reschedule.visit.wizard</field>
-            <field name="arch" type="xml">
-                <form string="Reschedule Visit">
+    <!-- Form View -->
+    <record id="reschedule_visit_wizard_form" model="ir.ui.view">
+        <field name="name">reschedule.visit.wizard.form</field>
+        <field name="model">hr.hospital.reschedule.visit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Reschedule Visit">
+                <group>
                     <group>
-                        <group>
-                            <field name="visit_id"/>
-                            <field name="patient_id"/>
-                        </group>
-                        <group>
-                            <field name="new_doctor_id"/>
-                            <field name="new_date"/>
-                            <field name="new_time" widget="float_time"/>
-                        </group>
+                        <field name="visit_id"/>
+                        <field name="patient_id"/>
                     </group>
                     <group>
-                        <field name="reschedule_reason"/>
+                        <field name="new_doctor_id"/>
+                        <field name="new_date"/>
+                        <field name="new_time" widget="float_time"/>
                     </group>
-                    <footer>
-                        <button
-                            name="action_reschedule_visit"
-                            type="object"
-                            string="Reschedule Visit"
-                            class="oe_highlight"
-                            data-hotkey="q"
-                        />
-                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
-                    </footer>
-                </form>
-            </field>
-        </record>
+                </group>
+                <group>
+                    <field name="reschedule_reason"/>
+                </group>
+                <footer>
+                    <button
+                        name="action_reschedule_visit"
+                        type="object"
+                        string="Reschedule Visit"
+                        class="oe_highlight"
+                        data-hotkey="q"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 
-        <!-- Action to open the wizard from a specific visit record -->
-        <record id="action_reschedule_visit_wizard" model="ir.actions.act_window">
-            <field name="name">Reschedule Visit</field>
-            <field name="res_model">hr.hospital.reschedule.visit.wizard</field>
-            <field name="view_mode">form</field>
-            <field name="target">new</field>
-            <field name="binding_model_id" ref="model_hr_hospital_visit"/>
-            <field name="binding_type">action</field>
-        </record>
-    </data>
+    <!-- Action to open the wizard from a specific visit record -->
+    <record id="action_reschedule_visit_wizard" model="ir.actions.act_window">
+        <field name="name">Reschedule Visit</field>
+        <field name="res_model">hr.hospital.reschedule.visit.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_hr_hospital_visit"/>
+        <field name="binding_type">action</field>
+    </record>
 </odoo>

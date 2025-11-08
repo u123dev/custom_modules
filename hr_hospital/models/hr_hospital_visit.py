@@ -68,7 +68,7 @@ class HrHospitalVisit(models.Model):
             visit.diagnosis_count = len(visit.diagnosis_ids)
 
     @api.onchange('patient_id')
-    def _onchange_patient_id(self):
+    def _onchange_patient_id(self):  # pylint: disable=R1710,return-statements
         """Shows a warning if the patient has allergies."""
         if self.patient_id and self.patient_id.allergies:
             return {
@@ -81,6 +81,7 @@ class HrHospitalVisit(models.Model):
             }
 
     @api.onchange('doctor_id')
+    # pylint: disable=R1710,return-statements
     def _onchange_doctor_id_substitute_mentor(self):
         """If the selected doctor is an intern,
         substitute them with their mentor."""
@@ -100,24 +101,23 @@ class HrHospitalVisit(models.Model):
                         ) + intern_doctor.mentor_id.display_name,
                     }
                 }
-            else:
-                return {
-                    'warning': {
-                        'title': _("Intern as no mentor"),
-                        'message': _(
-                            "The selected intern doctor has no mentor."
-                        )
-                    }
+
+            return {
+                'warning': {
+                    'title': _("Intern as no mentor"),
+                    'message': _(
+                        "The selected intern doctor has no mentor."
+                    )
                 }
+            }
 
     @api.constrains('doctor_id')
     def _check_doctor_license(self):
         """Check that doctor has a license number to be assigned to a visit."""
         for visit in self:
             if visit.doctor_id and not visit.doctor_id.license_number:
-                raise ValidationError(_(
-                    f"Doctor must have a license number "
-                    + visit.doctor_id.name))
+                raise ValidationError(_("Doctor must have a license number ")
+                                      + visit.doctor_id.name)
 
     @api.constrains('patient_id', 'doctor_id', 'planned_datetime')
     def _check_unique_visit_per_day(self):

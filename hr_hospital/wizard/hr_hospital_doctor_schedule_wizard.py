@@ -1,7 +1,7 @@
 import logging
+from datetime import timedelta, datetime
 from odoo import models, fields, api, _
 from odoo.exceptions import UserError, ValidationError
-from datetime import timedelta, datetime
 import pytz
 
 
@@ -128,6 +128,7 @@ class HrHospitalDoctorScheduleWizard(models.TransientModel):
         schedule_records = []
         current_date = self.start_week_date
 
+        # pylint: disable=unused-variable
         for week_index in range(self.num_weeks):
             # Calculate ISO week number (used for even/odd checking)
             iso_week_num = current_date.isocalendar()[1]

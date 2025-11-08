@@ -43,7 +43,7 @@ class HrHospitalPatient(models.Model):
     )
 
     @api.onchange('country_id')
-    def _onchange_country_id(self):
+    def _onchange_country_id(self):  # pylint: disable=R1710,return-statements
         """Change language according to the selected country."""
 
         # Mapping countries with language code

@@ -26,10 +26,10 @@ class HrHospitalMassReassignDoctorWizard(models.TransientModel):
     change_reason = fields.Text(required=True)
 
     @api.model
-    def default_get(self, fields):
+    def default_get(self, field_names):
         """Pre-fill patient_ids and old_doctor_id based on selected records."""
         result = super(HrHospitalMassReassignDoctorWizard,
-                       self).default_get(fields)
+                       self).default_get(field_names)
 
         # Get the IDs of records selected by the user in the list view
         active_ids = self.env.context.get('active_ids')
@@ -44,7 +44,7 @@ class HrHospitalMassReassignDoctorWizard(models.TransientModel):
             return result
 
         # Set patient_ids (M2M field) using the 'set' command (6, 0, [IDs])
-        if 'patient_ids' in fields:
+        if 'patient_ids' in field_names:
             result['patient_ids'] = [(6, 0, patients.ids)]
 
         # Determine the common Old Doctor among selected patients
@@ -62,7 +62,7 @@ class HrHospitalMassReassignDoctorWizard(models.TransientModel):
             )
 
             # Update patient_ids with the filtered list
-            if 'patient_ids' in fields and filtered_patients:
+            if 'patient_ids' in field_names and filtered_patients:
                 result['patient_ids'] = [(6, 0, filtered_patients.ids)]
 
         return result
@@ -110,7 +110,7 @@ class HrHospitalMassReassignDoctorWizard(models.TransientModel):
 
         # with_context() will use the wizard's date and reason
         # instead of system defaults.
-        self.patient_ids.with_context(context_data).write({
+        self.patient_ids.with_context(**context_data).write({
             'personal_doctor_id': self.new_doctor_id.id
         })
 
