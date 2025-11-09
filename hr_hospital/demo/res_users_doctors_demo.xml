@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- New users for doctors (Mentors) -->
+    <record id="doctor_user_miller" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">David Miller (Cardiologist)</field>
+        <field name="login">d.miller</field>
+        <field name="email">d.miller@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_green" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Sarah Green (Neurologist)</field>
+        <field name="login">s.green</field>
+        <field name="email">s.green@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_ross" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Michael Ross (Surgeon)</field>
+        <field name="login">m.ross</field>
+        <field name="email">m.ross@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_adams" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Jennifer Adams (Pediatrician)</field>
+        <field name="login">j.adams</field>
+        <field name="email">j.adams@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <!-- New users for doctors (Interns) -->
+    <record id="doctor_user_white_intern" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Jason White (Intern 1)</field>
+        <field name="login">j.white</field>
+        <field name="email">j.white@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_taylor_intern" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Emily Taylor (Intern 2)</field>
+        <field name="login">e.taylor</field>
+        <field name="email">e.taylor@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+</odoo>

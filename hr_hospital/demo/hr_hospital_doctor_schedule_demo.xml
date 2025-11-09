@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. David Miller (Cardiology) - Working Shift -->
+    <record id="schedule_demo_1_miller_work" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_miller"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-09-05 08:00:00</field>
+        <field name="end_datetime">2025-09-05 16:00:00</field>
+        <field name="notes">Dr. Miller: Standard Cardiology Shift.</field>
+    </record>
+
+    <!-- 2. Sarah Green (Neurology) - Vacation -->
+    <record id="schedule_demo_2_green_vacation" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_green"/>
+        <field name="schedule_type">vacation</field>
+        <field name="start_datetime">2025-09-08 00:00:00</field>
+        <field name="end_datetime">2025-09-08 23:59:59</field>
+        <field name="notes">Dr. Green: Annual Paid Vacation.</field>
+    </record>
+
+    <!-- 3. Michael Ross (Surgery) - Sick Day (Partial) -->
+    <record id="schedule_demo_3_ross_sick" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_ross"/>
+        <field name="schedule_type">sick_day</field>
+        <field name="start_datetime">2025-09-12 10:00:00</field>
+        <field name="end_datetime">2025-09-12 14:00:00</field>
+        <field name="notes">Dr. Ross: Partial Sick Leave.</field>
+    </record>
+
+    <!-- 4. Jennifer Adams (Pediatrics) - Working Shift -->
+    <record id="schedule_demo_4_adams_evening" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_adams"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-09-19 14:00:00</field>
+        <field name="end_datetime">2025-09-19 21:00:00</field>
+        <field name="notes">Dr. Adams: Afternoon Pediatrics shift.</field>
+    </record>
+
+    <!-- 5. Lisa Johnson (Ophthalmology) - Working Shift -->
+    <record id="schedule_demo_5_johnson_work" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_johnson"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-09-25 09:30:00</field>
+        <field name="end_datetime">2025-09-25 17:30:00</field>
+        <field name="notes">Dr. Johnson: Ophthalmology day shift.</field>
+    </record>
+
+    <!-- 6. Robert Clark (Cardiology) - Working Shift -->
+    <record id="schedule_demo_6_clark_work" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_clark"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-10-01 11:00:00</field>
+        <field name="end_datetime">2025-10-01 19:00:00</field>
+        <field name="notes">Dr. Clark: Midday Cardiology shift.</field>
+    </record>
+
+    <!-- 7. Jason White (Intern - Cardiology) - Working Shift -->
+    <record id="schedule_demo_7_white_intern_shift" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_white_intern"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-10-07 07:00:00</field>
+        <field name="end_datetime">2025-10-07 15:00:00</field>
+        <field name="notes">Intern White: Early morning training.</field>
+    </record>
+
+    <!-- 8. Emily Taylor (Intern - Neurology) - Working Shift -->
+    <record id="schedule_demo_8_taylor_intern_shift" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_taylor_intern"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-10-10 12:00:00</field>
+        <field name="end_datetime">2025-10-10 16:00:00</field>
+        <field name="notes">Intern Taylor: Short training shift.</field>
+    </record>
+
+    <!-- 9. David Miller (Cardiology) - Sick Day -->
+    <record id="schedule_demo_9_miller_sick" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_miller"/>
+        <field name="schedule_type">sick_day</field>
+        <field name="start_datetime">2025-10-15 00:00:00</field>
+        <field name="end_datetime">2025-10-15 23:59:59</field>
+        <field name="notes">Dr. Miller: Full day sick leave.</field>
+    </record>
+
+    <!-- 10. Sarah Green (Neurology) - Working Shift -->
+    <record id="schedule_demo_10_green_work" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_green"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-10-20 10:00:00</field>
+        <field name="end_datetime">2025-10-20 18:00:00</field>
+        <field name="notes">Dr. Green: Regular Neurology shift.</field>
+    </record>
+
+    <!-- 11. Michael Ross (Surgery) - Working Shift -->
+    <record id="schedule_demo_11_ross_work" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_ross"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-10-28 08:30:00</field>
+        <field name="end_datetime">2025-10-28 16:30:00</field>
+        <field name="notes">Dr. Ross: Morning Surgery shift.</field>
+    </record>
+
+    <!-- 12. Jennifer Adams (Pediatrics) - Vacation -->
+    <record id="schedule_demo_12_adams_vacation" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_adams"/>
+        <field name="schedule_type">vacation</field>
+        <field name="start_datetime">2025-11-04 00:00:00</field>
+        <field name="end_datetime">2025-11-05 23:59:59</field>
+        <field name="notes">Dr. Adams: Two-day break.</field>
+    </record>
+
+    <!-- 13. Lisa Johnson (Ophthalmology) - Sick Day (Full Day) -->
+    <record id="schedule_demo_13_johnson_sick" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_johnson"/>
+        <field name="schedule_type">sick_day</field>
+        <field name="start_datetime">2025-11-10 00:00:00</field>
+        <field name="end_datetime">2025-11-10 23:59:59</field>
+        <field name="notes">Dr. Johnson: Urgent Sick Day.</field>
+    </record>
+
+    <!-- 14. Robert Clark (Cardiology) - Working Shift (Late) -->
+    <record id="schedule_demo_14_clark_late" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_clark"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-11-18 17:00:00</field>
+        <field name="end_datetime">2025-11-19 01:00:00</field>
+        <field name="notes">Dr. Clark: Overnight Cardiology shift.</field>
+    </record>
+
+    <!-- 15. Jason White (Intern - Cardiology) - Working Shift (Early) -->
+    <record id="schedule_demo_15_white_intern_early" model="hr.hospital.doctor.schedule">
+        <field name="doctor_id" ref="doctor_white_intern"/>
+        <field name="schedule_type">working</field>
+        <field name="start_datetime">2025-11-25 06:00:00</field>
+        <field name="end_datetime">2025-11-25 14:00:00</field>
+        <field name="notes">Intern White: Early training shift.</field>
+    </record>
+</odoo>

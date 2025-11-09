@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- History Record 1: Patient 1 assigned to David Miller (Cardiology) -->
+    <record id="history_01_initial" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_01"/>
+        <field name="doctor_id" ref="doctor_miller"/>
+        <field name="assignment_date">2024-01-01</field>
+    </record>
+
+    <!-- History Record 2: Patient 2 assigned to Sarah Green (Neurology) -->
+    <record id="history_02_initial" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_02"/>
+        <field name="doctor_id" ref="doctor_green"/>
+        <field name="assignment_date">2024-01-05</field>
+    </record>
+
+    <!-- History Record 3: Patient 3 assigned to Michael Ross (Surgery) -->
+    <record id="history_03_initial" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_03"/>
+        <field name="doctor_id" ref="doctor_ross"/>
+        <field name="assignment_date">2024-01-10</field>
+    </record>
+
+    <!-- History Record 4: Patient 1 reassigned to Jennifer Adams (Pediatrics) -->
+    <record id="history_04_reassignment" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_01"/>
+        <field name="doctor_id" ref="doctor_adams"/>
+        <field name="assignment_date">2024-02-15</field>
+    </record>
+
+    <!-- History Record 5: Patient 4 assigned to Lisa Johnson (Ophthalmology - Admin User) -->
+    <record id="history_05_initial" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_04"/>
+        <field name="doctor_id" ref="doctor_johnson"/>
+        <field name="assignment_date">2024-03-01</field>
+    </record>
+
+    <!-- History Record 6: Patient 5 assigned to Robert Clark (Cardiology - Demo User) -->
+    <record id="history_06_initial" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_05"/>
+        <field name="doctor_id" ref="doctor_clark"/>
+        <field name="assignment_date">2024-03-10</field>
+    </record>
+
+    <!-- History Record 7: Patient 2 reassigned to Intern Jason White -->
+    <record id="history_07_intern_assignment" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_02"/>
+        <field name="doctor_id" ref="doctor_white_intern"/>
+        <field name="assignment_date">2024-04-01</field>
+    </record>
+
+    <!-- History Record 8: Patient 6 assigned to Intern Emily Taylor -->
+    <record id="history_08_intern_assignment" model="hr.hospital.patient.doctor.history">
+        <field name="patient_id" ref="patient_06"/>
+        <field name="doctor_id" ref="doctor_taylor_intern"/>
+        <field name="assignment_date">2024-04-05</field>
+    </record>
+
+</odoo>
