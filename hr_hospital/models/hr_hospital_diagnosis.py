@@ -35,15 +35,15 @@ class HrHospitalDiagnosis(models.Model):
     )
     approval_date = fields.Datetime(readonly=True)
 
-    # Fielda for grouping
+    # Fields for grouping
     doctor_related_id = fields.Many2one(
-        comodelname='hr.hospital.doctor',
+        comodel_name='hr.hospital.doctor',
         related='visit_id.doctor_id',
         store=True,
         readonly=True
     )
     patient_country_related_id = fields.Many2one(
-        comodelname='res.country',
+        comodel_name='res.country',
         related='visit_id.patient_id.country_id',
         store=True,
         readonly=True

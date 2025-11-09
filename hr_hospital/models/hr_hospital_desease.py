@@ -1,9 +1,14 @@
-from odoo import models, fields
+from odoo import models, fields, api, _
+from odoo.exceptions import ValidationError
 
 
 class HrHospitalDesease(models.Model):
     _name = 'hr.hospital.desease'
     _description = 'Desease type'
+    _parent_name = "parent_id"
+    _parent_store = True
+    _rec_name = "name"
+    _order = 'parent_path, name'
 
     name = fields.Char(required=True)
 
@@ -17,6 +22,7 @@ class HrHospitalDesease(models.Model):
         inverse_name='parent_id',
         string='Child Diseases'
     )
+    parent_path = fields.Char(index=True)
 
     code = fields.Char(string='ICD-10 Code', size=10)
     severity_level = fields.Selection(selection=[
@@ -35,3 +41,9 @@ class HrHospitalDesease(models.Model):
         column2='country_id',
         string='Regions of Spread'
     )
+
+    @api.constrains('parent_id')
+    def _check_desease_recursion(self):
+        if not self._check_recursion():
+            raise ValidationError(
+                _("You cannot create recursive disease hierarchies!"))
