@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
+    <data>
         <record id="visit_001_completed" model="hr.hospital.visit">
             <field name="patient_id" ref="hr_hospital.patient_01"/><field name="doctor_id" ref="hr_hospital.doctor_miller"/>
             <field name="visit_type">primary</field>
@@ -172,7 +172,7 @@
             <field name="visit_status">planned</field> </record>
     </data>
 
-    <data noupdate="0">
+    <data>
         <record id="visit_001_completed" model="hr.hospital.visit"> <field name="visit_status">completed</field> </record>
         <record id="visit_002_completed" model="hr.hospital.visit"> <field name="visit_status">completed</field> </record>
         <record id="visit_003_completed" model="hr.hospital.visit"> <field name="visit_status">completed</field> </record>
