@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 1. Cardiovascular Diseases (Category) -->
+    <record id="disease_category_cardiovascular" model="hr.hospital.desease">
+        <field name="name">Cardiovascular Diseases</field>
+        <field name="code">I00-I99</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Chest pain, shortness of breath, palpitations.</field>
+    </record>
+    <!-- 1.1. Hypertension -->
+    <record id="disease_hypertension" model="hr.hospital.desease">
+        <field name="name">Hypertension (High Blood Pressure)</field>
+        <field name="parent_id" ref="disease_category_cardiovascular"/>
+        <field name="code">I10</field>
+        <field name="severity_level">medium</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Headaches, dizziness, nosebleeds.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us'), ref('base.ua'), ref('base.cn')])]"/>
+    </record>
+    <!-- 1.2. Angina Pectoris -->
+    <record id="disease_angina_pectoris" model="hr.hospital.desease">
+        <field name="name">Angina Pectoris</field>
+        <field name="parent_id" ref="disease_category_cardiovascular"/>
+        <field name="code">I20</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Squeezing, heavy, or tight chest pain.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.cn'), ref('base.ar')])]"/>
+    </record>
+    <!-- 1.3. Heart Failure -->
+    <record id="disease_heart_failure" model="hr.hospital.desease">
+        <field name="name">Chronic Heart Failure</field>
+        <field name="parent_id" ref="disease_category_cardiovascular"/>
+        <field name="code">I50</field>
+        <field name="severity_level">critical</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Extreme fatigue, swelling in legs, rapid heartbeat.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us')])]"/>
+    </record>
+
+    <!-- 2. Respiratory System Diseases (Category) -->
+    <record id="disease_category_respiratory" model="hr.hospital.desease">
+        <field name="name">Respiratory System Diseases</field>
+        <field name="code">J00-J99</field>
+        <field name="severity_level">medium</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="symptoms">Coughing, sneezing, fever, fatigue.</field>
+    </record>
+    <!-- 2.1. Seasonal Influenza -->
+    <record id="disease_influenza" model="hr.hospital.desease">
+        <field name="name">Seasonal Influenza</field>
+        <field name="parent_id" ref="disease_category_respiratory"/>
+        <field name="code">J10</field>
+        <field name="severity_level">low</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="symptoms">Fever, muscle aches, sore throat, cough.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.ar'), ref('base.cn'), ref('base.ae'), ref('base.ua')])]"/>
+    </record>
+    <!-- 2.1.1. Swine Flu (3rd level) -->
+    <record id="disease_swine_flu" model="hr.hospital.desease">
+        <field name="name">Influenza A H1N1 (Swine Flu)</field>
+        <field name="parent_id" ref="disease_influenza"/>
+        <field name="code">J10.1</field>
+        <field name="severity_level">medium</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="symptoms">High fever, chills, severe cough, breathing difficulty.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.cn'), ref('base.ae')])]"/>
+    </record>
+    <!-- 2.2. Pneumonia -->
+    <record id="disease_pneumonia" model="hr.hospital.desease">
+        <field name="name">Pneumonia</field>
+        <field name="parent_id" ref="disease_category_respiratory"/>
+        <field name="code">J18</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Productive cough, fever, difficulty breathing.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us'), ref('base.ae')])]"/>
+    </record>
+
+    <!-- 3. Neurological Disorders (Category) -->
+    <record id="disease_category_neurological" model="hr.hospital.desease">
+        <field name="name">Neurological Disorders</field>
+        <field name="code">G00-G99</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Headaches, seizures, loss of coordination.</field>
+    </record>
+    <!-- 3.1. Chronic Migraine -->
+    <record id="disease_migraine" model="hr.hospital.desease">
+        <field name="name">Chronic Migraine</field>
+        <field name="parent_id" ref="disease_category_neurological"/>
+        <field name="code">G43</field>
+        <field name="severity_level">medium</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Severe pulsing head pain, nausea, sensitivity to light/sound.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us'), ref('base.ae')])]"/>
+    </record>
+    <!-- 3.2. Epilepsy -->
+    <record id="disease_epilepsy" model="hr.hospital.desease">
+        <field name="name">Epilepsy</field>
+        <field name="parent_id" ref="disease_category_neurological"/>
+        <field name="code">G40</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Recurrent, unprovoked seizures.</field>
+    </record>
+
+    <!-- 4. Digestive System Diseases (Category) -->
+    <record id="disease_category_digestive" model="hr.hospital.desease">
+        <field name="name">Digestive System Diseases</field>
+        <field name="code">K00-K93</field>
+        <field name="severity_level">low</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Abdominal pain, bloating, indigestion.</field>
+    </record>
+</odoo>

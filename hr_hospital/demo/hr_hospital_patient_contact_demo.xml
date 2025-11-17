@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- 15 Contact Persons -->
+    <record id="contact_person_01" model="hr.hospital.contact.person">
+        <field name="last_name">Smith</field>
+        <field name="first_name">Elizabeth</field>
+        <field name="middle_name">Ann</field>
+        <field name="phone">+54112001</field>
+        <field name="email">elizabeth.smith@example.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1985-05-15</field>
+        <field name="country_id" ref="base.ar"/>
+        <field name="language_id" ref="base.lang_ru"/>
+    </record>
+    <record id="contact_person_02" model="hr.hospital.contact.person">
+        <field name="last_name">Johnson</field>
+        <field name="first_name">Robert</field>
+        <field name="phone">+86102002</field>
+        <field name="email">robert.johnson@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1978-11-20</field>
+        <field name="country_id" ref="base.cn"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+    </record>
+    <record id="contact_person_03" model="hr.hospital.contact.person">
+        <field name="last_name">Williams</field>
+        <field name="first_name">Michael</field>
+        <field name="middle_name">D.</field>
+        <field name="phone">+380442003</field>
+        <field name="email">michael.williams@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1992-03-01</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_ru"/>
+    </record>
+    <record id="contact_person_04" model="hr.hospital.contact.person">
+        <field name="last_name">Brown</field>
+        <field name="first_name">Jessica</field>
+        <field name="phone">+97142004</field>
+        <field name="email">jessica.brown@example.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1965-07-25</field>
+        <field name="country_id" ref="base.ae"/>
+        <field name="language_id" ref="base.lang_en"/>
+    </record>
+    <record id="contact_person_05" model="hr.hospital.contact.person">
+        <field name="last_name">Jones</field>
+        <field name="first_name">David</field>
+        <field name="middle_name">A.</field>
+        <field name="phone">+44202005</field>
+        <field name="email">david.jones@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1980-01-10</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+    </record>
+    <record id="contact_person_06" model="hr.hospital.contact.person">
+        <field name="last_name">Garcia</field>
+        <field name="first_name">Maria</field>
+        <field name="phone">+15551006</field>
+        <field name="email">maria.garcia@example.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1999-04-12</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+    </record>
+    <record id="contact_person_07" model="hr.hospital.contact.person">
+        <field name="last_name">Miller</field>
+        <field name="first_name">James</field>
+        <field name="middle_name">L.</field>
+        <field name="phone">+54112007</field>
+        <field name="email">james.miller@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1970-09-30</field>
+        <field name="country_id" ref="base.ar"/>
+        <field name="language_id" ref="base.lang_ru"/>
+    </record>
+    <record id="contact_person_08" model="hr.hospital.contact.person">
+        <field name="last_name">Davis</field>
+        <field name="first_name">Laura</field>
+        <field name="phone">+86102008</field>
+        <field name="email">laura.davis@example.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1988-12-05</field>
+        <field name="country_id" ref="base.cn"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+    </record>
+    <record id="contact_person_09" model="hr.hospital.contact.person">
+        <field name="last_name">Rodriguez</field>
+        <field name="first_name">Carlos</field>
+        <field name="middle_name">J.</field>
+        <field name="phone">+380442009</field>
+        <field name="email">carlos.rodriguez@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1975-02-18</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_ru"/>
+    </record>
+    <record id="contact_person_10" model="hr.hospital.contact.person">
+        <field name="last_name">Martinez</field>
+        <field name="first_name">Sofia</field>
+        <field name="phone">+97142010</field>
+        <field name="email">sofia.martinez@example.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">2000-08-08</field>
+        <field name="country_id" ref="base.ae"/>
+        <field name="language_id" ref="base.lang_en"/>
+    </record>
+    <record id="contact_person_11" model="hr.hospital.contact.person">
+        <field name="last_name">Hernandez</field>
+        <field name="first_name">Alex</field>
+        <field name="middle_name">P.</field>
+        <field name="phone">+44202011</field>
+        <field name="email">alex.hernandez@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1960-06-22</field>
+        <field name="country_id" ref="base.de"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+    </record>
+    <record id="contact_person_12" model="hr.hospital.contact.person">
+        <field name="last_name">Lopez</field>
+        <field name="first_name">Olivia</field>
+        <field name="phone">+15551012</field>
+        <field name="email">olivia.lopez@example.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1995-10-17</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+    </record>
+    <record id="contact_person_13" model="hr.hospital.contact.person">
+        <field name="last_name">Gonzalez</field>
+        <field name="first_name">Ethan</field>
+        <field name="middle_name">R.</field>
+        <field name="phone">+54112013</field>
+        <field name="email">ethan.gonzalez@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1983-02-09</field>
+        <field name="country_id" ref="base.ar"/>
+        <field name="language_id" ref="base.lang_ru"/>
+    </record>
+    <record id="contact_person_14" model="hr.hospital.contact.person">
+        <field name="last_name">Wilson</field>
+        <field name="first_name">Ava</field>
+        <field name="phone">+86102014</field>
+        <field name="email">ava.wilson@example.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1972-04-03</field>
+        <field name="country_id" ref="base.cn"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+    </record>
+    <record id="contact_person_15" model="hr.hospital.contact.person">
+        <field name="last_name">Anderson</field>
+        <field name="first_name">Lucas</field>
+        <field name="middle_name">B.</field>
+        <field name="phone">+380442015</field>
+        <field name="email">lucas.anderson@example.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">2002-09-28</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_ru"/>
+    </record>
+
+    <!-- 15 Patients -->
+    <record id="patient_01" model="hr.hospital.patient">
+        <field name="last_name">Taylor</field>
+        <field name="first_name">Emma</field>
+        <field name="phone">+54113001</field>
+        <field name="email">emma.taylor@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1990-01-20</field>
+        <field name="country_id" ref="base.ar"/>
+        <field name="language_id" ref="base.lang_ru"/>
+        <field name="passport_data">T90120</field>
+        <field name="contact_person_id" ref="contact_person_01"/>
+        <field name="blood_group">A2+</field>
+        <field name="allergies">Penicillin</field>
+    </record>
+    <record id="patient_02" model="hr.hospital.patient">
+        <field name="last_name">Clark</field>
+        <field name="first_name">Noah</field>
+        <field name="middle_name">R.</field>
+        <field name="phone">+86103002</field>
+        <field name="email">noah.clark@hospital.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1985-11-10</field>
+        <field name="country_id" ref="base.cn"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="passport_data">C85110</field>
+        <field name="contact_person_id" ref="contact_person_02"/>
+        <field name="blood_group">O1-</field>
+    </record>
+    <record id="patient_03" model="hr.hospital.patient">
+        <field name="last_name">Lewis</field>
+        <field name="first_name">Olivia</field>
+        <field name="phone">+380443003</field>
+        <field name="email">olivia.lewis@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">2001-03-05</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_ru"/>
+        <field name="passport_data">L01035</field>
+        <field name="contact_person_id" ref="contact_person_03"/>
+        <field name="blood_group">B3+</field>
+        <field name="allergies">None</field>
+    </record>
+    <record id="patient_04" model="hr.hospital.patient">
+        <field name="last_name">Young</field>
+        <field name="first_name">Liam</field>
+        <field name="middle_name">P.</field>
+        <field name="phone">+97143004</field>
+        <field name="email">liam.young@hospital.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1973-07-28</field>
+        <field name="country_id" ref="base.ae"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="passport_data">Y73728</field>
+        <field name="contact_person_id" ref="contact_person_04"/>
+        <field name="blood_group">AB4-</field>
+    </record>
+    <record id="patient_05" model="hr.hospital.patient">
+        <field name="last_name">King</field>
+        <field name="first_name">Charlotte</field>
+        <field name="phone">+44203005</field>
+        <field name="email">charlotte.king@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1998-05-18</field>
+        <field name="country_id" ref="base.lt"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="passport_data">K98518</field>
+        <field name="contact_person_id" ref="contact_person_05"/>
+        <field name="blood_group">A2-</field>
+    </record>
+    <record id="patient_06" model="hr.hospital.patient">
+        <field name="last_name">Scott</field>
+        <field name="first_name">Elijah</field>
+        <field name="middle_name">K.</field>
+        <field name="phone">+15552006</field>
+        <field name="email">elijah.scott@hospital.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1968-04-01</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="passport_data">S68401</field>
+        <field name="contact_person_id" ref="contact_person_06"/>
+        <field name="blood_group">O1+</field>
+    </record>
+    <record id="patient_07" model="hr.hospital.patient">
+        <field name="last_name">Green</field>
+        <field name="first_name">Amelia</field>
+        <field name="phone">+54113007</field>
+        <field name="email">amelia.green@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1993-09-11</field>
+        <field name="country_id" ref="base.ar"/>
+        <field name="language_id" ref="base.lang_ru"/>
+        <field name="passport_data">G93911</field>
+        <field name="contact_person_id" ref="contact_person_07"/>
+        <field name="blood_group">B3-</field>
+    </record>
+    <record id="patient_08" model="hr.hospital.patient">
+        <field name="last_name">Baker</field>
+        <field name="first_name">Benjamin</field>
+        <field name="middle_name">C.</field>
+        <field name="phone">+86103008</field>
+        <field name="email">benjamin.baker@hospital.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1982-12-24</field>
+        <field name="country_id" ref="base.cn"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="passport_data">B82124</field>
+        <field name="contact_person_id" ref="contact_person_08"/>
+        <field name="blood_group">AB4+</field>
+        <field name="allergies">Ibuprofen</field>
+    </record>
+    <record id="patient_09" model="hr.hospital.patient">
+        <field name="last_name">Adams</field>
+        <field name="first_name">Sophia</field>
+        <field name="phone">+380443009</field>
+        <field name="email">sophia.adams@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1970-02-02</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_ru"/>
+        <field name="passport_data">A70202</field>
+        <field name="contact_person_id" ref="contact_person_09"/>
+        <field name="blood_group">O1-</field>
+    </record>
+    <record id="patient_10" model="hr.hospital.patient">
+        <field name="last_name">Nelson</field>
+        <field name="first_name">Ethan</field>
+        <field name="middle_name">T.</field>
+        <field name="phone">+97143010</field>
+        <field name="email">ethan.nelson@hospital.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">2005-08-14</field>
+        <field name="country_id" ref="base.ae"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="passport_data">N05814</field>
+        <field name="contact_person_id" ref="contact_person_10"/>
+        <field name="blood_group">A2+</field>
+        <field name="allergies">Pollen</field>
+    </record>
+    <record id="patient_11" model="hr.hospital.patient">
+        <field name="last_name">Carter</field>
+        <field name="first_name">Isabella</field>
+        <field name="phone">+44203011</field>
+        <field name="email">isabella.carter@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1965-06-21</field>
+        <field name="country_id" ref="base.cn"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="passport_data">C65621</field>
+        <field name="contact_person_id" ref="contact_person_11"/>
+        <field name="blood_group">AB4-</field>
+    </record>
+    <record id="patient_12" model="hr.hospital.patient">
+        <field name="last_name">Fisher</field>
+        <field name="first_name">Daniel</field>
+        <field name="middle_name">S.</field>
+        <field name="phone">+15552012</field>
+        <field name="email">daniel.fisher@hospital.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1992-10-31</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="passport_data">F92103</field>
+        <field name="contact_person_id" ref="contact_person_12"/>
+        <field name="blood_group">B3+</field>
+    </record>
+    <record id="patient_13" model="hr.hospital.patient">
+        <field name="last_name">Mitchell</field>
+        <field name="first_name">Mia</field>
+        <field name="phone">+54113013</field>
+        <field name="email">mia.mitchell@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1988-02-15</field>
+        <field name="country_id" ref="base.ar"/>
+        <field name="language_id" ref="base.lang_ru"/>
+        <field name="passport_data">M88215</field>
+        <field name="contact_person_id" ref="contact_person_13"/>
+        <field name="blood_group">O1+</field>
+        <field name="allergies">Codeine</field>
+    </record>
+    <record id="patient_14" model="hr.hospital.patient">
+        <field name="last_name">Hall</field>
+        <field name="first_name">Henry</field>
+        <field name="middle_name">F.</field>
+        <field name="phone">+86103014</field>
+        <field name="email">henry.hall@hospital.com</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1977-04-09</field>
+        <field name="country_id" ref="base.cn"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="passport_data">H77409</field>
+        <field name="contact_person_id" ref="contact_person_14"/>
+        <field name="blood_group">A2-</field>
+    </record>
+    <record id="patient_15" model="hr.hospital.patient">
+        <field name="last_name">Perez</field>
+        <field name="first_name">Grace</field>
+        <field name="phone">+380443015</field>
+        <field name="email">grace.perez@hospital.com</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1999-09-09</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_ru"/>
+        <field name="passport_data">P99909</field>
+        <field name="contact_person_id" ref="contact_person_15"/>
+        <field name="blood_group">AB4+</field>
+    </record>
+</odoo>

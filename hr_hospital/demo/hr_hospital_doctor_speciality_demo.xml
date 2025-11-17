@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="speciality_cardiology" model="hr.hospital.doctor.speciality">
+        <field name="name">Cardiology</field>
+        <field name="code">CARD</field>
+    </record>
+    <record id="speciality_neurology" model="hr.hospital.doctor.speciality">
+        <field name="name">Neurology</field>
+        <field name="code">NEURO</field>
+    </record>
+    <record id="speciality_pediatrics" model="hr.hospital.doctor.speciality">
+        <field name="name">Pediatrics</field>
+        <field name="code">PED</field>
+    </record>
+    <record id="speciality_surgery" model="hr.hospital.doctor.speciality">
+        <field name="name">Surgery</field>
+        <field name="code">SURG</field>
+    </record>
+    <record id="speciality_ophthalmology" model="hr.hospital.doctor.speciality">
+        <field name="name">Ophthalmology</field>
+        <field name="code">OPHT</field>
+    </record>
+</odoo>

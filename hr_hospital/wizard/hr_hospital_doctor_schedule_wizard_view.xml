@@ -1,0 +1,78 @@
+<odoo>
+    <!-- Form View -->
+    <record id="hr_hospital_doctor_schedule_wizard_form" model="ir.ui.view">
+        <field name="name">hr.hospital.doctor.schedule.wizard.form</field>
+        <field name="model">hr.hospital.doctor.schedule.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Doctor Schedule">
+                <group>
+                    <group string="Target">
+                        <!-- domain for only with speciality -->
+                        <field
+                            name="doctor_id"
+                            domain="[('speciality_id', '!=', False)]"
+                        />
+                        <field name="schedule_type"/>
+                    </group>
+                    <group string="Duration">
+                        <field name="start_week_date"
+                               help="The date will be automatically adjusted to Monday."/>
+                        <field name="num_weeks"/>
+                    </group>
+                </group>
+
+                <separator string="Scheduled Days"/>
+                <group>
+                    <field name="mon"/>
+                    <field name="tue"/>
+                    <field name="wed"/>
+                    <field name="thu"/>
+                    <field name="fri"/>
+                    <field name="sat"/>
+                    <field name="sun"/>
+                </group>
+
+                <separator string="Working Hours and Breaks"/>
+                <group>
+                    <group>
+                        <label for="time_start" string="Work Time"/>
+                        <div class="o_row">
+                            <field name="time_start" widget="float_time" class="oe_inline"/>
+                            <span> - </span>
+                            <field name="time_end" widget="float_time" class="oe_inline"/>
+                        </div>
+                    </group>
+                    <group>
+                        <label for="break_from" string="Break Time"/>
+                        <div class="o_row">
+                            <field name="break_from" widget="float_time" class="oe_inline"/>
+                            <span> - </span>
+                            <field name="break_to" widget="float_time" class="oe_inline"/>
+                        </div>
+                    </group>
+                </group>
+
+                <footer>
+                    <button
+                        name="action_generate_schedule"
+                        type="object"
+                        string="Generate Schedule"
+                        class="oe_highlight"
+                        data-hotkey="q"
+                    />
+                    <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action to open wizard from Doctor record -->
+    <record id="action_doctor_schedule_wizard" model="ir.actions.act_window">
+        <field name="name">Generate Doctor Schedule</field>
+        <field name="res_model">hr.hospital.doctor.schedule.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_hr_hospital_doctor"/>
+        <field name="binding_type">action</field>
+    </record>
+</odoo>

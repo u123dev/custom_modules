@@ -1,0 +1,109 @@
+<odoo>
+
+    <record id="hr_hospital_diagnosis_tree" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.tree</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="visit_id"/>
+                <field name="disease_id"/>
+                <field name="severity_level"/>
+                <field name="is_approved" widget="boolean_toggle"/>
+                <field name="approving_doctor_id"/>
+                <field name="approval_date"/>
+
+                <!-- FIELDS FOR GROUPING - HIDDEN FROM DEFAULT VIEW -->
+                <field name="doctor_related_id" optional="hidden"/>
+                <field name="patient_country_related_id" optional="hidden"/>
+                <field name="visit_date_related" optional="hidden"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View - to define the grouping filters -->
+    <record id="hr_hospital_diagnosis_view_search" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.search</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <search string="Diagnosis Search">
+                <!-- Default search fields -->
+                <field name="disease_id"/>
+                <field name="visit_id"/>
+
+                <!-- Search fields related to the new related fields -->
+                <field name="doctor_related_id"/>
+                <field name="patient_country_related_id"/>
+
+                <!-- Group By Filters -->
+                <group expand="0" string="Group By">
+                    <!-- Grouping by Disease (original field) -->
+                    <filter name="group_by_disease" string="Disease" context="{'group_by': 'disease_id'}"/>
+
+                    <!-- Grouping by RELATED FIELDS (Doctor, Country, Month) -->
+                    <filter name="group_by_doctor" string="Doctor" context="{'group_by': 'doctor_related_id'}"/>
+                    <filter name="group_by_country" string="Country" context="{'group_by': 'patient_country_related_id'}"/>
+                    <filter name="group_by_month" string="Month" context="{'group_by': 'visit_date_related:month'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="hr_hospital_diagnosis_form" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.form</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <form string="Diagnosis">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="disease_id" string="Diagnosis"/>
+                        <h1>
+                            <field name="disease_id" required="1" placeholder="Select the Disease"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="visit_id"/>
+                            <field name="severity_level"/>
+                        </group>
+                        <group>
+                            <field name="is_approved" widget="boolean_toggle"/>
+
+                            <field name="approving_doctor_id"/>
+                            <field name="approval_date"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page name="details" string="Diagnosis Details">
+                            <field name="diagnosis_description" placeholder="Detailed description of the diagnosis..."/>
+                        </page>
+                        <page name="treatment" string="Prescribed Treatment">
+                            <field name="prescribed_treatment" widget="html"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="hr_hospital_diagnosis_action_window" model="ir.actions.act_window">
+        <field name="name">Diagnoses</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hr.hospital.diagnosis</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create the first medical diagnosis
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="hr_hospital_diagnosis_menu"
+              name="Diagnoses"
+              parent="hr_hospital_menu_root"
+              action="hr_hospital_diagnosis_action_window"
+              sequence="40"/>
+
+</odoo>

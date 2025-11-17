@@ -5,7 +5,7 @@
     'website': 'https://github.com/u123dev',
     'category': 'Customizations',
     'license': 'OPL-1',
-    'version': '17.0.0.0.3',
+    'version': '17.0.0.3.8',
 
     'depends': [
         'base',
@@ -25,13 +25,27 @@
         'views/hr_hospital_doctor_views.xml',
         'views/hr_hospital_patient_views.xml',
         'views/hr_hospital_visit_views.xml',
+        'views/hr_hospital_diagnosis_views.xml',
+        'views/hr_hospital_doctor_schedule_view.xml',
 
-        'data/hr_hospital_desease_data.xml',
+        'wizard/hr_hospital_mass_reassign_doctor_wizard_view.xml',
+        'wizard/hr_hospital_desease_report_wizard_view.xml',
+        'wizard/hr_hospital_reschedule_visit_wizard_view.xml',
+        'wizard/hr_hospital_doctor_schedule_wizard_view.xml',
+        'wizard/hr_hospital_patient_card_export_wizard_view.xml',
 
     ],
 
     'demo': [
-        'demo/hr_hospital_demo.xml',
+        'demo/hr_hospital_doctor_speciality_demo.xml',
+        'demo/res_users_doctors_demo.xml',
+        'demo/hr_hospital_doctor_demo.xml',
+        'demo/hr_hospital_patient_contact_demo.xml',
+        'demo/hr_hospital_patient_doctor_history_demo.xml',
+        'demo/hr_hospital_visit_demo.xml',
+        'demo/hr_hospital_disease_demo.xml',
+        'demo/hr_hospital_diagnosis_demo.xml',
+        'demo/hr_hospital_doctor_schedule_demo.xml',
     ],
 
     'installable': True,

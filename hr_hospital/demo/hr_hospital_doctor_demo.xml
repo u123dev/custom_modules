@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Experienced Doctors (Mentors) -->
+
+    <!-- Mentor 1: David Miller (Cardiology) -->
+    <record id="doctor_miller" model="hr.hospital.doctor">
+        <field name="last_name">Miller</field>
+        <field name="first_name">David</field>
+        <field name="user_id" ref="doctor_user_miller"/>
+        <field name="license_number">L1001-CARD-2015</field>
+        <field name="license_issue_date">2015-05-01</field>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="rating">4.5</field>
+        <field name="is_intern" eval="False"/>
+    </record>
+
+    <!-- Mentor 2: Sarah Green (Neurology) -->
+    <record id="doctor_green" model="hr.hospital.doctor">
+        <field name="last_name">Green</field>
+        <field name="first_name">Sarah</field>
+        <field name="user_id" ref="doctor_user_green"/>
+        <field name="license_number">L2002-NEURO-2012</field>
+        <field name="license_issue_date">2012-10-15</field>
+        <field name="speciality_id" ref="speciality_neurology"/>
+        <field name="rating">4.9</field>
+        <field name="is_intern" eval="False"/>
+    </record>
+
+    <!-- Mentor 3: Michael Ross (Surgery) -->
+    <record id="doctor_ross" model="hr.hospital.doctor">
+        <field name="last_name">Ross</field>
+        <field name="first_name">Michael</field>
+        <field name="user_id" ref="doctor_user_ross"/>
+        <field name="license_number">L3003-SURG-2005</field>
+        <field name="license_issue_date">2005-01-20</field>
+        <field name="speciality_id" ref="speciality_surgery"/>
+        <field name="rating">4.7</field>
+        <field name="is_intern" eval="False"/>
+    </record>
+
+    <!-- Mentor 4: Jennifer Adams (Pediatrics) -->
+    <record id="doctor_adams" model="hr.hospital.doctor">
+        <field name="last_name">Adams</field>
+        <field name="first_name">Jennifer</field>
+        <field name="user_id" ref="doctor_user_adams"/>
+        <field name="license_number">L4004-PED-2018</field>
+        <field name="license_issue_date">2018-03-08</field>
+        <field name="speciality_id" ref="speciality_pediatrics"/>
+        <field name="rating">4.2</field>
+        <field name="is_intern" eval="False"/>
+    </record>
+
+    <!-- Mentor 5 (Ophthalmology - Admin User) -->
+    <record id="doctor_johnson" model="hr.hospital.doctor">
+        <field name="last_name">Johnson</field>
+        <field name="first_name">Lisa</field>
+        <field name="user_id" ref="base.user_admin"/>
+        <field name="license_number">L5005-ADMIN-2010</field>
+        <field name="license_issue_date">2010-06-01</field>
+        <field name="speciality_id" ref="speciality_ophthalmology"/>
+        <field name="rating">4.0</field>
+        <field name="is_intern" eval="False"/>
+    </record>
+
+    <!-- Mentor 6 (Cardiology - Demo User) -->
+    <record id="doctor_clark" model="hr.hospital.doctor">
+        <field name="last_name">Clark</field>
+        <field name="first_name">Robert</field>
+        <field name="user_id" ref="base.user_demo"/>
+        <field name="license_number">L6006-DEMO-2019</field>
+        <field name="license_issue_date">2019-11-20</field>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="rating">3.8</field>
+        <field name="is_intern" eval="False"/>
+    </record>
+
+    <!-- Intern 1: Jason White (Mentor: Miller) -->
+    <record id="doctor_white_intern" model="hr.hospital.doctor">
+        <field name="last_name">White</field>
+        <field name="first_name">Jason</field>
+        <field name="user_id" ref="doctor_user_white_intern"/>
+        <field name="license_number">L7007-INT-2024</field>
+        <field name="license_issue_date">2024-01-01</field>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="rating">0.0</field>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="doctor_miller"/>
+    </record>
+
+    <!-- Intern 2: Emily Taylor (Mentor: Green) -->
+    <record id="doctor_taylor_intern" model="hr.hospital.doctor">
+        <field name="last_name">Taylor</field>
+        <field name="first_name">Emily</field>
+        <field name="user_id" ref="doctor_user_taylor_intern"/>
+        <field name="license_number">L8008-INT-2024</field>
+        <field name="license_issue_date">2024-03-15</field>
+        <field name="speciality_id" ref="speciality_neurology"/>
+        <field name="rating">0.0</field>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="doctor_green"/>
+    </record>
+</odoo>

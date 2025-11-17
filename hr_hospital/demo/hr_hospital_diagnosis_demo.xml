@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="diagnosis_001_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_001_completed"/><field name="disease_id" ref="hr_hospital.disease_hypertension"/>
+        <field name="diagnosis_description">Primary hypertension diagnosed based on consistent high readings.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Diuretic and ACE inhibitor started. Monitor progress.</p>]]>
+        </field>
+        <field name="severity_level">medium</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_miller"/><field name="approval_date">2025-10-01 09:30:00</field>
+    </record>
+    <record id="diagnosis_002_unapproved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_001_completed"/><field name="disease_id" ref="hr_hospital.disease_angina_pectoris"/> <field name="diagnosis_description">Suspected unstable angina, needs further stress tests.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Nitroglycerin prescription and urgent cardiology referral.</p>]]>
+        </field>
+        <field name="severity_level">hard</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_003_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_002_completed"/><field name="disease_id" ref="hr_hospital.disease_migraine"/>
+        <field name="diagnosis_description">Chronic migraine status, likely triggered by stress/diet.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Prophylactic topiramate. Acute treatment with triptans.</p>]]>
+        </field>
+        <field name="severity_level">hard</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_green"/><field name="approval_date">2025-10-02 11:00:00</field>
+    </record>
+    <record id="diagnosis_004_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_002_completed"/><field name="disease_id" ref="hr_hospital.disease_category_neurological"/>
+        <field name="diagnosis_description">General neurological check-up.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Recommend annual follow-up and Vitamin B complex.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_green"/><field name="approval_date">2025-10-02 11:00:00</field>
+    </record>
+
+    <record id="diagnosis_005_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_003_completed"/><field name="disease_id" ref="hr_hospital.disease_influenza"/>
+        <field name="diagnosis_description">Flu confirmed by rapid test. Low risk complications.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Antivirals (Oseltamivir) for 5 days. Rest.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_adams"/><field name="approval_date">2025-10-03 12:00:00</field>
+    </record>
+    <record id="diagnosis_006_unapproved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_003_completed"/><field name="disease_id" ref="hr_hospital.disease_swine_flu"/>
+        <field name="diagnosis_description">Differential diagnosis for Swine Flu considered, pending PCR test results.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Isolation protocols initiated until definitive diagnosis.</p>]]>
+        </field>
+        <field name="severity_level">medium</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_007_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_004_completed"/><field name="disease_id" ref="hr_hospital.disease_pneumonia"/>
+        <field name="diagnosis_description">Lobar pneumonia confirmed by chest X-ray.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Ceftriaxone and Azithromycin course. Outpatient monitoring.</p>]]>
+        </field>
+        <field name="severity_level">critical</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_ross"/><field name="approval_date">2025-10-04 13:00:00</field>
+    </record>
+
+    <record id="diagnosis_008_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_005_completed"/><field name="disease_id" ref="hr_hospital.disease_category_neurological"/>
+        <field name="diagnosis_description">Routine eye exam revealed slight myopia progression.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Updated glasses prescription: OD -1.5, OS -1.75.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_johnson"/><field name="approval_date">2025-10-05 14:00:00</field>
+    </record>
+
+    <record id="diagnosis_009_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_006_completed"/><field name="disease_id" ref="hr_hospital.disease_category_digestive"/>
+        <field name="diagnosis_description">Acute gastritis due to dietary factors.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>PPI medication for 4 weeks. Bland diet recommended.</p>]]>
+        </field>
+        <field name="severity_level">medium</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_clark"/><field name="approval_date">2025-10-06 15:00:00</field>
+    </record>
+    <record id="diagnosis_010_unapproved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_006_completed"/><field name="disease_id" ref="hr_hospital.disease_category_digestive"/>
+        <field name="diagnosis_description">Rule out Helicobacter Pylori infection.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Urea breath test ordered.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_011_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_007_completed"/><field name="disease_id" ref="hr_hospital.disease_hypertension"/>
+        <field name="diagnosis_description">Follow-up check. Blood pressure well controlled on current medication.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Continue current medication. Recheck in 6 months.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_miller"/><field name="approval_date">2025-10-07 16:00:00</field>
+    </record>
+
+    <record id="diagnosis_012_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_008_completed"/><field name="disease_id" ref="hr_hospital.disease_epilepsy"/>
+        <field name="diagnosis_description">First-ever generalized seizure episode.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>EEG and MRI scheduled. Started low-dose anti-epileptic drug.</p>]]>
+        </field>
+        <field name="severity_level">hard</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_green"/><field name="approval_date">2025-10-08 11:00:00</field>
+    </record>
+    <record id="diagnosis_013_unapproved_intern_case" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_008_completed"/><field name="disease_id" ref="hr_hospital.disease_migraine"/>
+        <field name="diagnosis_description">Patient reported aura symptoms prior to seizure, suggesting complicated migraine.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Observation. Mentor approval required to confirm if symptoms are truly pre-seizure or migraine-related.</p>]]>
+        </field>
+        <field name="severity_level">medium</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_014_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_009_completed"/><field name="disease_id" ref="hr_hospital.disease_category_cardiovascular"/>
+        <field name="diagnosis_description">Pre-operative assessment complete. Cleared for minor surgery.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Continue iron supplements pre-op.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_ross"/><field name="approval_date">2025-10-09 11:00:00</field>
+    </record>
+
+    <record id="diagnosis_015_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_010_completed"/><field name="disease_id" ref="hr_hospital.disease_influenza"/>
+        <field name="diagnosis_description">Mild case of the common flu.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>OTC symptom relief, rest, fluids.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_adams"/><field name="approval_date">2025-10-10 12:00:00</field>
+    </record>
+    <record id="diagnosis_016_unapproved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_010_completed"/><field name="disease_id" ref="hr_hospital.disease_pneumonia"/>
+        <field name="diagnosis_description">Atypical presentation, ruling out walking pneumonia due to persistent cough.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Chest X-ray requested for next day.</p>]]>
+        </field>
+        <field name="severity_level">medium</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_017_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_011_completed"/><field name="disease_id" ref="hr_hospital.disease_category_neurological"/>
+        <field name="diagnosis_description">Routine follow-up, vision stable.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Annual check-up in 12 months.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_johnson"/><field name="approval_date">2025-10-11 13:00:00</field>
+    </record>
+
+    <record id="diagnosis_018_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_012_completed"/><field name="disease_id" ref="hr_hospital.disease_heart_failure"/>
+        <field name="diagnosis_description">Acute exacerbation of existing chronic heart failure.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Increased diuretic dose. Emergency room admission required.</p>]]>
+        </field>
+        <field name="severity_level">critical</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_clark"/><field name="approval_date">2025-10-12 14:00:00</field>
+    </record>
+
+    <record id="diagnosis_019_unapproved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_013_completed"/><field name="disease_id" ref="hr_hospital.disease_category_digestive"/>
+        <field name="diagnosis_description">Undetermined cause of chronic abdominal pain.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Referral to Gastroenterologist. Initial blood tests ordered.</p>]]>
+        </field>
+        <field name="severity_level">medium</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_020_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_014_completed"/><field name="disease_id" ref="hr_hospital.disease_category_cardiovascular"/>
+        <field name="diagnosis_description">Post-op wound check-up. Healing well.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Sutures removed. Advised to keep the area dry.</p>]]>
+        </field>
+        <field name="severity_level">light</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_ross"/><field name="approval_date">2025-10-14 16:00:00</field>
+    </record>
+
+    <record id="diagnosis_021_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_015_completed"/><field name="disease_id" ref="hr_hospital.disease_angina_pectoris"/> <field name="diagnosis_description">Stable Angina Pectoris confirmed. Patient is stable.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Beta-blocker dose adjustment and lifestyle recommendations.</p>]]>
+        </field>
+        <field name="severity_level">hard</field>
+        <field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_green"/><field name="approval_date">2025-10-15 17:00:00</field>
+    </record>
+</odoo>

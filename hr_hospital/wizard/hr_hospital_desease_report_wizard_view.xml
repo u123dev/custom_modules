@@ -1,0 +1,62 @@
+<odoo>
+    <!-- Form View -->
+    <record id="hr_hospital_disease_report_wizard_form" model="ir.ui.view">
+        <field name="name">hr.hospital.disease.report.wizard.form</field>
+        <field name="model">hr.hospital.disease.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Disease Report Wizard">
+                <group>
+                    <!-- FILTER CRITERIA -->
+                    <group string="Filtering Criteria">
+                        <field name="doctor_ids" widget="many2many_tags"/>
+                        <field name="disease_ids" widget="many2many_tags"/>
+                        <field name="country_ids" widget="many2many_tags"/>
+                    </group>
+
+                    <!-- DATE RANGE -->
+                    <group string="Date Range">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                </group>
+
+                <group>
+                    <!-- REPORT SETTINGS -->
+                    <group string="Report Settings">
+                        <field name="report_type"/>
+                        <field name="group_by"/>
+                    </group>
+                </group>
+
+                <footer>
+                    <button name="action_generate_report"
+                            string="Generate Report"
+                            type="object"
+                            class="oe_highlight"/>
+                    <button string="Cancel"
+                            class="oe_link"
+                            special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hr_hospital_disease_report_wizard" model="ir.actions.act_window">
+        <field name="name">Disease Report</field>
+        <field name="res_model">hr.hospital.disease.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="hr_hospital_disease_report_wizard_form"/>
+    </record>
+
+    <menuitem id="menu_hr_hospital_reports_root"
+              name="Reports"
+              parent="hr_hospital_menu_root"
+              sequence="60"/>
+
+    <menuitem id="menu_hr_hospital_disease_report"
+              name="Disease Report"
+              parent="menu_hr_hospital_reports_root"
+              action="action_hr_hospital_disease_report_wizard"
+              sequence="70"/>
+</odoo>
