@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+    <data noupdate="1">
         <record id="visit_001_completed" model="hr.hospital.visit">
             <field name="patient_id" ref="hr_hospital.patient_01"/><field name="doctor_id" ref="hr_hospital.doctor_miller"/>
             <field name="visit_type">primary</field>
