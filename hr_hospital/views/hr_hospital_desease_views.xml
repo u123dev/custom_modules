@@ -83,7 +83,8 @@
             <search>
                 <searchpanel>
                     <field name="parent_id"
-                           select="multi"
+                           select="one"
+                           hierarchized="1"
                            icon="fa-sitemap"
                            enable_counters="1"
                            limit="0"/>
