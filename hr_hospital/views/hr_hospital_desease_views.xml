@@ -75,11 +75,30 @@
         </field>
     </record>
 
+    <!-- SEARCH VIEW -->
+    <record id="hr_hospital_desease_search_view" model="ir.ui.view">
+        <field name="name">hr.hospital.desease.search.view</field>
+        <field name="model">hr.hospital.desease</field>
+        <field name="arch" type="xml">
+            <search>
+                <searchpanel>
+                    <field name="parent_id"
+                           select="multi"
+                           icon="fa-sitemap"
+                           enable_counters="1"
+                           limit="0"/>
+                </searchpanel>
+                <field name="name"/>
+                <field name="code"/>
+            </search>
+        </field>
+    </record>
+
     <record id="hr_hospital_desease_action_window" model="ir.actions.act_window">
         <field name="name">Desease type</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.desease</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,search</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create first type of desease
