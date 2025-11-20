@@ -1,4 +1,12 @@
 <odoo>
+
+    <record id="hr_hospital_action_create_visit" model="ir.actions.act_window">
+        <field name="name">Quick Visit Creation</field>
+        <field name="res_model">hr.hospital.visit</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
     <!-- TREE VIEW -->
     <record id="hr_hospital_patient_tree" model="ir.ui.view">
         <field name="name">hr.hospital.patient.tree</field>
@@ -157,13 +165,6 @@
                 Create patient's record.
             </p>
         </field>
-    </record>
-
-    <record id="hr_hospital_action_create_visit" model="ir.actions.act_window">
-        <field name="name">Quick Visit Creation</field>
-        <field name="res_model">hr.hospital.visit</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
     </record>
 
     <menuitem id="hr_hospital_patient_menu"
