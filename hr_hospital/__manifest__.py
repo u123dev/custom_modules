@@ -5,7 +5,7 @@
     'website': 'https://github.com/u123dev',
     'category': 'Customizations',
     'license': 'OPL-1',
-    'version': '17.0.0.3.8',
+    'version': '17.0.0.4.1',
 
     'depends': [
         'base',

@@ -55,6 +55,7 @@ class PatientDoctorHistory(models.Model):
                 # Find all active history records for patient
                 previous_records = self.search([
                     ('patient_id', '=', patient_id),
+                    ('change_date', '=', False),
                     ('active', '=', True)
                 ])
 

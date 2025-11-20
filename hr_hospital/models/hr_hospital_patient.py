@@ -39,8 +39,29 @@ class HrHospitalPatient(models.Model):
     doctor_history_ids = fields.One2many(
         comodel_name='hr.hospital.patient.doctor.history',
         inverse_name='patient_id',
+        context={'active_test': False},
         string='Personal Doctor History'
     )
+    # patient's visits
+    visit_ids = fields.One2many(
+        comodel_name='hr.hospital.visit',
+        inverse_name='patient_id',
+        string='Visits',
+    )
+    # Computed field to show all diagnosis records
+    diagnosis_history_ids = fields.Many2many(
+        comodel_name='hr.hospital.diagnosis',
+        compute='_compute_diagnosis_history_ids',
+        store=False,
+    )
+
+    def _compute_diagnosis_history_ids(self):
+        """Computes all diagnosis records associated with the patient
+        via their visits."""
+        for patient in self:
+            patient.diagnosis_history_ids = (
+                patient.visit_ids.diagnosis_ids
+            )
 
     @api.onchange('country_id')
     def _onchange_country_id(self):  # pylint: disable=R1710,return-statements
@@ -110,8 +131,13 @@ class HrHospitalPatient(models.Model):
 
         data = []
 
+        logging.warning("*******")
+        logging.warning(vals)
+
         for patient in self.filtered(
-                lambda x: x.personal_doctor_id != vals['personal_doctor_id']):
+                lambda x: x.personal_doctor_id.id != vals.get(
+                    'personal_doctor_id'
+                )):
             history_record = ({
                 'patient_id': patient.id,
                 'doctor_id': vals['personal_doctor_id'],
@@ -129,3 +155,34 @@ class HrHospitalPatient(models.Model):
         if data:
             self.env['hr.hospital.patient.doctor.history'].sudo().create(data)
         return result
+
+    def action_view_visits(self):
+        """Returns an action to open the list of visits,
+        filtered by the current patient's ID."""
+        self.ensure_one()
+
+        return {
+            'name': _('Patient Visit History'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'hr.hospital.visit',
+            'view_mode': 'tree,form',
+            'domain': [('patient_id', '=', self.id)],
+            'context': {'default_patient_id': self.id, },
+        }
+
+    def action_export_card_wizard(self):
+        """Export button wizard call."""
+        self.ensure_one()
+
+        export_action = self.env.ref(
+            'hr_hospital.hr_hospital_patient_card_export_wizard_action')
+
+        # current patient id
+        return {
+            'name': export_action.name,
+            'type': 'ir.actions.act_window',
+            'res_model': export_action.res_model,
+            'views': [(False, 'form')],
+            'target': 'new',
+            'context': {'default_patient_id': self.id, },
+        }
