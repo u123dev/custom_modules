@@ -110,7 +110,9 @@ class HrHospitalDoctor(models.Model):
                         "Please cancel or complete all pending visits first."
                     ))
 
-    def name_get(self):
+    @api.depends('speciality_id', 'name')
+    def _compute_display_name(self):
+
         """Displays the doctor's name in the format: 'Name (Speciality)'."""
         result = []
         for doctor in self:
@@ -118,5 +120,5 @@ class HrHospitalDoctor(models.Model):
                 display_name = f"{doctor.name} ({doctor.speciality_id.name})"
             else:
                 display_name = doctor.name
-            result.append((doctor.id, display_name))
+            doctor.display_name = display_name
         return result

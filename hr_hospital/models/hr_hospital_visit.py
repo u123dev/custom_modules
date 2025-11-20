@@ -61,6 +61,19 @@ class HrHospitalVisit(models.Model):
         store=True,
     )
 
+    @api.depends('patient_id', 'doctor_id')
+    def _compute_display_name(self):
+        """Returns meaningful name: Patient+Doctor+Planned Datetime+(#ID)."""
+
+        result = []
+        for record in self:
+            date_time_str = (record.planned_datetime.strftime('%Y-%m-%d %H:%M')
+                             if record.planned_datetime else _("No Time"))
+            record.display_name = (f"{record.patient_id.display_name} - "
+                                   f"{record.doctor_id.display_name} - "
+                                   f"{date_time_str} (#{record.id})")
+        return result
+
     @api.depends('diagnosis_ids')
     def _compute_diagnosis_count(self):
         """Calculates the number of diagnoses linked to this visit."""
