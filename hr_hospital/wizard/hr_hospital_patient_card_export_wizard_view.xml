@@ -40,23 +40,23 @@
         </field>
     </record>
 
-    <record id="hr_hospital_patient_form_inherit_wizard" model="ir.ui.view">
-        <field name="name">hr.hospital.patient.form.inherit.wizard</field>
-        <field name="model">hr.hospital.patient</field>
-        <field name="inherit_id" ref="hr_hospital.hr_hospital_patient_form"/>
-        <field name="arch" type="xml">
+<!--    <record id="hr_hospital_patient_form_inherit_wizard" model="ir.ui.view">-->
+<!--        <field name="name">hr.hospital.patient.form.inherit.wizard</field>-->
+<!--        <field name="model">hr.hospital.patient</field>-->
+<!--        <field name="inherit_id" ref="hr_hospital.hr_hospital_patient_form"/>-->
+<!--        <field name="arch" type="xml">-->
 
-            <xpath expr="//sheet" position="before">
-                <header>
-                    <button name="%(hr_hospital_patient_card_export_wizard_action)d"
-                            string="Export Card"
-                            type="action"
-                            class="oe_highlight"
-                            context="{'default_patient_id': active_id}"/>
-                </header>
-            </xpath>
+<!--            <xpath expr="//header" position="inside">-->
+<!--                <header>-->
+<!--                    <button name="%(hr_hospital_patient_card_export_wizard_action)d"-->
+<!--                            string="Export Card"-->
+<!--                            type="action"-->
+<!--                            class="oe_highlight"-->
+<!--                            context="{'default_patient_id': active_id}"/>-->
+<!--                </header>-->
+<!--            </xpath>-->
 
-        </field>
-    </record>
+<!--        </field>-->
+<!--    </record>-->
 
 </odoo>

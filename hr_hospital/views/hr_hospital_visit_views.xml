@@ -24,13 +24,21 @@
         <field name="model">hr.hospital.visit</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="visit_status" widget="statusbar"
+                           options="{'clickable': '1',
+                           'colors': {'planned': 'info',
+                           'completed': 'success',
+                           'cancelled': 'danger',
+                           'missed': 'danger'}}"/>
+                </header>
                 <sheet>
                     <group>
                         <group string="Visit Details">
                             <field name="patient_id"/>
                             <field name="doctor_id"/>
                             <field name="visit_type"/>
-                            <field name="visit_status"/>
+<!--                            <field name="visit_status"/>-->
                         </group>
                         <group string="Timing and Cost">
                             <field name="planned_datetime"/>
@@ -67,11 +75,71 @@
         </field>
     </record>
 
+    <!-- CALENDAR VIEW -->
+    <record id="hr_hospital_visit_calendar" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.calendar</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <calendar string="Patient Visits"
+                      mode="month"
+                      date_start="planned_datetime"
+                      color="doctor_id">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="visit_status"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!-- SEARCH VIEW -->
+    <record id="hr_hospital_visit_search" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.search</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <search string="Visit Search">
+                <field name="patient_id"/>
+                <field name="doctor_id"/>
+                <field name="visit_status"/>
+                <field name="visit_type"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="group_by_status" string="By Status" context="{'group_by': 'visit_status'}"/>
+                    <filter name="group_by_doctor" string="By Doctor" context="{'group_by': 'doctor_id'}"/>
+                </group>
+
+                <filter string="Planned" name="planned" domain="[('visit_status', '=', 'planned')]"/>
+                <filter string="Completed" name="completed" domain="[('visit_status', '=', 'completed')]"/>
+                <separator/>
+                <filter string="Current Month" name="filter_current_month"
+                        domain="[('planned_datetime', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01')),
+                                 ('planned_datetime', '&lt;=', (datetime.datetime.now() + relativedelta(months=1, day=1, days=-1)).strftime('%Y-%m-%d'))]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- PIVOT VIEW -->
+    <record id="hr_hospital_visit_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.visit.pivot</field>
+        <field name="model">hr.hospital.visit</field>
+        <field name="arch" type="xml">
+            <pivot string="Visit Analysis" display_quantity="1">
+                <field name="doctor_id" type="row"/>
+                <field name="visit_status" type="col"/>
+                <field name="visit_cost" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
     <record id="hr_hospital_visit_action_window" model="ir.actions.act_window">
         <field name="name">Visit</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.visit</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar,pivot,search</field>
+        <!-- Filters by default -->
+        <field name="context">{
+            'search_default_filter_current_month': 1,
+            'search_default_planned': 1,
+            }</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Register first patient's vist.
