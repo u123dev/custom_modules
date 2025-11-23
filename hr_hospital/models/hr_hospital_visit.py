@@ -10,6 +10,7 @@ _logger = logging.getLogger(__name__)
 class HrHospitalVisit(models.Model):
     _name = 'hr.hospital.visit'
     _description = 'Patient Visit'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     patient_id = fields.Many2one(
         comodel_name='hr.hospital.patient',
@@ -25,16 +26,16 @@ class HrHospitalVisit(models.Model):
         ('completed', 'Completed'),
         ('cancelled', 'Cancelled'),
         ('missed', 'Missed'),
-    ], default='planned')
+    ], default='planned', tracking=True)
 
     visit_type = fields.Selection([
         ('primary', 'Primary'),
         ('repeat', 'Repeat'),
         ('preventive', 'Preventive'),
         ('urgent', 'Urgent'),
-    ], default='primary')
+    ], default='primary', tracking=True)
 
-    planned_datetime = fields.Datetime(required=True)
+    planned_datetime = fields.Datetime(required=True, tracking=True)
     actual_datetime = fields.Datetime(
         # TO CLEAR: next parameter doesn't work correctly:
         #   warnings.warn(f'Property {self}.readonly should be
@@ -53,7 +54,7 @@ class HrHospitalVisit(models.Model):
         required=True,
         default=lambda self: self.env.company.currency_id
     )
-    visit_cost = fields.Monetary(currency_field='currency_id')
+    visit_cost = fields.Monetary(currency_field='currency_id', tracking=True)
 
     diagnosis_count = fields.Integer(
         string='Number of Diagnoses',

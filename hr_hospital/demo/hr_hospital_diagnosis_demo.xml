@@ -215,4 +215,105 @@
         <field name="is_approved" eval="True"/>
         <field name="approving_doctor_id" ref="hr_hospital.doctor_green"/><field name="approval_date">2025-10-15 17:00:00</field>
     </record>
+
+    <record id="diagnosis_022_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_001_completed"/><field name="disease_id" ref="hr_hospital.disease_category_cardiovascular"/>
+        <field name="diagnosis_description">Mild cardiac arrhythmia observed during routine ECG.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Monitor symptoms. Avoid excessive caffeine.</p>]]>
+        </field>
+        <field name="severity_level">light</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_miller"/><field name="approval_date">2025-10-01 09:45:00</field>
+    </record>
+
+    <record id="diagnosis_023_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_005_completed"/><field name="disease_id" ref="hr_hospital.disease_category_digestive"/>
+        <field name="diagnosis_description">Mild indigestion, likely stress-related.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Antacid use as needed. Stress management advised.</p>]]>
+        </field>
+        <field name="severity_level">light</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_johnson"/><field name="approval_date">2025-10-05 14:15:00</field>
+    </record>
+
+    <record id="diagnosis_024_unapproved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_008_completed"/><field name="disease_id" ref="hr_hospital.disease_epilepsy"/>
+        <field name="diagnosis_description">Potential drug interaction causing seizure. Needs full toxicology screen.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Hold non-essential medications pending test results.</p>]]>
+        </field>
+        <field name="severity_level">critical</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_025_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_009_completed"/><field name="disease_id" ref="hr_hospital.disease_hypertension"/>
+        <field name="diagnosis_description">New onset mild hypertension discovered during pre-op.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Begin low-salt diet and monitor BP daily for a month.</p>]]>
+        </field>
+        <field name="severity_level">medium</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_ross"/><field name="approval_date">2025-10-09 11:30:00</field>
+    </record>
+
+    <record id="diagnosis_026_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_011_completed"/><field name="disease_id" ref="hr_hospital.disease_migraine"/>
+        <field name="diagnosis_description">Patient requested referral for chronic tension headaches.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Referral to neurology clinic.</p>]]>
+        </field>
+        <field name="severity_level">medium</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_johnson"/><field name="approval_date">2025-10-11 13:15:00</field>
+    </record>
+
+    <record id="diagnosis_027_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_012_completed"/><field name="disease_id" ref="hr_hospital.disease_pneumonia"/>
+        <field name="diagnosis_description">Concurrent mild community-acquired pneumonia confirmed.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Start broad-spectrum antibiotics immediately.</p>]]>
+        </field>
+        <field name="severity_level">hard</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_clark"/><field name="approval_date">2025-10-12 14:30:00</field>
+    </record>
+
+    <record id="diagnosis_028_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_014_completed"/><field name="disease_id" ref="hr_hospital.disease_influenza"/>
+        <field name="diagnosis_description">Patient complained of lingering cold symptoms. No fever.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Symptomatic treatment only. Rule out secondary infection.</p>]]>
+        </field>
+        <field name="severity_level">light</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_ross"/><field name="approval_date">2025-10-14 16:15:00</field>
+    </record>
+
+    <record id="diagnosis_029_unapproved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_015_completed"/><field name="disease_id" ref="hr_hospital.disease_heart_failure"/>
+        <field name="diagnosis_description">Unclear shortness of breath on exertion, needs follow-up echo.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Arrange immediate outpatient echocardiogram.</p>]]>
+        </field>
+        <field name="severity_level">medium</field>
+        <field name="is_approved" eval="False"/>
+    </record>
+
+    <record id="diagnosis_030_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_002_completed"/><field name="disease_id" ref="hr_hospital.disease_epilepsy"/>
+        <field name="diagnosis_description">Old history of childhood absence seizures. Currently asymptomatic.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>No treatment required. Documented for reference.</p>]]>
+        </field>
+        <field name="severity_level">light</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_green"/><field name="approval_date">2025-10-02 11:30:00</field>
+    </record>
+
+    <record id="diagnosis_031_approved" model="hr.hospital.diagnosis">
+        <field name="visit_id" ref="hr_hospital.visit_004_completed"/><field name="disease_id" ref="hr_hospital.disease_swine_flu"/>
+        <field name="diagnosis_description">Negative test results for H1N1 flu strain.</field>
+        <field name="prescribed_treatment">
+            <![CDATA[<p>Discontinued isolation measures.</p>]]>
+        </field>
+        <field name="severity_level">light</field><field name="is_approved" eval="True"/>
+        <field name="approving_doctor_id" ref="hr_hospital.doctor_ross"/><field name="approval_date">2025-10-04 13:15:00</field>
+    </record>
+
 </odoo>

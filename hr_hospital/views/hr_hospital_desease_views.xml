@@ -111,6 +111,6 @@
           name="Desease type"
           parent="hr_hospital_menu_root"
           action="hr_hospital_desease_action_window"
-          sequence="10"/>
+          sequence="50"/>
 
 </odoo>

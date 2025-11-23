@@ -171,6 +171,6 @@
               name="Patient"
               parent="hr_hospital_menu_root"
               action="hr_hospital_patient_action_window"
-              sequence="30"/>
+              sequence="20"/>
 
 </odoo>

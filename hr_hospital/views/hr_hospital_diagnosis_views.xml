@@ -1,5 +1,38 @@
 <odoo>
 
+
+    <!-- PIVOT VIEW -->
+    <record id="hr_hospital_diagnosis_pivot" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.pivot</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <pivot string="Diagnosis Analysis" disable_linking="True">
+                <field name="disease_id" type="row"/>
+
+                <field name="visit_date_related" interval="year" type="col"/>
+                <field name="visit_date_related" interval="month" type="col"/>
+
+            </pivot>
+        </field>
+    </record>
+
+
+    <!-- GRAPH VIEW -->
+    <record id="hr_hospital_diagnosis_graph" model="ir.ui.view">
+        <field name="name">hr.hospital.diagnosis.graph</field>
+        <field name="model">hr.hospital.diagnosis</field>
+        <field name="arch" type="xml">
+            <graph string="Desease Chart" type="bar">
+                <!-- axis X: disease_id -->
+                <field name="disease_id"/>
+
+                <!-- axis Y: month (from visit_date_related) -->
+                <field name="visit_date_related" interval="month"/>
+            </graph>
+        </field>
+    </record>
+
+    <!-- TREE VIEW -->
     <record id="hr_hospital_diagnosis_tree" model="ir.ui.view">
         <field name="name">hr.hospital.diagnosis.tree</field>
         <field name="model">hr.hospital.diagnosis</field>
@@ -92,7 +125,7 @@
         <field name="name">Diagnoses</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.diagnosis</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot,graph</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create the first medical diagnosis

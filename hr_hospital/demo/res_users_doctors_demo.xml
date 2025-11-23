@@ -25,6 +25,33 @@
         <field name="email">j.adams@hospital.com</field>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
     </record>
+
+    <!-- Added Mentors required for doctor records -->
+    <record id="doctor_user_smith" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Richard Smith (Oncologist)</field>
+        <field name="login">r.smith</field>
+        <field name="email">r.smith@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_kim" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Hana Kim (Dermatologist)</field>
+        <field name="login">h.kim</field>
+        <field name="email">h.kim@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_alves" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Elena Alves (Gastroenterologist)</field>
+        <field name="login">e.alves</field>
+        <field name="email">e.alves@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_ivanov" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Ivan Ivanov (Urologist)</field>
+        <field name="login">i.ivanov</field>
+        <field name="email">i.ivanov@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+
     <!-- New users for doctors (Interns) -->
     <record id="doctor_user_white_intern" model="res.users" context="{'no_reset_password': True}">
         <field name="name">Jason White (Intern 1)</field>
@@ -36,6 +63,26 @@
         <field name="name">Emily Taylor (Intern 2)</field>
         <field name="login">e.taylor</field>
         <field name="email">e.taylor@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+
+    <!-- Added Interns required for doctor records -->
+    <record id="doctor_user_patel_intern" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Rahul Patel (Intern 3)</field>
+        <field name="login">r.patel.int</field>
+        <field name="email">r.patel@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_zhou_intern" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Wei Zhou (Intern 4)</field>
+        <field name="login">w.zhou.int</field>
+        <field name="email">w.zhou@hospital.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+    </record>
+    <record id="doctor_user_sidorov_intern" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Sofia Sidorov (Intern 5)</field>
+        <field name="login">s.sidorov.int</field>
+        <field name="email">s.sidorov@hospital.com</field>
         <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
     </record>
 </odoo>
