@@ -45,21 +45,21 @@
         <record id="visit_007_completed" model="hr.hospital.visit">
             <field name="patient_id" ref="hr_hospital.patient_07"/><field name="doctor_id" ref="hr_hospital.doctor_miller"/>
             <field name="visit_type">repeat</field>
-            <field name="planned_datetime">2025-10-07 15:00:00</field><field name="actual_datetime">2025-10-07 15:20:00</field>
+            <field name="planned_datetime">2025-09-07 15:00:00</field><field name="actual_datetime">2025-10-07 15:20:00</field>
             <field name="visit_cost">150.00</field>
             <field name="visit_status">planned</field>
         </record>
         <record id="visit_008_completed" model="hr.hospital.visit">
             <field name="patient_id" ref="hr_hospital.patient_08"/><field name="doctor_id" ref="hr_hospital.doctor_green"/>
             <field name="visit_type">primary</field>
-            <field name="planned_datetime">2025-10-08 09:00:00</field><field name="actual_datetime">2025-10-08 10:00:00</field>
+            <field name="planned_datetime">2025-05-08 09:00:00</field><field name="actual_datetime">2025-10-08 10:00:00</field>
             <field name="visit_cost">110.00</field>
             <field name="visit_status">planned</field>
         </record>
         <record id="visit_009_completed" model="hr.hospital.visit">
             <field name="patient_id" ref="hr_hospital.patient_09"/><field name="doctor_id" ref="hr_hospital.doctor_ross"/>
             <field name="visit_type">preventive</field>
-            <field name="planned_datetime">2025-10-09 10:00:00</field><field name="actual_datetime">2025-10-09 10:00:00</field>
+            <field name="planned_datetime">2025-09-09 10:00:00</field><field name="actual_datetime">2025-10-09 10:00:00</field>
             <field name="visit_cost">75.00</field>
             <field name="visit_status">planned</field>
         </record>
@@ -73,7 +73,7 @@
         <record id="visit_011_completed" model="hr.hospital.visit">
             <field name="patient_id" ref="hr_hospital.patient_11"/><field name="doctor_id" ref="hr_hospital.doctor_johnson"/>
             <field name="visit_type">repeat</field>
-            <field name="planned_datetime">2025-10-11 12:00:00</field><field name="actual_datetime">2025-10-11 12:50:00</field>
+            <field name="planned_datetime">2025-05-11 12:00:00</field><field name="actual_datetime">2025-10-11 12:50:00</field>
             <field name="visit_cost">90.00</field>
             <field name="visit_status">planned</field>
         </record>

@@ -12,6 +12,16 @@
         <field name="speciality_id" ref="speciality_cardiology"/>
         <field name="rating">4.5</field>
         <field name="is_intern" eval="False"/>
+
+        <field name="gender">male</field>
+        <field name="birth_date">1980-05-15</field>
+        <field name="phone">+1 555-1001</field>
+        <field name="email">d.miller@hrhospital.com</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="country_of_study_id" ref="base.us"/>
+
+        <field name="image_1920" type="base64" file="hr_hospital/demo/static/img/david_miller.png"/>
     </record>
 
     <!-- Mentor 2: Sarah Green (Neurology) -->
@@ -24,6 +34,16 @@
         <field name="speciality_id" ref="speciality_neurology"/>
         <field name="rating">4.9</field>
         <field name="is_intern" eval="False"/>
+
+        <field name="gender">female</field>
+        <field name="birth_date">1975-11-20</field>
+        <field name="phone">+1 555-1002</field>
+        <field name="email">s.green@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.ua"/>
+
+        <field name="image_1920" type="base64" file="hr_hospital/demo/static/img/sarah_green.png"/>
     </record>
 
     <!-- Mentor 3: Michael Ross (Surgery) -->
@@ -36,6 +56,17 @@
         <field name="speciality_id" ref="speciality_surgery"/>
         <field name="rating">4.7</field>
         <field name="is_intern" eval="False"/>
+
+        <field name="middle_name">Allen</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1970-02-10</field>
+        <field name="phone">+1 555-1003</field>
+        <field name="email">m.ross@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.us"/>
+
+        <field name="image_1920" type="base64" file="hr_hospital/demo/static/img/michael_ross.png"/>
     </record>
 
     <!-- Mentor 4: Jennifer Adams (Pediatrics) -->
@@ -48,6 +79,14 @@
         <field name="speciality_id" ref="speciality_pediatrics"/>
         <field name="rating">4.2</field>
         <field name="is_intern" eval="False"/>
+
+        <field name="gender">female</field>
+        <field name="birth_date">1985-08-25</field>
+        <field name="phone">+44 20 7946 0888</field>
+        <field name="email">j.adams@hrhospital.com</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="country_of_study_id" ref="base.us"/>
     </record>
 
     <!-- Mentor 5 (Ophthalmology - Admin User) -->
@@ -60,6 +99,15 @@
         <field name="speciality_id" ref="speciality_ophthalmology"/>
         <field name="rating">4.0</field>
         <field name="is_intern" eval="False"/>
+
+        <field name="middle_name">Marie</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1978-01-01</field>
+        <field name="phone">+1 555-1005</field>
+        <field name="email">lisa.j@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.ua"/>
     </record>
 
     <!-- Mentor 6 (Cardiology - Demo User) -->
@@ -72,6 +120,95 @@
         <field name="speciality_id" ref="speciality_cardiology"/>
         <field name="rating">3.8</field>
         <field name="is_intern" eval="False"/>
+
+        <field name="gender">male</field>
+        <field name="birth_date">1982-12-05</field>
+        <field name="phone">+33 1 70 79 09 00</field>
+        <field name="email">r.clark@hrhospital.com</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="country_of_study_id" ref="base.ua"/>
+    </record>
+
+    <!-- Mentor 7: Richard Smith (cardiology) -->
+    <record id="doctor_smith" model="hr.hospital.doctor">
+        <field name="last_name">Smith</field>
+        <field name="first_name">Richard</field>
+        <field name="user_id" ref="doctor_user_smith"/>
+        <field name="license_number">L7001-CARD-2008</field>
+        <field name="license_issue_date">2008-07-22</field>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="rating">4.6</field>
+        <field name="is_intern" eval="False"/>
+
+        <field name="middle_name">Henry</field>
+        <field name="gender">male</field>
+        <field name="birth_date">1968-07-22</field>
+        <field name="phone">+49 30 1234 5678</field>
+        <field name="email">r.smith@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.us"/>
+    </record>
+
+    <!-- Mentor 8: Hana Kim (neurology) -->
+    <record id="doctor_kim" model="hr.hospital.doctor">
+        <field name="last_name">Kim</field>
+        <field name="first_name">Hana</field>
+        <field name="user_id" ref="doctor_user_kim"/>
+        <field name="license_number">L8002-NEUR-2015</field>
+        <field name="license_issue_date">2015-03-10</field>
+        <field name="speciality_id" ref="speciality_neurology"/>
+        <field name="rating">4.1</field>
+        <field name="is_intern" eval="False"/>
+
+        <field name="gender">female</field>
+        <field name="birth_date">1988-03-10</field>
+        <field name="phone">+82 2 1234 5678</field>
+        <field name="email">h.kim@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.ua"/>
+    </record>
+
+    <!-- Mentor 9: Elena Alves (surgery) -->
+    <record id="doctor_alves" model="hr.hospital.doctor">
+        <field name="last_name">Alves</field>
+        <field name="first_name">Elena</field>
+        <field name="user_id" ref="doctor_user_alves"/>
+        <field name="license_number">L9003-SURG-2002</field>
+        <field name="license_issue_date">2002-09-05</field>
+        <field name="speciality_id" ref="speciality_surgery"/>
+        <field name="rating">4.4</field>
+        <field name="is_intern" eval="False"/>
+
+        <field name="gender">female</field>
+        <field name="birth_date">1972-09-05</field>
+        <field name="phone">+351 21 123 4567</field>
+        <field name="email">e.alves@hrhospital.com</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="country_of_study_id" ref="base.ua"/>
+    </record>
+
+    <!-- Mentor 10: Ivan Ivanov (pediatrics) -->
+    <record id="doctor_ivanov" model="hr.hospital.doctor">
+        <field name="last_name">Ivanov</field>
+        <field name="first_name">Ivan</field>
+        <field name="user_id" ref="doctor_user_ivanov"/>
+        <field name="license_number">L1004-PED-2020</field>
+        <field name="license_issue_date">2020-01-25</field>
+        <field name="speciality_id" ref="speciality_pediatrics"/>
+        <field name="rating">3.9</field>
+        <field name="is_intern" eval="False"/>
+
+        <field name="gender">male</field>
+        <field name="birth_date">1991-01-25</field>
+        <field name="phone">+7 495 123-45-67</field>
+        <field name="email">i.ivanov@hrhospital.com</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="country_of_study_id" ref="base.ua"/>
     </record>
 
     <!-- Intern 1: Jason White (Mentor: Miller) -->
@@ -85,6 +222,14 @@
         <field name="rating">0.0</field>
         <field name="is_intern" eval="True"/>
         <field name="mentor_id" ref="doctor_miller"/>
+
+        <field name="gender">male</field>
+        <field name="birth_date">1995-04-01</field>
+        <field name="phone">+1 555-1007</field>
+        <field name="email">j.white@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.ua"/>
     </record>
 
     <!-- Intern 2: Emily Taylor (Mentor: Green) -->
@@ -98,5 +243,79 @@
         <field name="rating">0.0</field>
         <field name="is_intern" eval="True"/>
         <field name="mentor_id" ref="doctor_green"/>
+
+        <field name="middle_name">Lynn</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1996-06-15</field>
+        <field name="phone">+380 50 123 4567</field>
+        <field name="email">e.taylor@hrhospital.com</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="country_of_study_id" ref="base.us"/>
     </record>
+
+    <!-- Intern 3: Rahul Patel (Mentor: Smith) -->
+    <record id="doctor_patel_intern" model="hr.hospital.doctor">
+        <field name="last_name">Patel</field>
+        <field name="first_name">Rahul</field>
+        <field name="user_id" ref="doctor_user_patel_intern"/>
+        <field name="license_number">L9009-INT-2024</field>
+        <field name="license_issue_date">2024-05-01</field>
+        <field name="speciality_id" ref="speciality_cardiology"/>
+        <field name="rating">0.0</field>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="doctor_smith"/>
+
+        <field name="gender">male</field>
+        <field name="birth_date">1998-11-12</field>
+        <field name="phone">+91 11 1234 5678</field>
+        <field name="email">r.patel@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.ua"/>
+    </record>
+
+    <!-- Intern 4: Wei Zhou (Mentor: Kim) -->
+    <record id="doctor_zhou_intern" model="hr.hospital.doctor">
+        <field name="last_name">Zhou</field>
+        <field name="first_name">Wei</field>
+        <field name="user_id" ref="doctor_user_zhou_intern"/>
+        <field name="license_number">L1010-INT-2024</field>
+        <field name="license_issue_date">2024-06-15</field>
+        <field name="speciality_id" ref="speciality_neurology"/>
+        <field name="rating">0.0</field>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="doctor_kim"/>
+
+        <field name="middle_name">Li</field>
+        <field name="gender">female</field>
+        <field name="birth_date">1997-05-28</field>
+        <field name="phone">+86 10 1234 5678</field>
+        <field name="email">w.zhou@hrhospital.com</field>
+        <field name="country_id" ref="base.us"/>
+        <field name="language_id" ref="base.lang_en"/>
+        <field name="country_of_study_id" ref="base.us"/>
+    </record>
+
+    <!-- Intern 5: Sofia Sidorov (Mentor: Alves) -->
+    <record id="doctor_sidorov_intern" model="hr.hospital.doctor">
+        <field name="last_name">Sidorov</field>
+        <field name="first_name">Sofia</field>
+        <field name="user_id" ref="doctor_user_sidorov_intern"/>
+        <field name="license_number">L1111-INT-2024</field>
+        <field name="license_issue_date">2024-07-03</field>
+        <field name="speciality_id" ref="speciality_surgery"/>
+        <field name="rating">0.0</field>
+        <field name="is_intern" eval="True"/>
+        <field name="mentor_id" ref="doctor_alves"/>
+
+        <field name="gender">female</field>
+        <field name="birth_date">1999-02-03</field>
+        <field name="phone">+34 91 123 4567</field>
+        <field name="email">s.sidorov@hrhospital.com</field>
+        <field name="country_id" ref="base.ua"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
+        <field name="country_of_study_id" ref="base.us"/>
+    </record>
+
 </odoo>

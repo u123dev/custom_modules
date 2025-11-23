@@ -45,6 +45,14 @@ class HrHospitalDoctor(models.Model):
     )
     active = fields.Boolean(default=True)
 
+    intern_ids = fields.One2many(
+        comodel_name='hr.hospital.doctor',
+        inverse_name='mentor_id',
+        string='Interns',
+        domain=[('is_intern', '=', True)],
+        # only interns
+    )
+
     _sql_constraints = [
         ('license_number_unique',
          'UNIQUE (license_number)',

@@ -9,9 +9,9 @@ class HrHospitalAbstractPerson(models.AbstractModel):
 
     _inherit = ['image.mixin', 'hr.hospital.date.mixin']
 
-    last_name = fields.Char(required=True)
-    first_name = fields.Char(required=True)
-    middle_name = fields.Char()
+    last_name = fields.Char(required=True, translate=True)
+    first_name = fields.Char(required=True, translate=True)
+    middle_name = fields.Char(translate=True)
     phone = fields.Char()
     email = fields.Char()
     gender = fields.Selection(selection=[
@@ -30,7 +30,8 @@ class HrHospitalAbstractPerson(models.AbstractModel):
     name = fields.Char(
         string="Full Name",
         compute='_compute_full_name',
-        store=True
+        store=True,
+        index=True,
     )
     age = fields.Integer(compute='_compute_age')
 

@@ -114,4 +114,191 @@
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Abdominal pain, bloating, indigestion.</field>
     </record>
+
+    <!-- 5. Infectious Diseases (Category) -->
+    <record id="disease_category_infectious" model="hr.hospital.desease">
+        <field name="name">Infectious Diseases</field>
+        <field name="code">A00-B99</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="symptoms">Fever, rash, fatigue.</field>
+    </record>
+
+    <!-- 5.1. Tuberculosis -->
+    <record id="disease_tuberculosis" model="hr.hospital.desease">
+        <field name="name">Tuberculosis</field>
+        <field name="parent_id" ref="disease_category_infectious"/>
+        <field name="code">A15</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="symptoms">Chronic cough, weight loss, night sweats.</field>
+        <field name="spreading_region_ids" eval="[(6, 0, [ref('base.cn'), ref('base.in')])]"/>
+    </record>
+
+    <!-- 5.1.1. Pulmonary Tuberculosis -->
+    <record id="disease_tuberculosis_pulmonary" model="hr.hospital.desease">
+        <field name="name">Pulmonary Tuberculosis</field>
+        <field name="parent_id" ref="disease_tuberculosis"/>
+        <field name="code">A15.0</field>
+        <field name="severity_level">critical</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="symptoms">Bloody cough, chest pain, fever.</field>
+    </record>
+
+    <!-- 5.1.1.1. Drug-resistant Tuberculosis (Level 4) -->
+    <record id="disease_tuberculosis_resistant" model="hr.hospital.desease">
+        <field name="name">Drug-Resistant Tuberculosis</field>
+        <field name="parent_id" ref="disease_tuberculosis_pulmonary"/>
+        <field name="code">A15.0X</field>
+        <field name="severity_level">critical</field>
+        <field name="is_contagious" eval="True"/>
+        <field name="symptoms">Persistent cough, extreme fatigue, treatment resistance.</field>
+    </record>
+
+    <!-- 6. Endocrine Disorders (Category) -->
+    <record id="disease_category_endocrine" model="hr.hospital.desease">
+        <field name="name">Endocrine Disorders</field>
+        <field name="code">E00-E99</field>
+        <field name="severity_level">medium</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Hormonal imbalance symptoms.</field>
+    </record>
+
+    <!-- 6.1. Diabetes Mellitus -->
+    <record id="disease_diabetes" model="hr.hospital.desease">
+        <field name="name">Diabetes Mellitus</field>
+        <field name="parent_id" ref="disease_category_endocrine"/>
+        <field name="code">E10-E14</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Frequent urination, thirst, fatigue.</field>
+    </record>
+
+    <!-- 6.1.1. Type 1 Diabetes -->
+    <record id="disease_diabetes_type1" model="hr.hospital.desease">
+        <field name="name">Type 1 Diabetes</field>
+        <field name="parent_id" ref="disease_diabetes"/>
+        <field name="code">E10</field>
+        <field name="severity_level">high</field>
+        <field name="symptoms">Insulin deficiency, rapid weight loss.</field>
+    </record>
+
+    <!-- 6.1.1.1. Acute Ketoacidosis (Level 4) -->
+    <record id="disease_diabetes_ketoacidosis" model="hr.hospital.desease">
+        <field name="name">Diabetic Ketoacidosis</field>
+        <field name="parent_id" ref="disease_diabetes_type1"/>
+        <field name="code">E10.1</field>
+        <field name="severity_level">critical</field>
+        <field name="symptoms">Nausea, rapid breathing, fruity breath odor.</field>
+    </record>
+
+    <!-- 7. Dermatologic Diseases (Category) -->
+    <record id="disease_category_dermatology" model="hr.hospital.desease">
+        <field name="name">Dermatologic Diseases</field>
+        <field name="code">L00-L99</field>
+        <field name="severity_level">low</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Skin irritation, rash.</field>
+    </record>
+
+    <!-- 7.1. Psoriasis -->
+    <record id="disease_psoriasis" model="hr.hospital.desease">
+        <field name="name">Psoriasis</field>
+        <field name="parent_id" ref="disease_category_dermatology"/>
+        <field name="code">L40</field>
+        <field name="severity_level">medium</field>
+        <field name="symptoms">Red patches with silvery scales.</field>
+    </record>
+
+    <!-- 7.1.1. Psoriatic Arthritis -->
+    <record id="disease_psoriatic_arthritis" model="hr.hospital.desease">
+        <field name="name">Psoriatic Arthritis</field>
+        <field name="parent_id" ref="disease_psoriasis"/>
+        <field name="code">L40.5</field>
+        <field name="severity_level">high</field>
+        <field name="symptoms">Joint pain, swelling.</field>
+    </record>
+
+    <!-- 7.1.1.1. Severe Joint Deformation (Level 4) -->
+    <record id="disease_psoriasis_joint_deformation" model="hr.hospital.desease">
+        <field name="name">Severe Joint Deformation</field>
+        <field name="parent_id" ref="disease_psoriatic_arthritis"/>
+        <field name="code">L40.50X</field>
+        <field name="severity_level">critical</field>
+        <field name="symptoms">Permanent joint damage.</field>
+    </record>
+
+    <!-- 8. Gastrointestinal Sub-Diseases -->
+    <record id="disease_gastritis" model="hr.hospital.desease">
+        <field name="name">Gastritis</field>
+        <field name="parent_id" ref="disease_category_digestive"/>
+        <field name="code">K29</field>
+        <field name="severity_level">low</field>
+        <field name="symptoms">Stomach burning, nausea.</field>
+    </record>
+
+    <!-- 8.1. Erosive Gastritis -->
+    <record id="disease_gastritis_erosive" model="hr.hospital.desease">
+        <field name="name">Erosive Gastritis</field>
+        <field name="parent_id" ref="disease_gastritis"/>
+        <field name="code">K29.1</field>
+        <field name="severity_level">medium</field>
+        <field name="symptoms">Bleeding, stomach lining erosion.</field>
+    </record>
+
+
+    <!-- 9. Autoimmune Disorders (Category, Level 1) -->
+    <record id="disease_category_autoimmune" model="hr.hospital.desease">
+        <field name="name">Autoimmune Disorders</field>
+        <field name="code">M00-M99</field>
+        <field name="severity_level">high</field>
+        <field name="is_contagious" eval="False"/>
+        <field name="symptoms">Chronic inflammation, joint pain, fatigue.</field>
+    </record>
+
+    <!-- 9.1. Systemic Lupus Erythematosus (Level 2) -->
+    <record id="disease_lupus" model="hr.hospital.desease">
+        <field name="name">Systemic Lupus Erythematosus</field>
+        <field name="parent_id" ref="disease_category_autoimmune"/>
+        <field name="code">M32</field>
+        <field name="severity_level">high</field>
+        <field name="symptoms">Butterfly rash, joint pain, organ inflammation.</field>
+    </record>
+
+    <!-- 9.1.1. Lupus Nephritis (Kidney complication, Level 3) -->
+    <record id="disease_lupus_nephritis" model="hr.hospital.desease">
+        <field name="name">Lupus Nephritis</field>
+        <field name="parent_id" ref="disease_lupus"/>
+        <field name="code">M32.1</field>
+        <field name="severity_level">high</field>
+        <field name="symptoms">Kidney inflammation, proteinuria.</field>
+    </record>
+
+    <!-- 9.1.1.1. Chronic Kidney Damage (Level 4) -->
+    <record id="disease_lupus_ckd" model="hr.hospital.desease">
+        <field name="name">Chronic Kidney Damage due to Lupus</field>
+        <field name="parent_id" ref="disease_lupus_nephritis"/>
+        <field name="code">M32.1A</field>
+        <field name="severity_level">critical</field>
+        <field name="symptoms">Reduced kidney function, persistent swelling.</field>
+    </record>
+
+    <!-- 9.1.1.1.1. Kidney Failure Stage 3-4 (Level 5) -->
+    <record id="disease_lupus_kidney_stage3" model="hr.hospital.desease">
+        <field name="name">Kidney Failure (Stage 3–4)</field>
+        <field name="parent_id" ref="disease_lupus_ckd"/>
+        <field name="code">M32.1A3</field>
+        <field name="severity_level">critical</field>
+        <field name="symptoms">Severe decline in glomerular filtration rate.</field>
+    </record>
+
+    <!-- 9.1.1.1.1.1. End-Stage Renal Disease (Level 6) -->
+    <record id="disease_lupus_esrd" model="hr.hospital.desease">
+        <field name="name">End-Stage Renal Disease (Lupus Origin)</field>
+        <field name="parent_id" ref="disease_lupus_kidney_stage3"/>
+        <field name="code">M32.1A4</field>
+        <field name="severity_level">critical</field>
+        <field name="symptoms">Complete kidney failure, requires dialysis or transplant.</field>
+    </record>
+
 </odoo>

@@ -1,4 +1,12 @@
 <odoo>
+
+    <record id="hr_hospital_action_create_visit" model="ir.actions.act_window">
+        <field name="name">Quick Visit Creation</field>
+        <field name="res_model">hr.hospital.visit</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
     <!-- TREE VIEW -->
     <record id="hr_hospital_patient_tree" model="ir.ui.view">
         <field name="name">hr.hospital.patient.tree</field>
@@ -126,11 +134,32 @@
         </field>
     </record>
 
+    <!-- SEARCH VIEW -->
+    <record id="hr_hospital_patient_search" model="ir.ui.view">
+        <field name="name">hr.hospital.patient.search</field>
+        <field name="model">hr.hospital.patient</field>
+        <field name="arch" type="xml">
+            <search string="Patient Search">
+                <field name="name" string="Full Name"/>
+                <field name="phone"/>
+
+                <filter string="Has phone" name="has_phone" domain="[('phone', '!=', None)]"/>
+                <filter string="No phone" name="no_phone" domain="[('phone', '=', None)]"/>
+                <separator/>
+                <filter string="UA Phones" name="ua_phone" domain="[('phone', '=ilike', '+380%')]"/>
+                <filter string="Non-UA Phones" name="not_ua_phone" domain="[('phone', 'not ilike', '+380%')]"/>
+
+
+            </search>
+        </field>
+    </record>
+
     <record id="hr_hospital_patient_action_window" model="ir.actions.act_window">
         <field name="name">Patient</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hr.hospital.patient</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="search_view_id" ref="hr_hospital_patient_search"/>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create patient's record.
@@ -138,17 +167,10 @@
         </field>
     </record>
 
-    <record id="hr_hospital_action_create_visit" model="ir.actions.act_window">
-        <field name="name">Quick Visit Creation</field>
-        <field name="res_model">hr.hospital.visit</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-    </record>
-
     <menuitem id="hr_hospital_patient_menu"
               name="Patient"
               parent="hr_hospital_menu_root"
               action="hr_hospital_patient_action_window"
-              sequence="30"/>
+              sequence="20"/>
 
 </odoo>
