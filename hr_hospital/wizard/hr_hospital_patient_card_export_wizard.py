@@ -5,7 +5,7 @@ import csv
 from io import StringIO
 import base64
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError
+from odoo.odoo.exceptions import UserError
 
 
 _logger = logging.getLogger(__name__)
@@ -54,10 +54,8 @@ class HrHospitalPatientCardExportWizard(models.TransientModel):
             self.report_language_id = self._get_default_language_id()
 
     def _get_diagnosis_data(self):
-        """
-        Fetches and filters the patient's diagnosis data and transforms it
-        into a flat list for export.
-        """
+        """Fetches and filters the patient's diagnosis data and transforms it
+        into a flat list for export."""
         if not self.include_diagnoses and not self.include_recommendations:
             return []
 

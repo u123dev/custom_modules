@@ -1,6 +1,6 @@
 import logging
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
+from odoo.odoo.exceptions import ValidationError
 
 
 _logger = logging.getLogger(__name__)
@@ -120,7 +120,6 @@ class HrHospitalDoctor(models.Model):
 
     @api.depends('speciality_id', 'name')
     def _compute_display_name(self):
-
         """Displays the doctor's name in the format: 'Name (Speciality)'."""
         result = []
         for doctor in self:
