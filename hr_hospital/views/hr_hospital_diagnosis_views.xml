@@ -37,7 +37,9 @@
         <field name="name">hr.hospital.diagnosis.tree</field>
         <field name="model">hr.hospital.diagnosis</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-success="severity_level == 'medium'"
+                  decoration-warning="severity_level == 'hard'"
+                  decoration-danger="severity_level == 'critical'">
                 <field name="visit_id"/>
                 <field name="disease_id"/>
                 <field name="severity_level"/>

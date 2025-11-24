@@ -46,7 +46,7 @@
         <field name="name">hr.hospital.doctor.tree</field>
         <field name="model">hr.hospital.doctor</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-info="is_intern">
                 <field name="name"/>
                 <field name="speciality_id"/>
                 <field name="work_experience"/>
