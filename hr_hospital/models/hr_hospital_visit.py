@@ -1,7 +1,7 @@
 import logging
 from datetime import timedelta
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError, UserError
+from odoo.odoo.exceptions import ValidationError, UserError
 
 
 _logger = logging.getLogger(__name__)
@@ -64,7 +64,7 @@ class HrHospitalVisit(models.Model):
 
     @api.depends('patient_id', 'doctor_id')
     def _compute_display_name(self):
-        """Returns meaningful name: Patient+Doctor+Planned Datetime+(#ID)."""
+        """Returns meaningful name: Patient+Doctor+Planned Datetime+(ID)."""
 
         result = []
         for record in self:

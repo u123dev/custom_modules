@@ -1,7 +1,7 @@
 import logging
 from datetime import timedelta, datetime
 from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
+from odoo.odoo.exceptions import UserError, ValidationError
 import pytz
 
 
@@ -91,10 +91,8 @@ class HrHospitalDoctorScheduleWizard(models.TransientModel):
             self.start_week_date = date - timedelta(days=day_of_week)
 
     def _float_to_utc_datetime(self, target_date, float_time):
-        """
-        Converts a Date object and a float time (hours)
-        based on the user's timezone.
-        """
+        """Converts a Date object and a float time (hours)
+        based on the user's timezone."""
         tz_name = self.env.context.get('tz') or 'UTC'
         local_tz = pytz.timezone(tz_name)
 

@@ -1,5 +1,5 @@
 {
-    'name': 'HR Hospitaly Module',
+    'name': 'HR Hospital Module',
     'summary': '',
     'author': 'u123dev',
     'website': 'https://github.com/u123dev',

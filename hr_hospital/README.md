@@ -59,18 +59,20 @@ Main key **Wizards** (`TransientModel`) are implemented for automation and repor
 4.  **Doctor Schedule Generation** (for one or multiple weeks).
 5.  **Patient Medical Card Export** (JSON/CSV format).
 
-### 4. 🔍 Domains 
+### 4. 🔍 Domains
 * **Complex and Dynamic Domains:**   
 Used to enforce data correctness (e.g., showing only available doctors based on schedule, preventing selection of a doctor without a license).
 
 
 ### 5. 💾 Domains and Demo Data
-* The module includes a comprehensive set of **Demo Data**:  
-  - 15 patients, 
-  - 8 doctors, 
-  - 12 hierarchical diseases, 
-  - 25 visits, 
-  - 20 diagnoses   
+* The module includes a comprehensive set of **Demo Data**:
+
+  - 15 patients,
+  - 8 doctors,
+  - 12 hierarchical diseases,
+  - 25 visits,
+  - 20 diagnoses
+
 for immediate functional testing.
 
 ---

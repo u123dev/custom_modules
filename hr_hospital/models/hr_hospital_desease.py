@@ -1,5 +1,5 @@
 from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
+from odoo.odoo.exceptions import ValidationError
 
 
 class HrHospitalDesease(models.Model):
@@ -22,7 +22,7 @@ class HrHospitalDesease(models.Model):
         inverse_name='parent_id',
         string='Child Diseases'
     )
-    parent_path = fields.Char(index=True)
+    parent_path = fields.Char(index=True, unaccent=False)
 
     code = fields.Char(string='ICD-10 Code', size=10)
     severity_level = fields.Selection(selection=[
