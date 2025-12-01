@@ -151,8 +151,9 @@ class HrHospitalPatientCardExportWizard(models.TransientModel):
         return {
             'type': 'ir.actions.act_url',
             'url': f'/web/content/hr.hospital.patient.card.export.wizard/'
-                   f'{self.id}/export_file/{self.file_name}',
-            'target': 'self',
+                   f'{self.id}/export_file/{self.file_name}'
+                   f'&download=true',
+            'target': 'download',
         }
 
     def _generate_csv(self, data):

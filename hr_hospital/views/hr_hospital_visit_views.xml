@@ -94,8 +94,8 @@
                       date_start="planned_datetime"
                       color="doctor_id">
                 <field name="patient_id"/>
-                <field name="doctor_id"/>
-                <field name="visit_status"/>
+                <field name="doctor_id" avatar_field="image_128"/>
+                <field name="visit_status" filters="True"/>
             </calendar>
         </field>
     </record>
@@ -118,6 +118,8 @@
 
                 <filter string="Planned" name="planned" domain="[('visit_status', '=', 'planned')]"/>
                 <filter string="Completed" name="completed" domain="[('visit_status', '=', 'completed')]"/>
+                <separator/>
+                <filter name="Date" date="planned_datetime"/>
                 <separator/>
                 <filter string="Current Month" name="filter_current_month"
                         domain="[('planned_datetime', '&gt;=', datetime.datetime.now().strftime('%Y-%m-01')),
@@ -148,6 +150,7 @@
         <field name="context">{
             'search_default_filter_current_month': 1,
             'search_default_planned': 1,
+            'initial_date': "2025-10-02 08:00:00",
             }</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

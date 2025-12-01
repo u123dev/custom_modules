@@ -170,19 +170,19 @@ class HrHospitalPatient(models.Model):
             'context': {'default_patient_id': self.id, },
         }
 
-    def action_export_card_wizard(self):
-        """Export button wizard call."""
-        self.ensure_one()
-
-        export_action = self.env.ref(
-            'hr_hospital.hr_hospital_patient_card_export_wizard_action')
-
-        # current patient id
-        return {
-            'name': export_action.name,
-            'type': 'ir.actions.act_window',
-            'res_model': export_action.res_model,
-            'views': [(False, 'form')],
-            'target': 'new',
-            'context': {'default_patient_id': self.id, },
-        }
+    # def action_export_card_wizard(self):
+    #     """Export button wizard call."""
+    #     self.ensure_one()
+    #
+    #     export_action = self.env.ref(
+    #         'hr_hospital.hr_hospital_patient_card_export_wizard_action')
+    #
+    #     # current patient id
+    #     return {
+    #         'name': export_action.name,
+    #         'type': 'ir.actions.act_window',
+    #         'res_model': export_action.res_model,
+    #         'views': [(False, 'form')],
+    #         'target': 'download',
+    #         'context': {'default_patient_id': self.id, },
+    #     }

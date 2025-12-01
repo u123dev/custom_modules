@@ -32,14 +32,25 @@
             <form>
                 <header>
                     <button name="action_view_visits" string="View visits"
-                            type="object" class="oe_highlight"/>
+                            type="object" class="oe_highlight"
+                            icon="fa-info-circle"
+                            data-hotkey="shift+v"
+                            help="Press Alt+Shift+V"
+                    />
                     <button name="%(hr_hospital_action_create_visit)d" string="Quick Visit"
                             type="action" class="oe_highlight"
                             context="{'default_patient_id': id}"
-                            data-hotkey="q"/>
+                            icon="fa-plus-circle"
+                            data-hotkey="q"
+                            help="Press Alt+Q"
+                    />
                     <button name="%(hr_hospital_patient_card_export_wizard_action)d" string="Export Card"
                             type="action" class="oe_highlight"
-                            context="{'default_patient_id': id}"/>
+                            context="{'default_patient_id': id}"
+                            icon="fa-download"
+                            data-hotkey="e"
+                            help="Press Alt+E"
+                    />
                 </header>
                 <sheet>
                     <div class="oe_title">
