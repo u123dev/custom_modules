@@ -1,0 +1,145 @@
+<odoo>
+    <template id="doctor_report_details_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+
+                        <div class="row">
+                            <h2 class="text-center">
+                                **Doctor Report:** <span t-field="o.name"/> (<span t-field="o.speciality_id.name"/>)
+                            </h2>
+                        </div>
+
+                        <t t-set="report_data" t-value="o._get_doctor_report_data()"/>
+
+                        <h3>Visit History</h3>
+                        <t t-if="report_data['visits']">
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Visit Date</th>
+                                        <th>Patient Name</th>
+<!--                                        <th>Diagnosis</th>-->
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="report_data['visits']" t-as="visit">
+                                        <tr>
+                                            <td><span t-field="visit.planned_datetime" t-options='{"widget": "datetime"}'/></td>
+                                            <td><span t-field="visit.patient_id.name"/></td>
+<!--                                            <td><span t-field="visit.disease_id.name"/></td>-->
+                                            <td><span t-field="visit.visit_status"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-else="">
+                            <p>No visit history found.</p>
+                        </t>
+
+                        <h3 class="mt32">Unique Patients of the Doctor</h3>
+                        <t t-if="report_data['patients']">
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Patient Name</th>
+                                        <th>Gender</th>
+                                        <th>Birth Date</th>
+                                        <th>Phone</th>
+                                        <th>Latest Visit Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="report_data['patients']" t-as="patient">
+                                        <t t-set="latest_visit" t-value="patient.visit_ids.filtered(lambda v: v.doctor_id == o).sorted(key=lambda r: r.planned_datetime, reverse=True)[:1]"/>
+                                        <t t-set="status" t-value="latest_visit.visit_status if latest_visit else False"/>
+
+                                        <t t-set="status_style" t-value="'background-color: #FFFF00;' if status == 'planned' else ('background-color: #008000; color: white;' if status == 'completed' else ('background-color: #FF0000; color: white;' if status in ['cancelled', 'missed'] else ''))"/>
+
+                                        <tr>
+                                            <td><span t-field="patient.name"/></td>
+                                            <td><span t-field="patient.gender"/></td>
+                                            <td><span t-field="patient.birth_date"/></td>
+                                            <td><span t-field="patient.phone"/></td>
+
+                                            <td t-att-style="status_style">
+                                                <span t-esc="status"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-else="">
+                            <p>No patients found.</p>
+                        </t>
+
+                        <div class="oe_structure"/>
+
+                        <div>
+                            <strong>Report date:</strong>
+                            <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y%m%d %H-%M-%S')"/>
+                            <br/>
+                            <strong>Address:</strong>
+                            <span t-field="user.company_id.street"/>
+                        </div>
+
+                        <div class="o_report_footer">
+                            <div class="text-center" style="border-top: 1px solid black; padding-top: 5px;">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        Printed on:
+                                        <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M:%S')"/>
+                                    </li>
+                                    <li class="list-inline-item">|</li>
+                                    <li class="list-inline-item">
+                                        City:
+                                        <span t-field="user.company_id.city"/> </li>
+                                    <li class="list-inline-item">|</li>
+                                    <li class="list-inline-item">
+                                        Page: <span class="page"/> / <span class="topage"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="paperformat_a4_doctor_report" model="report.paperformat">
+        <field name="name">Doctor Report A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_doctor_report_details" model="ir.actions.report">
+        <field name="name">Doctor Details Report</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_hospital.doctor_report_details_template</field>
+        <field name="report_file">hr_hospital.doctor_report_details_template</field>
+        <field name="print_report_name">(object.name + ' - Report')</field>
+
+        <field name="binding_model_id" ref="hr_hospital.model_hr_hospital_doctor"/>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">form,tree</field>
+
+        <field name="paperformat_id" ref="paperformat_a4_doctor_report"/>
+    </record>
+
+</odoo>

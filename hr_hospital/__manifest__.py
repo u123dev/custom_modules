@@ -36,6 +36,8 @@
         'views/hr_hospital_diagnosis_views.xml',
         'views/hr_hospital_doctor_schedule_view.xml',
 
+        'reports/hr_hospital_doctor_report.xml',
+
     ],
 
     'demo': [

@@ -129,3 +129,22 @@ class HrHospitalDoctor(models.Model):
                 display_name = doctor.name
             doctor.display_name = display_name
         return result
+
+    def _get_doctor_report_data(self):
+        """
+        Returns all visits for doctor (sorted by date desc).
+        & list of patients that have a visit to doctor.
+        """
+        self.ensure_one()
+
+        visits = self.env['hr.hospital.visit'].search([
+            ('doctor_id', '=', self.id)
+        ],
+            order='planned_datetime DESC')
+
+        patient_ids = visits.mapped('patient_id')
+
+        return {
+            'visits': visits,
+            'patients': patient_ids,
+        }
