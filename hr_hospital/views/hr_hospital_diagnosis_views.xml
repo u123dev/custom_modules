@@ -9,7 +9,7 @@
             <pivot string="Diagnosis Analysis" disable_linking="True">
                 <field name="disease_id" type="row"/>
 
-                <field name="visit_date_related" interval="year" type="col"/>
+<!--                <field name="visit_date_related" interval="year" type="col"/>-->
                 <field name="visit_date_related" interval="month" type="col"/>
 
             </pivot>
