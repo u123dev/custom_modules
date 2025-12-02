@@ -73,6 +73,9 @@
 
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.user_id.partner_id.lang or 'en_US'"/>
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+
                 <!-- 1. Modified with footer -->
                 <t t-call="web.external_layout">
                 <!-- 2. or Fully Custom -->
@@ -91,8 +94,7 @@
                         <t t-set="report_visits"
                            t-value="visits_model.search([('doctor_id', '=', o.id)], order='planned_datetime DESC')"/>
 
-
-                        <h3>Visit History</h3>
+                        <h3 t-translation="translation">Visit History</h3>
                         <t t-if="report_visits">
                             <table class="table table-sm table-bordered">
                                 <thead>
@@ -120,10 +122,10 @@
                             </table>
                         </t>
                         <t t-else="">
-                            <p>No visit history found.</p>
+                            <p t-translation="translation">No visit history found.</p>
                         </t>
 
-                        <h3 class="mt32">Patients of the Doctor</h3>
+                        <h3 class="mt32" t-translation="translation">Patients of the Doctor</h3>
                         <t t-set="patients" t-value="report_visits.mapped('patient_id')"/>
                         <t t-if="patients">
                             <table class="table table-sm table-bordered">
@@ -159,7 +161,7 @@
                             </table>
                         </t>
                         <t t-else="">
-                            <p>No patients found.</p>
+                            <p t-translation="translation">No patients found.</p>
                         </t>
 
                     </div>
