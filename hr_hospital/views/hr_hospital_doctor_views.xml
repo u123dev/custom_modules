@@ -71,31 +71,104 @@
                             display="always"/>
                 </header>
 
+                <field name="id"/>
+                <field name="active"/>
                 <field name="name"/>
                 <field name="speciality_id"/>
                 <field name="phone"/>
                 <field name="work_experience"/>
                 <field name="rating"/>
                 <field name="image_1920"/>
+                <field name="intern_ids" widget="many2many_tags"/>
+                <field name="intern_names"/>
 
                 <!-- Quick action button -->
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <div class="o_kanban_card" style="padding: 8px;">
-                                <div style="display: flex; gap: 10px; align-items: flex-start;">
-    <!--                            <div class="o_kanban_image float-left">-->
-                                    <img  style="width: 80px; height: 80px; object-fit: cover; border-radius: 6px;"
-                                          t-att-src="kanban_image('hr.hospital.doctor', 'image_1920', record.id.raw_value)"
-                                          alt="Doctor Image"/>
-    <!--                            </div>-->
+                        <div class="oe_kanban_global_click o_kanban_record_wrapper">
+                            <div class="o_kanban_card o_kanban_record" style="padding: 8px; position: relative;">
 
-                                    <div style="flex: 1;">
-                                        <strong><field name="name"/></strong>
-                                        <div>Speciality: <field name="speciality_id"/></div>
-                                        <div>Phone: <field name="phone"/></div>
-                                        <div>Experience: <field name="work_experience"/></div>
-                                        <div>Rating: <field name="rating"/></div>
+                                <!-- DropDown Menu: Edit/Delete/Archive/Restore/Print Report  -->
+                                <div class="o_dropdown_kanban ">
+                                    <div class="o_kanban_record_dropdown dropdown"
+                                         style="position: absolute; right: 4px; top: 4px; opacity: 1; visibility: visible;">
+
+                                        <a class="dropdown-toggle o-no-caret btn"
+                                           role="button"
+                                           data-bs-toggle="dropdown"
+                                           href="#"
+                                           prevent_default="1"
+                                           aria-label="Context Menu"
+                                           title="Context Menu"><i class="fa fa-ellipsis-v"/></a>
+
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a role="menuitem" type="edit" class="dropdown-item"
+                                               t-if="widget.editable"><i class="fa fa-edit me-2"/>Edit</a>
+                                            <a role="menuitem" type="delete" class="dropdown-item text-danger"
+                                               t-if="widget.deletable"><i class="fa fa-trash me-2"/>Delete</a>
+                                            <!-- Archive -->
+                                            <a role="menuitem" class="dropdown-item" type="object" name="toggle_active"
+                                               t-if="record.active.raw_value"><i class="fa fa-archive me-2"/>Archive</a>
+                                            <!-- Restore -->
+                                            <a role="menuitem" class="dropdown-item" type="object" name="toggle_active"
+                                               t-if="!record.active.raw_value"><i class="fa fa-box-open me-2"/>Restore</a>
+
+                                            <div class="dropdown-divider"/>
+                                            <!-- Print Doctor Report -->
+                                            <a role="menuitem" class="dropdown-item"
+                                               type="action" name="%(action_doctor_report_details)d">
+                                                <i class="fa fa-file me-2" style="color:green;"/>Print Doctor Report</a>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- CARD CONTENT -->
+                                <div class="o_kanban_record_body">
+                                    <div style="display: flex; gap: 10px; align-items: flex-start;">
+        <!--                            <div class="o_kanban_image float-left">-->
+                                        <img  style="width: 80px; height: 80px; object-fit: cover; border-radius: 6px;"
+                                              t-att-src="kanban_image('hr.hospital.doctor', 'image_1920', record.id.raw_value)"
+                                              alt="Doctor Image"/>
+        <!--                            </div>-->
+
+                                        <div style="flex: 1;">
+                                            <strong style="color:#6C5B7B; font-size:1.2em;">
+                                                <field name="name"/>
+                                            </strong>
+                                            <div>Speciality: <field name="speciality_id" style="color:maroon;"/></div>
+                                            <div>
+                                                <i class="fa fa-phone" style="margin-right: 6px; color:green;"/>
+                                                <field name="phone"/>
+                                            </div>
+                                            <div>Experience: <field name="work_experience" style="color:navy;"/></div>
+                                            <div>Rating: <field name="rating" style="color:maroon;"/></div>
+
+                                            <!-- Interns list -->
+                                            <t t-if="record.intern_names and record.intern_names.value">
+                                                <hr style="margin: 5px 0; border-top: 1px solid #ccc;"/>
+                                                <t t-set="intern_list"
+                                                   t-value="record.intern_names.value.split(', ')"/>
+                                                <t t-set="max_view" t-value="1"/>
+                                                <div>
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <i class="fa fa-id-badge" style="color:green;"/>
+                                                        <span>Interns (<t t-esc="intern_list.length"/>):</span>
+                                                    </div>
+                                                    <ul style="margin: 0; padding-left: 15px;">
+                                                        <t t-foreach="intern_list.slice(0, max_view)" t-as="name">
+                                                            <li><t t-esc="name"/></li>
+                                                        </t>
+                                                        <t t-if="intern_list.length &gt; max_view">
+                                                            <div>
+                                                                <i>...and <t t-esc="intern_list.length-max_view"/> more...</i>
+                                                            </div>
+                                                        </t>
+                                                    </ul>
+                                                </div>
+                                            </t>
+
+                                        </div>
                                     </div>
                                 </div>
 

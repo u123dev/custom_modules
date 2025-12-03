@@ -52,6 +52,7 @@ class HrHospitalDoctor(models.Model):
         domain=[('is_intern', '=', True)],
         # only interns
     )
+    intern_names = fields.Char(compute="_compute_intern_names")
 
     _sql_constraints = [
         ('license_number_unique',
@@ -62,6 +63,11 @@ class HrHospitalDoctor(models.Model):
          'CHECK (rating >= 0.00 AND rating <= 5.00)',
          'Doctor rating must be between 0.00 and 5.00.'),
     ]
+
+    @api.depends('intern_ids')
+    def _compute_intern_names(self):
+        for rec in self:
+            rec.intern_names = ', '.join(rec.intern_ids.mapped('name'))
 
     @api.depends('license_issue_date')
     def _compute_work_experience(self):
