@@ -1,6 +1,6 @@
 import logging
 from odoo import models, fields, api, _
-from odoo.odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError
 
 
 _logger = logging.getLogger(__name__)
@@ -52,6 +52,7 @@ class HrHospitalDoctor(models.Model):
         domain=[('is_intern', '=', True)],
         # only interns
     )
+    intern_names = fields.Char(compute="_compute_intern_names")
 
     _sql_constraints = [
         ('license_number_unique',
@@ -62,6 +63,11 @@ class HrHospitalDoctor(models.Model):
          'CHECK (rating >= 0.00 AND rating <= 5.00)',
          'Doctor rating must be between 0.00 and 5.00.'),
     ]
+
+    @api.depends('intern_ids')
+    def _compute_intern_names(self):
+        for rec in self:
+            rec.intern_names = ', '.join(rec.intern_ids.mapped('name'))
 
     @api.depends('license_issue_date')
     def _compute_work_experience(self):
@@ -129,3 +135,12 @@ class HrHospitalDoctor(models.Model):
                 display_name = doctor.name
             doctor.display_name = display_name
         return result
+
+    def _get_doctor_visits(self):
+        """Returns all visits for doctor (sorted by date desc)."""
+        self.ensure_one()
+        visits = self.env['hr.hospital.visit'].search([
+            ('doctor_id', '=', self.id)
+        ],
+            order='planned_datetime DESC')
+        return visits

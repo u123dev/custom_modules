@@ -1,0 +1,204 @@
+<odoo>
+    <!-- 1. MODIFIED standard footer -->
+    <template id="modify_standard_footer" inherit_id="web.external_layout_standard" priority="200">
+        <xpath expr="//div[./div[@class='text-center']]" position="replace">
+            <!-- REPLACED FOOTER -->
+            <div t-attf-class="footer o_standard_footer" style="padding-top: 5px;">
+                <div class="text-center" style="font-size: 14px; opacity: 0.7; border-top: 1px solid black; padding-top: 5px;">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <t t-set="now" t-value="context_timestamp(datetime.datetime.now())"/>
+                            Printed on: <span t-esc="now.strftime('%Y-%m-%d %H:%M:%S')"/>
+                        </li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item">City: <span t-field="user.company_id.city"/></li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item">Page: <span class="page"/> / <span class="topage"/></li>
+                    </ul>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- 2. FULLY CUSTOM TEMPLATE with Header and Footer-->
+    <template id="custom_external_layout">
+        <t t-set="company" t-value="env.company"/>
+
+        <!-- HEADER -->
+        <div t-attf-class="header o_company_header" style="border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-bottom: 15px;">
+            <div class="row">
+                <!-- logo -->
+                <div class="col-6">
+                    <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 95px;"/>
+                </div>
+                <!-- company address -->
+                <div class="col-6 text-right" style="margin-top:10px;">
+                    <div t-field="company.partner_id"
+                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'
+                         style="font-size: 11px;"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- BODY -->
+        <div class="article o_report_body">
+            <!-- template render -->
+            <t t-raw="0"/>
+        </div>
+
+        <!-- FOOTER -->
+        <div t-attf-class="footer o_minimal_footer" style="padding-top: 5px;">
+            <div class="text-center" style="font-size: 14px; opacity: 0.7; border-top: 1px solid black; padding-top: 5px;">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <t t-set="now" t-value="context_timestamp(datetime.datetime.now())"/>
+                            Printed on: <span t-esc="now.strftime('%Y-%m-%d %H:%M:%S')"/>
+                        </li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item">City: <span t-field="user.company_id.city"/></li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item">Page: <span class="page"/> / <span class="topage"/></li>
+                    </ul>
+            </div>
+        </div>
+    </template>
+
+    <template id="doctor_report_details_template">
+        <t t-set="status_colors" t-value="{
+            'planned': 'background-color: yellow;',
+            'completed': 'background-color: green; color: white;',
+            'cancelled': 'background-color: red; color: white;',
+            'missed': 'background-color: red; color: white;'
+        }"/>
+
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="lang" t-value="o.user_id.partner_id.lang or 'en_US'"/>
+                <t t-set="o" t-value="o.with_context(lang=lang)"/>
+
+                <!-- 1. Modified with footer -->
+                <t t-call="web.external_layout">
+                <!-- 2. or Fully Custom -->
+<!--                <t t-call="hr_hospital.custom_external_layout">-->
+                    <div class="page">
+
+                        <div class="row">
+                            <h2 class="text-center">
+                                Doctor:
+                                <strong><span t-field="o.name"/></strong> (<span t-field="o.speciality_id.name"/>)
+                            </h2>
+                        </div>
+
+<!--                        <t t-set="report_visits" t-value="o._get_doctor_visits()"/>-->
+                        <t t-set="visits_model" t-value="env['hr.hospital.visit']"/>
+                        <t t-set="report_visits"
+                           t-value="visits_model.search([('doctor_id', '=', o.id)], order='planned_datetime DESC')"/>
+
+                        <h3 t-translation="translation">Visit History</h3>
+                        <t t-if="report_visits">
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Visit Date</th>
+                                        <th>Patient Name</th>
+                                        <th>Diagnosis</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="report_visits" t-as="visit">
+                                        <tr>
+                                            <td><span t-field="visit.planned_datetime" t-options='{"widget": "datetime"}'/></td>
+                                            <td><span t-field="visit.patient_id.name"/></td>
+                                            <td>
+                                                <t t-foreach="visit.diagnosis_ids" t-as="diag">
+                                                    <span t-field="diag.disease_id.name"/> <br/>
+                                                </t>
+                                            </td>
+                                            <td><span t-field="visit.visit_status"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-else="">
+                            <p t-translation="translation">No visit history found.</p>
+                        </t>
+
+                        <h3 class="mt32" t-translation="translation">Patients of the Doctor</h3>
+                        <t t-set="patients" t-value="report_visits.mapped('patient_id')"/>
+                        <t t-if="patients">
+                            <table class="table table-sm table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Patient Name</th>
+                                        <th>Gender</th>
+                                        <th>Birth Date</th>
+                                        <th>Phone</th>
+                                        <th>Latest Visit Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="patients" t-as="patient">
+                                        <t t-set="latest_visit"
+                                           t-value="report_visits.filtered(lambda v: v.patient_id == patient)[0]"/>
+                                        <t t-set="status"
+                                           t-value="latest_visit.visit_status if latest_visit else False"/>
+                                        <t t-set="status_style" t-value="status_colors.get(status, '')"/>
+
+                                        <tr>
+                                            <td><span t-field="patient.name"/></td>
+                                            <td><span t-field="patient.gender"/></td>
+                                            <td><span t-field="patient.birth_date"/></td>
+                                            <td><span t-field="patient.phone"/></td>
+
+                                            <td t-att-style="status_style">
+                                                <span t-esc="status"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </t>
+                        <t t-else="">
+                            <p t-translation="translation">No patients found.</p>
+                        </t>
+
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+    <record id="paperformat_a4_doctor_report" model="report.paperformat">
+        <field name="name">Doctor Report A4</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">40</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">35</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_doctor_report_details" model="ir.actions.report">
+        <field name="name">Doctor Details Report</field>
+        <field name="model">hr.hospital.doctor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hr_hospital.doctor_report_details_template</field>
+        <field name="report_file">hr_hospital.doctor_report_details_template</field>
+        <field name="print_report_name">(object.name + ' - Report')</field>
+
+        <field name="binding_model_id" ref="hr_hospital.model_hr_hospital_doctor"/>
+        <field name="binding_type">report</field>
+        <field name="binding_view_types">form,tree</field>
+
+        <field name="paperformat_id" ref="paperformat_a4_doctor_report"/>
+    </record>
+
+</odoo>

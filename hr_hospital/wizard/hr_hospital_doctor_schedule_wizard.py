@@ -1,7 +1,7 @@
 import logging
 from datetime import timedelta, datetime
 from odoo import models, fields, api, _
-from odoo.odoo.exceptions import UserError, ValidationError
+from odoo.exceptions import UserError, ValidationError
 import pytz
 
 

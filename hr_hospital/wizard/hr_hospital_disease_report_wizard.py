@@ -1,7 +1,7 @@
 import logging
 from datetime import timedelta
 from odoo import models, fields, api, _
-from odoo.odoo.exceptions import UserError
+from odoo.exceptions import UserError
 
 
 _logger = logging.getLogger(__name__)
