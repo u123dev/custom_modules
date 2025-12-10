@@ -1,12 +1,12 @@
+import base64
+import csv
+import json
 import logging
 from datetime import timedelta
-import json
-import csv
 from io import StringIO
-import base64
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError
 
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -109,8 +109,8 @@ class HrHospitalPatientCardExportWizard(models.TransientModel):
                     diag.visit_id.recommendations or ''
                 )
 
-                if (record['Diagnosis_Treatment'] or
-                        record['Visit_General_Recommendations']):
+                if (record['Diagnosis_Treatment']
+                        or record['Visit_General_Recommendations']):
                     has_content = True
 
             # Only add the record if it contains data we intended to include

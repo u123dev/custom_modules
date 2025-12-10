@@ -1,9 +1,9 @@
 import logging
-from datetime import timedelta, datetime
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
-import pytz
+from datetime import datetime, timedelta
 
+import pytz
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ class HrHospitalDoctorScheduleWizard(models.TransientModel):
     @api.model
     def default_get(self, fields_list):
         """Pre-fill doctor_id if opened from a doctor's record."""
-        res = super(HrHospitalDoctorScheduleWizard, self).default_get(
+        res = super().default_get(
             fields_list)
         active_id = self._context.get('active_id')
         if self._context.get(
@@ -69,8 +69,8 @@ class HrHospitalDoctorScheduleWizard(models.TransientModel):
                 if rec.break_from >= rec.break_to:
                     raise ValidationError(
                         _("Break From must be earlier than Break To."))
-                if (rec.break_from < rec.time_start or
-                        rec.break_to > rec.time_end):
+                if (rec.break_from < rec.time_start
+                        or rec.break_to > rec.time_end):
                     raise ValidationError(
                         _("Break Time must during working hours."))
 

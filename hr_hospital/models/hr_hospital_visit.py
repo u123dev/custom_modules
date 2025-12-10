@@ -1,8 +1,8 @@
 import logging
 from datetime import timedelta
-from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError, UserError
 
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -200,4 +200,4 @@ class HrHospitalVisit(models.Model):
                 "Please archive it instead."
             ))
 
-        return super(HrHospitalVisit, self).unlink()
+        return super().unlink()

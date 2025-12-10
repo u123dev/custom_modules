@@ -1,8 +1,8 @@
 import logging
 from datetime import datetime, time, timedelta
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError, ValidationError
 
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError, ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -39,8 +39,7 @@ class HrHospitalRescheduleVisitWizard(models.TransientModel):
     @api.model
     def default_get(self, fields_list):
         """Pre-fill the visit_id based on the active context."""
-        res = super(HrHospitalRescheduleVisitWizard,
-                    self).default_get(fields_list)
+        res = super().default_get(fields_list)
         active_id = self._context.get('active_id')
         if active_id:
             visit = self.env['hr.hospital.visit'].browse(active_id)
@@ -93,8 +92,8 @@ class HrHospitalRescheduleVisitWizard(models.TransientModel):
         # Update current visit status (Cancel old slot)
         current_visit.write({
             'visit_status': 'cancelled',
-            'recommendations': ((current_visit.recommendations or '') +
-                                f'<p><strong>Visit Cancelled (Rescheduled):'
+            'recommendations': ((current_visit.recommendations or '')
+                                + f'<p><strong>Visit Cancelled (Rescheduled):'
                                 f'</strong> {self.reschedule_reason}</p>')
         })
 

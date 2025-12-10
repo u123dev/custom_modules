@@ -1,4 +1,4 @@
-from odoo import models, fields, api
+from odoo import api, fields, models
 
 
 class PatientDoctorHistory(models.Model):
@@ -63,9 +63,9 @@ class PatientDoctorHistory(models.Model):
                 if previous_records:
                     previous_records.write({'active': False})
 
-        return super(PatientDoctorHistory, self).create(vals_list)
+        return super().create(vals_list)
 
     def write(self, vals):
         """Update change_date to current date when record is modified."""
         vals['change_date'] = fields.Date.today()
-        return super(PatientDoctorHistory, self).write(vals)
+        return super().write(vals)

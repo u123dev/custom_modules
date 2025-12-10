@@ -1,9 +1,8 @@
 import logging
 from datetime import datetime
+
 import pytz
-
-from odoo import models, fields, api
-
+from odoo import api, fields, models
 
 _logger = logging.getLogger(__name__)
 

@@ -1,7 +1,7 @@
 import logging
-from odoo import models, fields, api, _
-from odoo.exceptions import UserError
 
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -28,8 +28,7 @@ class HrHospitalMassReassignDoctorWizard(models.TransientModel):
     @api.model
     def default_get(self, field_names):
         """Pre-fill patient_ids and old_doctor_id based on selected records."""
-        result = super(HrHospitalMassReassignDoctorWizard,
-                       self).default_get(field_names)
+        result = super().default_get(field_names)
 
         # Get the IDs of records selected by the user in the list view
         active_ids = self.env.context.get('active_ids')

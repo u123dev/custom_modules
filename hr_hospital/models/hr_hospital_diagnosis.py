@@ -1,7 +1,7 @@
 import logging
-from odoo import models, fields, _
-from odoo.exceptions import UserError
 
+from odoo import _, fields, models
+from odoo.exceptions import UserError
 
 _logger = logging.getLogger(__name__)
 
@@ -76,4 +76,4 @@ class HrHospitalDiagnosis(models.Model):
                 f"{approving_doctor.id}, {approving_doctor.name}"
             )
 
-        return super(HrHospitalDiagnosis, self).write(vals)
+        return super().write(vals)

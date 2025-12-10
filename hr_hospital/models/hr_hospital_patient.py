@@ -1,7 +1,7 @@
 import logging
-from odoo import models, fields, api, _
-from odoo.exceptions import ValidationError
 
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 _logger = logging.getLogger(__name__)
 
@@ -122,7 +122,7 @@ class HrHospitalPatient(models.Model):
         """Create a history record when personal_doctor_id changes."""
 
         if 'personal_doctor_id' not in vals:
-            return super(HrHospitalPatient, self).write(vals)
+            return super().write(vals)
 
         # Get date and reason from context (passed by wizard) or use defaults
         assignment_date = self.env.context.get('history_change_date',
@@ -151,7 +151,7 @@ class HrHospitalPatient(models.Model):
 
             data.append(history_record)
 
-        result = super(HrHospitalPatient, self).write(vals)
+        result = super().write(vals)
         if data:
             self.env['hr.hospital.patient.doctor.history'].sudo().create(data)
         return result
