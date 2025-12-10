@@ -1,7 +1,7 @@
 <odoo>
     <!-- 1. MODIFIED standard footer -->
     <template id="modify_standard_footer" inherit_id="web.external_layout_standard" priority="200">
-        <xpath expr="//div[./div[@class='text-center']]" position="replace">
+        <xpath expr="//div[./div[hasclass('text-center')]]" position="replace">
             <!-- REPLACED FOOTER -->
             <div t-attf-class="footer o_standard_footer" style="padding-top: 5px;">
                 <div class="text-center" style="font-size: 14px; opacity: 0.7; border-top: 1px solid black; padding-top: 5px;">

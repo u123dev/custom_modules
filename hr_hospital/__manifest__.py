@@ -1,11 +1,13 @@
 {
     'name': 'HR Hospital Module',
-    'summary': '',
+    'summary': 'HR Hospital Module: Odoo Apps Publication',
     'author': 'u123dev',
     'website': 'https://github.com/u123dev',
-    'category': 'Customizations',
+    'category': 'Extra Tools',
     'license': 'OPL-1',
-    'version': '17.0.0.7.5',
+    'version': '17.0.0.8.6',
+    'price':  10.0,
+    'currency': 'USD',
 
     'depends': [
         'base',
@@ -29,14 +31,14 @@
         'wizard/hr_hospital_doctor_schedule_wizard_view.xml',
         'wizard/hr_hospital_patient_card_export_wizard_view.xml',
 
+        'reports/hr_hospital_doctor_report.xml',
+
         'views/hr_hospital_desease_views.xml',
         'views/hr_hospital_visit_views.xml',
         'views/hr_hospital_doctor_views.xml',
         'views/hr_hospital_patient_views.xml',
         'views/hr_hospital_diagnosis_views.xml',
         'views/hr_hospital_doctor_schedule_view.xml',
-
-        'reports/hr_hospital_doctor_report.xml',
 
     ],
 

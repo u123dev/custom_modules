@@ -101,7 +101,7 @@
                                            aria-label="Context Menu"
                                            title="Context Menu"><i class="fa fa-ellipsis-v"/></a>
 
-                                        <div class="dropdown-menu dropdown-menu-end">
+                                        <div class="dropdown-menu dropdown-menu-end" role="menu">
                                             <a role="menuitem" type="edit" class="dropdown-item"
                                                t-if="widget.editable"><i class="fa fa-edit me-2"/>Edit</a>
                                             <a role="menuitem" type="delete" class="dropdown-item text-danger"
@@ -138,7 +138,7 @@
                                             </strong>
                                             <div>Speciality: <field name="speciality_id" style="color:maroon;"/></div>
                                             <div>
-                                                <i class="fa fa-phone" style="margin-right: 6px; color:green;"/>
+                                                <i class="fa fa-phone" title="Phone" style="margin-right: 6px; color:green;"/>
                                                 <field name="phone"/>
                                             </div>
                                             <div>Experience: <field name="work_experience" style="color:navy;"/></div>
