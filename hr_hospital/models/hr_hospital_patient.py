@@ -12,6 +12,13 @@ class HrHospitalPatient(models.Model):
 
     _inherit = ['hr.hospital.abstract.person']
 
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        string='System User',
+        ondelete='restrict',
+        help='The user associated with this patient for system login.'
+    )
+
     personal_doctor_id = fields.Many2one(
         comodel_name='hr.hospital.doctor',
         ondelete='set null'

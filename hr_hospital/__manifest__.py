@@ -21,7 +21,9 @@
 
     'data': [
 
+        'security/hr_hospital_security.xml',
         'security/ir.model.access.csv',
+        'security/hr_hospital_rules.xml',
 
         'views/hr_hospital_menu.xml',
 
@@ -46,6 +48,7 @@
         'demo/hr_hospital_doctor_speciality_demo.xml',
         'demo/res_users_doctors_demo.xml',
         'demo/hr_hospital_doctor_demo.xml',
+        'demo/res_users_patients_demo.xml',
         'demo/hr_hospital_patient_contact_demo.xml',
         'demo/hr_hospital_patient_doctor_history_demo.xml',
         'demo/hr_hospital_visit_demo.xml',

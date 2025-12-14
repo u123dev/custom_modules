@@ -10,7 +10,7 @@
         <field name="gender">female</field>
         <field name="birth_date">1985-05-15</field>
         <field name="country_id" ref="base.ar"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
     </record>
     <record id="contact_person_02" model="hr.hospital.contact.person">
         <field name="last_name">Johnson</field>
@@ -31,7 +31,7 @@
         <field name="gender">male</field>
         <field name="birth_date">1992-03-01</field>
         <field name="country_id" ref="base.ua"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_en"/>
     </record>
     <record id="contact_person_04" model="hr.hospital.contact.person">
         <field name="last_name">Brown</field>
@@ -73,7 +73,7 @@
         <field name="gender">male</field>
         <field name="birth_date">1970-09-30</field>
         <field name="country_id" ref="base.ar"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
     </record>
     <record id="contact_person_08" model="hr.hospital.contact.person">
         <field name="last_name">Davis</field>
@@ -94,7 +94,7 @@
         <field name="gender">male</field>
         <field name="birth_date">1975-02-18</field>
         <field name="country_id" ref="base.ua"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_en"/>
     </record>
     <record id="contact_person_10" model="hr.hospital.contact.person">
         <field name="last_name">Martinez</field>
@@ -136,7 +136,7 @@
         <field name="gender">male</field>
         <field name="birth_date">1983-02-09</field>
         <field name="country_id" ref="base.ar"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
     </record>
     <record id="contact_person_14" model="hr.hospital.contact.person">
         <field name="last_name">Wilson</field>
@@ -157,11 +157,11 @@
         <field name="gender">male</field>
         <field name="birth_date">2002-09-28</field>
         <field name="country_id" ref="base.ua"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_en"/>
     </record>
 
     <!-- 15 Patients -->
-    <record id="patient_01" model="hr.hospital.patient">
+<record id="patient_01" model="hr.hospital.patient">
         <field name="last_name">Taylor</field>
         <field name="first_name">Emma</field>
         <field name="phone">+54113001</field>
@@ -169,12 +169,12 @@
         <field name="gender">female</field>
         <field name="birth_date">1990-01-20</field>
         <field name="country_id" ref="base.ar"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
         <field name="passport_data">T90120</field>
         <field name="contact_person_id" ref="contact_person_01"/>
         <field name="blood_group">A2+</field>
         <field name="allergies">Penicillin</field>
-    </record>
+        <field name="user_id" ref="patient_user_01"/> </record>
     <record id="patient_02" model="hr.hospital.patient">
         <field name="last_name">Clark</field>
         <field name="first_name">Noah</field>
@@ -188,7 +188,7 @@
         <field name="passport_data">C85110</field>
         <field name="contact_person_id" ref="contact_person_02"/>
         <field name="blood_group">O1-</field>
-    </record>
+        <field name="user_id" ref="patient_user_02"/> </record>
     <record id="patient_03" model="hr.hospital.patient">
         <field name="last_name">Lewis</field>
         <field name="first_name">Olivia</field>
@@ -197,12 +197,12 @@
         <field name="gender">female</field>
         <field name="birth_date">2001-03-05</field>
         <field name="country_id" ref="base.ua"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_en"/>
         <field name="passport_data">L01035</field>
         <field name="contact_person_id" ref="contact_person_03"/>
         <field name="blood_group">B3+</field>
         <field name="allergies">None</field>
-    </record>
+        <field name="user_id" ref="patient_user_03"/> </record>
     <record id="patient_04" model="hr.hospital.patient">
         <field name="last_name">Young</field>
         <field name="first_name">Liam</field>
@@ -216,7 +216,7 @@
         <field name="passport_data">Y73728</field>
         <field name="contact_person_id" ref="contact_person_04"/>
         <field name="blood_group">AB4-</field>
-    </record>
+        <field name="user_id" ref="patient_user_04"/> </record>
     <record id="patient_05" model="hr.hospital.patient">
         <field name="last_name">King</field>
         <field name="first_name">Charlotte</field>
@@ -229,7 +229,7 @@
         <field name="passport_data">K98518</field>
         <field name="contact_person_id" ref="contact_person_05"/>
         <field name="blood_group">A2-</field>
-    </record>
+        <field name="user_id" ref="patient_user_05"/> </record>
     <record id="patient_06" model="hr.hospital.patient">
         <field name="last_name">Scott</field>
         <field name="first_name">Elijah</field>
@@ -243,7 +243,7 @@
         <field name="passport_data">S68401</field>
         <field name="contact_person_id" ref="contact_person_06"/>
         <field name="blood_group">O1+</field>
-    </record>
+        <field name="user_id" ref="patient_user_06"/> </record>
     <record id="patient_07" model="hr.hospital.patient">
         <field name="last_name">Green</field>
         <field name="first_name">Amelia</field>
@@ -252,11 +252,11 @@
         <field name="gender">female</field>
         <field name="birth_date">1993-09-11</field>
         <field name="country_id" ref="base.ar"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
         <field name="passport_data">G93911</field>
         <field name="contact_person_id" ref="contact_person_07"/>
         <field name="blood_group">B3-</field>
-    </record>
+        <field name="user_id" ref="patient_user_07"/> </record>
     <record id="patient_08" model="hr.hospital.patient">
         <field name="last_name">Baker</field>
         <field name="first_name">Benjamin</field>
@@ -271,7 +271,7 @@
         <field name="contact_person_id" ref="contact_person_08"/>
         <field name="blood_group">AB4+</field>
         <field name="allergies">Ibuprofen</field>
-    </record>
+        <field name="user_id" ref="patient_user_08"/> </record>
     <record id="patient_09" model="hr.hospital.patient">
         <field name="last_name">Adams</field>
         <field name="first_name">Sophia</field>
@@ -280,11 +280,11 @@
         <field name="gender">female</field>
         <field name="birth_date">1970-02-02</field>
         <field name="country_id" ref="base.ua"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_en"/>
         <field name="passport_data">A70202</field>
         <field name="contact_person_id" ref="contact_person_09"/>
         <field name="blood_group">O1-</field>
-    </record>
+        <field name="user_id" ref="patient_user_09"/> </record>
     <record id="patient_10" model="hr.hospital.patient">
         <field name="last_name">Nelson</field>
         <field name="first_name">Ethan</field>
@@ -299,7 +299,7 @@
         <field name="contact_person_id" ref="contact_person_10"/>
         <field name="blood_group">A2+</field>
         <field name="allergies">Pollen</field>
-    </record>
+        <field name="user_id" ref="patient_user_10"/> </record>
     <record id="patient_11" model="hr.hospital.patient">
         <field name="last_name">Carter</field>
         <field name="first_name">Isabella</field>
@@ -312,7 +312,7 @@
         <field name="passport_data">C65621</field>
         <field name="contact_person_id" ref="contact_person_11"/>
         <field name="blood_group">AB4-</field>
-    </record>
+        <field name="user_id" ref="patient_user_11"/> </record>
     <record id="patient_12" model="hr.hospital.patient">
         <field name="last_name">Fisher</field>
         <field name="first_name">Daniel</field>
@@ -326,7 +326,7 @@
         <field name="passport_data">F92103</field>
         <field name="contact_person_id" ref="contact_person_12"/>
         <field name="blood_group">B3+</field>
-    </record>
+        <field name="user_id" ref="patient_user_12"/> </record>
     <record id="patient_13" model="hr.hospital.patient">
         <field name="last_name">Mitchell</field>
         <field name="first_name">Mia</field>
@@ -335,7 +335,7 @@
         <field name="gender">female</field>
         <field name="birth_date">1988-02-15</field>
         <field name="country_id" ref="base.ar"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
         <field name="passport_data">M88215</field>
         <field name="contact_person_id" ref="contact_person_13"/>
         <field name="blood_group">O1+</field>
@@ -363,7 +363,7 @@
         <field name="gender">female</field>
         <field name="birth_date">1999-09-09</field>
         <field name="country_id" ref="base.ua"/>
-        <field name="language_id" ref="base.lang_ru"/>
+        <field name="language_id" ref="base.lang_uk_UA"/>
         <field name="passport_data">P99909</field>
         <field name="contact_person_id" ref="contact_person_15"/>
         <field name="blood_group">AB4+</field>
