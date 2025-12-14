@@ -78,6 +78,7 @@
                 <field name="phone"/>
                 <field name="work_experience"/>
                 <field name="rating"/>
+                <field name="is_intern"/>
                 <field name="image_1920"/>
                 <field name="intern_ids" widget="many2many_tags"/>
                 <field name="intern_names"/>
@@ -136,6 +137,12 @@
                                             <strong style="color:#6C5B7B; font-size:1.2em;">
                                                 <field name="name"/>
                                             </strong>
+                                            <t t-if="record.is_intern.raw_value">
+                                                <span class="badge text-bg-light rounded-pill ms-2" title="Интерн">
+                                                    INTERN
+                                                </span>
+                                            </t>
+
                                             <div>Speciality: <field name="speciality_id" style="color:maroon;"/></div>
                                             <div>
                                                 <i class="fa fa-phone" title="Phone" style="margin-right: 6px; color:green;"/>
