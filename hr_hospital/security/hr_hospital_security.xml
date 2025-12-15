@@ -1,40 +1,38 @@
-<odoo>
-    <data noupdate="1">
-        <record id="module_category_hr_hospital" model="ir.module.category">
-            <field name="name">Hospital Management</field>
-            <field name="description">Hospital Management user roles.</field>
-            <field name="sequence">10</field>
-        </record>
+<odoo noupdate="1">
+    <record id="module_category_hr_hospital" model="ir.module.category">
+        <field name="name">Hospital Management</field>
+        <field name="description">Hospital Management user roles.</field>
+        <field name="sequence">10</field>
+    </record>
 
-        <record id="group_hr_hospital_patient" model="res.groups">
-            <field name="name">Hospital / Patient</field>
-            <field name="category_id" ref="module_category_hr_hospital"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        </record>
+    <record id="group_hr_hospital_patient" model="res.groups">
+        <field name="name">Hospital / Patient</field>
+        <field name="category_id" ref="module_category_hr_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
 
-        <record id="group_hr_hospital_intern" model="res.groups">
-            <field name="name">Hospital / Intern</field>
-            <field name="category_id" ref="module_category_hr_hospital"/>
-            <field name="implied_ids" eval="[(4, ref('group_hr_hospital_patient'))]"/>
-        </record>
+    <record id="group_hr_hospital_intern" model="res.groups">
+        <field name="name">Hospital / Intern</field>
+        <field name="category_id" ref="module_category_hr_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hr_hospital_patient'))]"/>
+    </record>
 
-        <record id="group_hr_hospital_doctor" model="res.groups">
-            <field name="name">Hospital / Doctor</field>
-            <field name="category_id" ref="module_category_hr_hospital"/>
-            <field name="implied_ids" eval="[(4, ref('group_hr_hospital_intern'))]"/>
-        </record>
+    <record id="group_hr_hospital_doctor" model="res.groups">
+        <field name="name">Hospital / Doctor</field>
+        <field name="category_id" ref="module_category_hr_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hr_hospital_intern'))]"/>
+    </record>
 
-        <record id="group_hr_hospital_manager" model="res.groups">
-            <field name="name">Hospital / Manager</field>
-            <field name="category_id" ref="module_category_hr_hospital"/>
-            <field name="implied_ids" eval="[(4, ref('group_hr_hospital_doctor'))]"/>
-        </record>
+    <record id="group_hr_hospital_manager" model="res.groups">
+        <field name="name">Hospital / Manager</field>
+        <field name="category_id" ref="module_category_hr_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hr_hospital_doctor'))]"/>
+    </record>
 
-        <record id="group_hr_hospital_admin" model="res.groups">
-            <field name="name">Hospital / Administrator</field>
-            <field name="category_id" ref="module_category_hr_hospital"/>
-            <field name="implied_ids" eval="[(4, ref('group_hr_hospital_manager'))]"/>
-        </record>
+    <record id="group_hr_hospital_admin" model="res.groups">
+        <field name="name">Hospital / Administrator</field>
+        <field name="category_id" ref="module_category_hr_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hr_hospital_manager'))]"/>
+    </record>
 
-    </data>
 </odoo>

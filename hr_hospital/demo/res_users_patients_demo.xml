@@ -1,101 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data noupdate="1">
-        <record id="patient_user_01" model="res.users">
-            <field name="name">Emma Taylor (Patient)</field>
-            <field name="login">patient.emma</field>
-            <field name="password">patient</field>
-            <field name="email">emma.taylor@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_01" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Emma Taylor (Patient)</field>
+        <field name="login">patient.emma</field>
+        <field name="password">patient</field>
+        <field name="email">emma.taylor@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_02" model="res.users">
-            <field name="name">Noah Clark (Patient)</field>
-            <field name="login">patient.noah</field>
-            <field name="password">patient</field>
-            <field name="email">noah.clark@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_02" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Noah Clark (Patient)</field>
+        <field name="login">patient.noah</field>
+        <field name="password">patient</field>
+        <field name="email">noah.clark@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_03" model="res.users">
-            <field name="name">Olivia Lewis (Patient)</field>
-            <field name="login">patient.olivia.l</field>
-            <field name="password">patient</field>
-            <field name="email">olivia.lewis@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_03" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Olivia Lewis (Patient)</field>
+        <field name="login">patient.olivia.l</field>
+        <field name="password">patient</field>
+        <field name="email">olivia.lewis@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_04" model="res.users">
-            <field name="name">Liam Young (Patient)</field>
-            <field name="login">patient.liam</field>
-            <field name="password">patient</field>
-            <field name="email">liam.young@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_04" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Liam Young (Patient)</field>
+        <field name="login">patient.liam</field>
+        <field name="password">patient</field>
+        <field name="email">liam.young@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_05" model="res.users">
-            <field name="name">Charlotte King (Patient)</field>
-            <field name="login">patient.charlotte</field>
-            <field name="password">patient</field>
-            <field name="email">charlotte.king@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_05" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Charlotte King (Patient)</field>
+        <field name="login">patient.charlotte</field>
+        <field name="password">patient</field>
+        <field name="email">charlotte.king@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_06" model="res.users">
-            <field name="name">Elijah Scott (Patient)</field>
-            <field name="login">patient.elijah</field>
-            <field name="password">patient</field>
-            <field name="email">elijah.scott@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_06" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Elijah Scott (Patient)</field>
+        <field name="login">patient.elijah</field>
+        <field name="password">patient</field>
+        <field name="email">elijah.scott@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_07" model="res.users">
-            <field name="name">Amelia Green (Patient)</field>
-            <field name="login">patient.amelia</field>
-            <field name="password">patient</field>
-            <field name="email">amelia.green@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_07" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Amelia Green (Patient)</field>
+        <field name="login">patient.amelia</field>
+        <field name="password">patient</field>
+        <field name="email">amelia.green@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_08" model="res.users">
-            <field name="name">Benjamin Baker (Patient)</field>
-            <field name="login">patient.benjamin</field>
-            <field name="password">patient</field>
-            <field name="email">benjamin.baker@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_08" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Benjamin Baker (Patient)</field>
+        <field name="login">patient.benjamin</field>
+        <field name="password">patient</field>
+        <field name="email">benjamin.baker@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_09" model="res.users">
-            <field name="name">Sophia Adams (Patient)</field>
-            <field name="login">patient.sophia</field>
-            <field name="password">patient</field>
-            <field name="email">sophia.adams@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_09" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Sophia Adams (Patient)</field>
+        <field name="login">patient.sophia</field>
+        <field name="password">patient</field>
+        <field name="email">sophia.adams@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_10" model="res.users">
-            <field name="name">Ethan Nelson (Patient)</field>
-            <field name="login">patient.ethan</field>
-            <field name="password">patient</field>
-            <field name="email">ethan.nelson@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_10" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Ethan Nelson (Patient)</field>
+        <field name="login">patient.ethan</field>
+        <field name="password">patient</field>
+        <field name="email">ethan.nelson@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_11" model="res.users">
-            <field name="name">Isabella Carter (Patient)</field>
-            <field name="login">patient.isabella</field>
-            <field name="password">patient</field>
-            <field name="email">isabella.carter@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_11" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Isabella Carter (Patient)</field>
+        <field name="login">patient.isabella</field>
+        <field name="password">patient</field>
+        <field name="email">isabella.carter@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        <record id="patient_user_12" model="res.users">
-            <field name="name">Daniel Fisher (Patient)</field>
-            <field name="login">patient.daniel</field>
-            <field name="password">patient</field>
-            <field name="email">daniel.fisher@portal.com</field>
-            <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
-        </record>
+    <record id="patient_user_12" model="res.users" context="{'no_reset_password': True}">
+        <field name="name">Daniel Fisher (Patient)</field>
+        <field name="login">patient.daniel</field>
+        <field name="password">patient</field>
+        <field name="email">daniel.fisher@portal.com</field>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_hospital.group_hr_hospital_patient')])]"/>
+    </record>
 
-        </data>
 </odoo>
