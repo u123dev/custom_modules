@@ -10,7 +10,7 @@ class HrHospitalDesease(models.Model):
     _rec_name = "name"
     _order = 'parent_path, name'
 
-    name = fields.Char(required=True)
+    name = fields.Char(required=True, translate=True)
 
     parent_id = fields.Many2one(
         comodel_name='hr.hospital.desease',
@@ -33,7 +33,7 @@ class HrHospitalDesease(models.Model):
     ], string='Danger Level', default='low')
 
     is_contagious = fields.Boolean(default=False)
-    symptoms = fields.Text()
+    symptoms = fields.Text(translate=True)
     spreading_region_ids = fields.Many2many(
         comodel_name='res.country',
         relation='hr_hospital_disease_country_rel',
