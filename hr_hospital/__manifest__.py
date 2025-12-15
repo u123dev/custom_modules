@@ -5,7 +5,7 @@
     'website': 'https://github.com/u123dev',
     'category': 'Extra Tools',
     'license': 'OPL-1',
-    'version': '17.0.0.8.6',
+    'version': '17.0.1.0.2',
     'price':  10.0,
     'currency': 'USD',
 

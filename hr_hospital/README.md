@@ -67,11 +67,11 @@ Used to enforce data correctness (e.g., showing only available doctors based on 
 ### 5. 💾 Domains and Demo Data
 * The module includes a comprehensive set of **Demo Data**:
 
-  - 15 patients,
-  - 8 doctors,
-  - 12 hierarchical diseases,
-  - 25 visits,
-  - 20 diagnoses
+  - 12+ patients 
+  - 15+ doctors 
+  - 15+ hierarchical diseases
+  - 25+ visits
+  - 30+ diagnoses
 
 for immediate functional testing.
 
