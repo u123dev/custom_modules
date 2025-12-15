@@ -5,9 +5,13 @@ Changelog
 ----------------
 
 [ADD] Add tests.
+
 [FIX] Update demo data.
+
 [ADD] Add i18n.
+
 [ADD] Add module description.
+
 
 `17.0.0.0.1`
 ----------------
