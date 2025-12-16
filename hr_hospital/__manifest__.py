@@ -25,6 +25,8 @@
         'security/ir.model.access.csv',
         'security/hr_hospital_rules.xml',
 
+        'data/hr_hospital_disease_data.xml',
+
         'views/hr_hospital_menu.xml',
 
         'wizard/hr_hospital_mass_reassign_doctor_wizard_view.xml',
@@ -52,7 +54,6 @@
         'demo/hr_hospital_patient_contact_demo.xml',
         'demo/hr_hospital_patient_doctor_history_demo.xml',
         'demo/hr_hospital_visit_demo.xml',
-        'demo/hr_hospital_disease_demo.xml',
         'demo/hr_hospital_diagnosis_demo.xml',
         'demo/hr_hospital_doctor_schedule_demo.xml',
     ],

@@ -8,6 +8,11 @@
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Chest pain, shortness of breath, palpitations.</field>
     </record>
+    <record id="disease_category_cardiovascular" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Серцево-судинні захворювання</field>
+        <field name="symptoms">Біль у грудях, задишка, прискорене серцебиття.</field>
+    </record>
+
     <!-- 1.1. Hypertension -->
     <record id="disease_hypertension" model="hr.hospital.desease">
         <field name="name">Hypertension (High Blood Pressure)</field>
@@ -17,6 +22,10 @@
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Headaches, dizziness, nosebleeds.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us'), ref('base.ua'), ref('base.cn')])]"/>
+    </record>
+    <record id="disease_hypertension" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Гіпертензія (Високий артеріальний тиск)</field>
+        <field name="symptoms">Головний біль, запаморочення, носові кровотечі.</field>
     </record>
     <!-- 1.2. Angina Pectoris -->
     <record id="disease_angina_pectoris" model="hr.hospital.desease">
@@ -28,6 +37,10 @@
         <field name="symptoms">Squeezing, heavy, or tight chest pain.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.cn'), ref('base.ar')])]"/>
     </record>
+        <record id="disease_angina_pectoris" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Стенокардія</field>
+        <field name="symptoms">Стискаючий, важкий або тісний біль у грудях.</field>
+    </record>
     <!-- 1.3. Heart Failure -->
     <record id="disease_heart_failure" model="hr.hospital.desease">
         <field name="name">Chronic Heart Failure</field>
@@ -38,6 +51,10 @@
         <field name="symptoms">Extreme fatigue, swelling in legs, rapid heartbeat.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us')])]"/>
     </record>
+        <record id="disease_heart_failure" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Хронічна серцева недостатність</field>
+        <field name="symptoms">Сильна втома, набряки на ногах, прискорене серцебиття.</field>
+    </record>
 
     <!-- 2. Respiratory System Diseases (Category) -->
     <record id="disease_category_respiratory" model="hr.hospital.desease">
@@ -47,6 +64,11 @@
         <field name="is_contagious" eval="True"/>
         <field name="symptoms">Coughing, sneezing, fever, fatigue.</field>
     </record>
+    <record id="disease_category_respiratory" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Захворювання дихальної системи</field>
+        <field name="symptoms">Кашель, чхання, температура, втома.</field>
+    </record>
+
     <!-- 2.1. Seasonal Influenza -->
     <record id="disease_influenza" model="hr.hospital.desease">
         <field name="name">Seasonal Influenza</field>
@@ -57,6 +79,11 @@
         <field name="symptoms">Fever, muscle aches, sore throat, cough.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.ar'), ref('base.cn'), ref('base.ae'), ref('base.ua')])]"/>
     </record>
+    <record id="disease_influenza" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Сезонний грип</field>
+        <field name="symptoms">Лихоманка, м'язові болі, біль у горлі, кашель.</field>
+    </record>
+
     <!-- 2.1.1. Swine Flu (3rd level) -->
     <record id="disease_swine_flu" model="hr.hospital.desease">
         <field name="name">Influenza A H1N1 (Swine Flu)</field>
@@ -66,6 +93,10 @@
         <field name="is_contagious" eval="True"/>
         <field name="symptoms">High fever, chills, severe cough, breathing difficulty.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.cn'), ref('base.ae')])]"/>
+    </record>
+    <record id="disease_swine_flu" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Грип A H1N1 (свиной)</field>
+        <field name="symptoms">Висока температура, озноб, сильний кашель, утруднене дихання.</field>
     </record>
     <!-- 2.2. Pneumonia -->
     <record id="disease_pneumonia" model="hr.hospital.desease">
@@ -77,6 +108,11 @@
         <field name="symptoms">Productive cough, fever, difficulty breathing.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us'), ref('base.ae')])]"/>
     </record>
+    <record id="disease_pneumonia" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Пневмонія</field>
+        <field name="symptoms">Вологий кашель, лихоманка, утруднене дихання.</field>
+    </record>
+
 
     <!-- 3. Neurological Disorders (Category) -->
     <record id="disease_category_neurological" model="hr.hospital.desease">
@@ -86,6 +122,11 @@
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Headaches, seizures, loss of coordination.</field>
     </record>
+    <record id="disease_category_neurological" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Неврологічні розлади</field>
+        <field name="symptoms">Головні болі, судоми, втрата координації.</field>
+    </record>
+
     <!-- 3.1. Chronic Migraine -->
     <record id="disease_migraine" model="hr.hospital.desease">
         <field name="name">Chronic Migraine</field>
@@ -96,6 +137,11 @@
         <field name="symptoms">Severe pulsing head pain, nausea, sensitivity to light/sound.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.us'), ref('base.ae')])]"/>
     </record>
+    <record id="disease_migraine" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Хронічна мігрень</field>
+        <field name="symptoms">Сильний пульсуючий головний біль, нудота, чутливість до світла/звуку.</field>
+    </record>
+
     <!-- 3.2. Epilepsy -->
     <record id="disease_epilepsy" model="hr.hospital.desease">
         <field name="name">Epilepsy</field>
@@ -104,6 +150,10 @@
         <field name="severity_level">high</field>
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Recurrent, unprovoked seizures.</field>
+    </record>
+    <record id="disease_epilepsy" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Епілепсія</field>
+        <field name="symptoms">Повторювані, непровоковані судоми.</field>
     </record>
 
     <!-- 4. Digestive System Diseases (Category) -->
@@ -114,6 +164,10 @@
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Abdominal pain, bloating, indigestion.</field>
     </record>
+    <record id="disease_category_digestive" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Захворювання травної системи</field>
+        <field name="symptoms">Біль у животі, здуття, розлади травлення.</field>
+    </record>
 
     <!-- 5. Infectious Diseases (Category) -->
     <record id="disease_category_infectious" model="hr.hospital.desease">
@@ -122,6 +176,10 @@
         <field name="severity_level">high</field>
         <field name="is_contagious" eval="True"/>
         <field name="symptoms">Fever, rash, fatigue.</field>
+    </record>
+    <record id="disease_category_infectious" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Інфекційні захворювання</field>
+        <field name="symptoms">Лихоманка, висип, втома.</field>
     </record>
 
     <!-- 5.1. Tuberculosis -->
@@ -134,6 +192,10 @@
         <field name="symptoms">Chronic cough, weight loss, night sweats.</field>
         <field name="spreading_region_ids" eval="[(6, 0, [ref('base.cn'), ref('base.in')])]"/>
     </record>
+    <record id="disease_tuberculosis" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Туберкульоз</field>
+        <field name="symptoms">Хронічний кашель, втрата ваги, нічна пітливість.</field>
+    </record>
 
     <!-- 5.1.1. Pulmonary Tuberculosis -->
     <record id="disease_tuberculosis_pulmonary" model="hr.hospital.desease">
@@ -143,6 +205,10 @@
         <field name="severity_level">critical</field>
         <field name="is_contagious" eval="True"/>
         <field name="symptoms">Bloody cough, chest pain, fever.</field>
+    </record>
+    <record id="disease_tuberculosis_pulmonary" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Легеневий туберкульоз</field>
+        <field name="symptoms">Кровохаркання, біль у грудях, лихоманка.</field>
     </record>
 
     <!-- 5.1.1.1. Drug-resistant Tuberculosis (Level 4) -->
@@ -154,6 +220,10 @@
         <field name="is_contagious" eval="True"/>
         <field name="symptoms">Persistent cough, extreme fatigue, treatment resistance.</field>
     </record>
+    <record id="disease_tuberculosis_resistant" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Лікарсько-стійкий туберкульоз</field>
+        <field name="symptoms">Тривалий кашель, сильна втома, стійкість до лікування.</field>
+    </record>
 
     <!-- 6. Endocrine Disorders (Category) -->
     <record id="disease_category_endocrine" model="hr.hospital.desease">
@@ -162,6 +232,10 @@
         <field name="severity_level">medium</field>
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Hormonal imbalance symptoms.</field>
+    </record>
+    <record id="disease_category_endocrine" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Ендокринні розлади</field>
+        <field name="symptoms">Симптоми гормонального дисбалансу.</field>
     </record>
 
     <!-- 6.1. Diabetes Mellitus -->
@@ -173,6 +247,11 @@
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Frequent urination, thirst, fatigue.</field>
     </record>
+    <record id="disease_diabetes" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Цукровий діабет</field>
+        <field name="symptoms">Часте сечовипускання, спрага, втома.</field>
+    </record>
+
 
     <!-- 6.1.1. Type 1 Diabetes -->
     <record id="disease_diabetes_type1" model="hr.hospital.desease">
@@ -181,6 +260,10 @@
         <field name="code">E10</field>
         <field name="severity_level">high</field>
         <field name="symptoms">Insulin deficiency, rapid weight loss.</field>
+    </record>
+    <record id="disease_diabetes_type1" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Діабет 1 типу</field>
+        <field name="symptoms">Недостатність інсуліну, швидка втрата ваги.</field>
     </record>
 
     <!-- 6.1.1.1. Acute Ketoacidosis (Level 4) -->
@@ -191,6 +274,10 @@
         <field name="severity_level">critical</field>
         <field name="symptoms">Nausea, rapid breathing, fruity breath odor.</field>
     </record>
+    <record id="disease_diabetes_ketoacidosis" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Діабетичний кетоацидоз</field>
+        <field name="symptoms">Нудота, прискорене дихання, фруктовий запах із рота.</field>
+    </record>
 
     <!-- 7. Dermatologic Diseases (Category) -->
     <record id="disease_category_dermatology" model="hr.hospital.desease">
@@ -199,6 +286,10 @@
         <field name="severity_level">low</field>
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Skin irritation, rash.</field>
+    </record>
+    <record id="disease_category_dermatology" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Дерматологічні захворювання</field>
+        <field name="symptoms">Роздратування шкіри, висип.</field>
     </record>
 
     <!-- 7.1. Psoriasis -->
@@ -209,6 +300,10 @@
         <field name="severity_level">medium</field>
         <field name="symptoms">Red patches with silvery scales.</field>
     </record>
+    <record id="disease_psoriasis" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Псоріаз</field>
+        <field name="symptoms">Червоні плями з сріблястими лусками.</field>
+    </record>
 
     <!-- 7.1.1. Psoriatic Arthritis -->
     <record id="disease_psoriatic_arthritis" model="hr.hospital.desease">
@@ -217,6 +312,10 @@
         <field name="code">L40.5</field>
         <field name="severity_level">high</field>
         <field name="symptoms">Joint pain, swelling.</field>
+    </record>
+    <record id="disease_psoriatic_arthritis" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Псоріатичний артрит</field>
+        <field name="symptoms">Біль у суглобах, набряк.</field>
     </record>
 
     <!-- 7.1.1.1. Severe Joint Deformation (Level 4) -->
@@ -227,6 +326,10 @@
         <field name="severity_level">critical</field>
         <field name="symptoms">Permanent joint damage.</field>
     </record>
+    <record id="disease_psoriasis_joint_deformation" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Тяжка деформація суглобів</field>
+        <field name="symptoms">Непоправна пошкодження суглобів.</field>
+    </record>
 
     <!-- 8. Gastrointestinal Sub-Diseases -->
     <record id="disease_gastritis" model="hr.hospital.desease">
@@ -236,6 +339,10 @@
         <field name="severity_level">low</field>
         <field name="symptoms">Stomach burning, nausea.</field>
     </record>
+    <record id="disease_gastritis" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Гастрит</field>
+        <field name="symptoms">Печія, нудота.</field>
+    </record>
 
     <!-- 8.1. Erosive Gastritis -->
     <record id="disease_gastritis_erosive" model="hr.hospital.desease">
@@ -244,6 +351,10 @@
         <field name="code">K29.1</field>
         <field name="severity_level">medium</field>
         <field name="symptoms">Bleeding, stomach lining erosion.</field>
+    </record>
+    <record id="disease_gastritis_erosive" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Ерозивний гастрит</field>
+        <field name="symptoms">Кровотеча, ерозія слизової шлунка.</field>
     </record>
 
 
@@ -255,6 +366,10 @@
         <field name="is_contagious" eval="False"/>
         <field name="symptoms">Chronic inflammation, joint pain, fatigue.</field>
     </record>
+    <record id="disease_category_autoimmune" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Аутоімунні розлади</field>
+        <field name="symptoms">Хронічне запалення, біль у суглобах, втома.</field>
+    </record>
 
     <!-- 9.1. Systemic Lupus Erythematosus (Level 2) -->
     <record id="disease_lupus" model="hr.hospital.desease">
@@ -263,6 +378,10 @@
         <field name="code">M32</field>
         <field name="severity_level">high</field>
         <field name="symptoms">Butterfly rash, joint pain, organ inflammation.</field>
+    </record>
+    <record id="disease_lupus" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Системний червоний вовчак</field>
+        <field name="symptoms">Висип у формі “метелика”, біль у суглобах, запалення органів.</field>
     </record>
 
     <!-- 9.1.1. Lupus Nephritis (Kidney complication, Level 3) -->
@@ -273,6 +392,10 @@
         <field name="severity_level">high</field>
         <field name="symptoms">Kidney inflammation, proteinuria.</field>
     </record>
+    <record id="disease_lupus_nephritis" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Лупус-нефрит</field>
+        <field name="symptoms">Запалення нирок, протеїнурія.</field>
+    </record>
 
     <!-- 9.1.1.1. Chronic Kidney Damage (Level 4) -->
     <record id="disease_lupus_ckd" model="hr.hospital.desease">
@@ -281,6 +404,10 @@
         <field name="code">M32.1A</field>
         <field name="severity_level">critical</field>
         <field name="symptoms">Reduced kidney function, persistent swelling.</field>
+    </record>
+    <record id="disease_lupus_ckd" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Хронічне ураження нирок через вовчак</field>
+        <field name="symptoms">Знижена функція нирок, постійні набряки.</field>
     </record>
 
     <!-- 9.1.1.1.1. Kidney Failure Stage 3-4 (Level 5) -->
@@ -291,6 +418,10 @@
         <field name="severity_level">critical</field>
         <field name="symptoms">Severe decline in glomerular filtration rate.</field>
     </record>
+    <record id="disease_lupus_kidney_stage3" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Ниркова недостатність (Стадія 3–4)</field>
+        <field name="symptoms">Сильне зниження швидкості клубочкової фільтрації.</field>
+    </record>
 
     <!-- 9.1.1.1.1.1. End-Stage Renal Disease (Level 6) -->
     <record id="disease_lupus_esrd" model="hr.hospital.desease">
@@ -299,6 +430,10 @@
         <field name="code">M32.1A4</field>
         <field name="severity_level">critical</field>
         <field name="symptoms">Complete kidney failure, requires dialysis or transplant.</field>
+    </record>
+    <record id="disease_lupus_esrd" model="hr.hospital.desease" context="{'lang': 'uk_UA'}">
+        <field name="name">Термінальна стадія ниркової недостатності (по вовчак)</field>
+        <field name="symptoms">Повна ниркова недостатність, потребує діалізу або трансплантації.</field>
     </record>
 
 </odoo>
